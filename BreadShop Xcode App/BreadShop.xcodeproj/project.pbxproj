@@ -1,0 +1,786 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1E36903BB38C4387C1BF4854 /* Pods_BreadShopTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6773DAA1C356EB47A86FDED /* Pods_BreadShopTests.framework */; };
+		4C244F6D1D6D38801D1E71C3 /* Pods_BreadShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C909FFE7911B497A263CB49 /* Pods_BreadShop.framework */; };
+		9A14F60E239FEDE400928994 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14F60D239FEDE400928994 /* CompleteViewController.swift */; };
+		9A192DD123435BC700885514 /* KGHowManyTimes.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A192DD023435BC700885514 /* KGHowManyTimes.ttf */; };
+		9A192DD323435C0B00885514 /* kglethergosolid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A192DD223435C0A00885514 /* kglethergosolid.ttf */; };
+		9A5250FB2355CFBD0058F036 /* MealDealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5250FA2355CFBD0058F036 /* MealDealViewController.swift */; };
+		9A72F839239D6D1600143BCB /* collectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A72F838239D6D1600143BCB /* collectionViewController.swift */; };
+		9A87DF632345E7E200C58B54 /* 42855.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9A87DF622345E7E100C58B54 /* 42855.jpg */; };
+		9A87DF65234613DD00C58B54 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A87DF64234613DC00C58B54 /* ItemViewController.swift */; };
+		9A9AE7DC234DDF1B00BEA8EE /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AE7DB234DDF1B00BEA8EE /* LaunchViewController.swift */; };
+		9AA1BBC02344E13700287B94 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA1BBBF2344E13700287B94 /* MenuViewController.swift */; };
+		9AB8526E23435152002CA494 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB8526D23435152002CA494 /* AppDelegate.swift */; };
+		9AB8527023435152002CA494 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB8526F23435152002CA494 /* ViewController.swift */; };
+		9AB8527323435152002CA494 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AB8527123435152002CA494 /* Main.storyboard */; };
+		9AB8527623435152002CA494 /* BreadShop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AB8527423435152002CA494 /* BreadShop.xcdatamodeld */; };
+		9AB8527823435158002CA494 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AB8527723435158002CA494 /* Assets.xcassets */; };
+		9AB8527B23435158002CA494 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AB8527923435158002CA494 /* LaunchScreen.storyboard */; };
+		9AB8528623435159002CA494 /* BreadShopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB8528523435159002CA494 /* BreadShopTests.swift */; };
+		9AB8529123435159002CA494 /* BreadShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB8529023435159002CA494 /* BreadShopUITests.swift */; };
+		9AD73AF22399230C008C2558 /* cartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD73AF12399230C008C2558 /* cartTableViewCell.swift */; };
+		9AE09BC02396B4C00012BA99 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AE09BBF2396B4BF0012BA99 /* View.xib */; };
+		9AE09BC22396C0740012BA99 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE09BC12396C0740012BA99 /* CartViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9AB8528223435159002CA494 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AB8526223435152002CA494 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9AB8526923435152002CA494;
+			remoteInfo = BreadShop;
+		};
+		9AB8528D23435159002CA494 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AB8526223435152002CA494 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9AB8526923435152002CA494;
+			remoteInfo = BreadShop;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0C909FFE7911B497A263CB49 /* Pods_BreadShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BreadShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B358917AD10BEAE4EE78F45 /* Pods-BreadShopTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreadShopTests.debug.xcconfig"; path = "Target Support Files/Pods-BreadShopTests/Pods-BreadShopTests.debug.xcconfig"; sourceTree = "<group>"; };
+		232E76B62C63905F0E40A3E8 /* Pods-BreadShopTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreadShopTests.release.xcconfig"; path = "Target Support Files/Pods-BreadShopTests/Pods-BreadShopTests.release.xcconfig"; sourceTree = "<group>"; };
+		6DB1FA8F344E5F2820CCAEC1 /* Pods-BreadShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreadShop.release.xcconfig"; path = "Target Support Files/Pods-BreadShop/Pods-BreadShop.release.xcconfig"; sourceTree = "<group>"; };
+		86857D45C660614B67CF0D4C /* Pods-BreadShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreadShop.debug.xcconfig"; path = "Target Support Files/Pods-BreadShop/Pods-BreadShop.debug.xcconfig"; sourceTree = "<group>"; };
+		9A14F60D239FEDE400928994 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
+		9A192DD023435BC700885514 /* KGHowManyTimes.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KGHowManyTimes.ttf; sourceTree = "<group>"; };
+		9A192DD223435C0A00885514 /* kglethergosolid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kglethergosolid.ttf; sourceTree = "<group>"; };
+		9A3024472358A6CA0003B9D0 /* BreadShop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BreadShop.entitlements; sourceTree = "<group>"; };
+		9A5250FA2355CFBD0058F036 /* MealDealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDealViewController.swift; sourceTree = "<group>"; };
+		9A72F838239D6D1600143BCB /* collectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = collectionViewController.swift; sourceTree = "<group>"; };
+		9A87DF622345E7E100C58B54 /* 42855.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 42855.jpg; sourceTree = "<group>"; };
+		9A87DF64234613DC00C58B54 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		9A87DF662346150400C58B54 /* Avocado */ = {isa = PBXFileReference; lastKnownFileType = file; path = Avocado; sourceTree = "<group>"; };
+		9A9AE7DA234D459B00BEA8EE /* Brown_Bread */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brown_Bread; sourceTree = "<group>"; };
+		9A9AE7DB234DDF1B00BEA8EE /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		9AA1BBBF2344E13700287B94 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		9AB8526A23435152002CA494 /* BreadShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreadShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AB8526D23435152002CA494 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9AB8526F23435152002CA494 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9AB8527223435152002CA494 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9AB8527523435152002CA494 /* BreadShop.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BreadShop.xcdatamodel; sourceTree = "<group>"; };
+		9AB8527723435158002CA494 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9AB8527A23435158002CA494 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9AB8527C23435158002CA494 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AB8528123435159002CA494 /* BreadShopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreadShopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AB8528523435159002CA494 /* BreadShopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadShopTests.swift; sourceTree = "<group>"; };
+		9AB8528723435159002CA494 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AB8528C23435159002CA494 /* BreadShopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreadShopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AB8529023435159002CA494 /* BreadShopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadShopUITests.swift; sourceTree = "<group>"; };
+		9AB8529223435159002CA494 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AD73AF12399230C008C2558 /* cartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cartTableViewCell.swift; sourceTree = "<group>"; };
+		9AE09BBF2396B4BF0012BA99 /* View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
+		9AE09BC12396C0740012BA99 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		E6773DAA1C356EB47A86FDED /* Pods_BreadShopTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BreadShopTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9AB8526723435152002CA494 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C244F6D1D6D38801D1E71C3 /* Pods_BreadShop.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AB8527E23435159002CA494 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E36903BB38C4387C1BF4854 /* Pods_BreadShopTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AB8528923435159002CA494 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7D910ED0F257E7A35A6AE79F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C909FFE7911B497A263CB49 /* Pods_BreadShop.framework */,
+				E6773DAA1C356EB47A86FDED /* Pods_BreadShopTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9AB8526123435152002CA494 = {
+			isa = PBXGroup;
+			children = (
+				9AB8526C23435152002CA494 /* BreadShop */,
+				9AB8528423435159002CA494 /* BreadShopTests */,
+				9AB8528F23435159002CA494 /* BreadShopUITests */,
+				9AB8526B23435152002CA494 /* Products */,
+				AC0D0A5758CD39C3241EE034 /* Pods */,
+				7D910ED0F257E7A35A6AE79F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		9AB8526B23435152002CA494 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9AB8526A23435152002CA494 /* BreadShop.app */,
+				9AB8528123435159002CA494 /* BreadShopTests.xctest */,
+				9AB8528C23435159002CA494 /* BreadShopUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9AB8526C23435152002CA494 /* BreadShop */ = {
+			isa = PBXGroup;
+			children = (
+				9A3024472358A6CA0003B9D0 /* BreadShop.entitlements */,
+				9AB8526D23435152002CA494 /* AppDelegate.swift */,
+				9AB8526F23435152002CA494 /* ViewController.swift */,
+				9AD73AF12399230C008C2558 /* cartTableViewCell.swift */,
+				9AB8527123435152002CA494 /* Main.storyboard */,
+				9A72F838239D6D1600143BCB /* collectionViewController.swift */,
+				9AE09BC12396C0740012BA99 /* CartViewController.swift */,
+				9AE09BBF2396B4BF0012BA99 /* View.xib */,
+				9A5250FA2355CFBD0058F036 /* MealDealViewController.swift */,
+				9A9AE7DB234DDF1B00BEA8EE /* LaunchViewController.swift */,
+				9A87DF64234613DC00C58B54 /* ItemViewController.swift */,
+				9A87DF622345E7E100C58B54 /* 42855.jpg */,
+				9A9AE7DA234D459B00BEA8EE /* Brown_Bread */,
+				9A87DF662346150400C58B54 /* Avocado */,
+				9AA1BBBF2344E13700287B94 /* MenuViewController.swift */,
+				9A192DD023435BC700885514 /* KGHowManyTimes.ttf */,
+				9A192DD223435C0A00885514 /* kglethergosolid.ttf */,
+				9AB8527723435158002CA494 /* Assets.xcassets */,
+				9A14F60D239FEDE400928994 /* CompleteViewController.swift */,
+				9AB8527923435158002CA494 /* LaunchScreen.storyboard */,
+				9AB8527C23435158002CA494 /* Info.plist */,
+				9AB8527423435152002CA494 /* BreadShop.xcdatamodeld */,
+			);
+			path = BreadShop;
+			sourceTree = "<group>";
+		};
+		9AB8528423435159002CA494 /* BreadShopTests */ = {
+			isa = PBXGroup;
+			children = (
+				9AB8528523435159002CA494 /* BreadShopTests.swift */,
+				9AB8528723435159002CA494 /* Info.plist */,
+			);
+			path = BreadShopTests;
+			sourceTree = "<group>";
+		};
+		9AB8528F23435159002CA494 /* BreadShopUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9AB8529023435159002CA494 /* BreadShopUITests.swift */,
+				9AB8529223435159002CA494 /* Info.plist */,
+			);
+			path = BreadShopUITests;
+			sourceTree = "<group>";
+		};
+		AC0D0A5758CD39C3241EE034 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				86857D45C660614B67CF0D4C /* Pods-BreadShop.debug.xcconfig */,
+				6DB1FA8F344E5F2820CCAEC1 /* Pods-BreadShop.release.xcconfig */,
+				1B358917AD10BEAE4EE78F45 /* Pods-BreadShopTests.debug.xcconfig */,
+				232E76B62C63905F0E40A3E8 /* Pods-BreadShopTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9AB8526923435152002CA494 /* BreadShop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9AB8529523435159002CA494 /* Build configuration list for PBXNativeTarget "BreadShop" */;
+			buildPhases = (
+				8DE63BEB7CCA13D84B882B8A /* [CP] Check Pods Manifest.lock */,
+				9AB8526623435152002CA494 /* Sources */,
+				9AB8526723435152002CA494 /* Frameworks */,
+				9AB8526823435152002CA494 /* Resources */,
+				59D2478B5DE9AA8265ABE8AB /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BreadShop;
+			productName = BreadShop;
+			productReference = 9AB8526A23435152002CA494 /* BreadShop.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9AB8528023435159002CA494 /* BreadShopTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9AB8529823435159002CA494 /* Build configuration list for PBXNativeTarget "BreadShopTests" */;
+			buildPhases = (
+				1BE53692B8E8AE3908261059 /* [CP] Check Pods Manifest.lock */,
+				9AB8527D23435159002CA494 /* Sources */,
+				9AB8527E23435159002CA494 /* Frameworks */,
+				9AB8527F23435159002CA494 /* Resources */,
+				E7BFFF4DE02D26E1D0DD8D34 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9AB8528323435159002CA494 /* PBXTargetDependency */,
+			);
+			name = BreadShopTests;
+			productName = BreadShopTests;
+			productReference = 9AB8528123435159002CA494 /* BreadShopTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9AB8528B23435159002CA494 /* BreadShopUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9AB8529B23435159002CA494 /* Build configuration list for PBXNativeTarget "BreadShopUITests" */;
+			buildPhases = (
+				9AB8528823435159002CA494 /* Sources */,
+				9AB8528923435159002CA494 /* Frameworks */,
+				9AB8528A23435159002CA494 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9AB8528E23435159002CA494 /* PBXTargetDependency */,
+			);
+			name = BreadShopUITests;
+			productName = BreadShopUITests;
+			productReference = 9AB8528C23435159002CA494 /* BreadShopUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9AB8526223435152002CA494 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Ben Garman";
+				TargetAttributes = {
+					9AB8526923435152002CA494 = {
+						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplePay = {
+								enabled = 1;
+							};
+						};
+					};
+					9AB8528023435159002CA494 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 9AB8526923435152002CA494;
+					};
+					9AB8528B23435159002CA494 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 9AB8526923435152002CA494;
+					};
+				};
+			};
+			buildConfigurationList = 9AB8526523435152002CA494 /* Build configuration list for PBXProject "BreadShop" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9AB8526123435152002CA494;
+			productRefGroup = 9AB8526B23435152002CA494 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9AB8526923435152002CA494 /* BreadShop */,
+				9AB8528023435159002CA494 /* BreadShopTests */,
+				9AB8528B23435159002CA494 /* BreadShopUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9AB8526823435152002CA494 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AE09BC02396B4C00012BA99 /* View.xib in Resources */,
+				9A87DF632345E7E200C58B54 /* 42855.jpg in Resources */,
+				9AB8527B23435158002CA494 /* LaunchScreen.storyboard in Resources */,
+				9A192DD123435BC700885514 /* KGHowManyTimes.ttf in Resources */,
+				9AB8527823435158002CA494 /* Assets.xcassets in Resources */,
+				9AB8527323435152002CA494 /* Main.storyboard in Resources */,
+				9A192DD323435C0B00885514 /* kglethergosolid.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AB8527F23435159002CA494 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AB8528A23435159002CA494 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1BE53692B8E8AE3908261059 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BreadShopTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		59D2478B5DE9AA8265ABE8AB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BreadShop/Pods-BreadShop-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BreadShop/Pods-BreadShop-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BreadShop/Pods-BreadShop-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8DE63BEB7CCA13D84B882B8A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BreadShop-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7BFFF4DE02D26E1D0DD8D34 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BreadShopTests/Pods-BreadShopTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BreadShopTests/Pods-BreadShopTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BreadShopTests/Pods-BreadShopTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9AB8526623435152002CA494 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AB8527023435152002CA494 /* ViewController.swift in Sources */,
+				9A9AE7DC234DDF1B00BEA8EE /* LaunchViewController.swift in Sources */,
+				9AB8526E23435152002CA494 /* AppDelegate.swift in Sources */,
+				9A5250FB2355CFBD0058F036 /* MealDealViewController.swift in Sources */,
+				9A14F60E239FEDE400928994 /* CompleteViewController.swift in Sources */,
+				9AE09BC22396C0740012BA99 /* CartViewController.swift in Sources */,
+				9AD73AF22399230C008C2558 /* cartTableViewCell.swift in Sources */,
+				9A72F839239D6D1600143BCB /* collectionViewController.swift in Sources */,
+				9A87DF65234613DD00C58B54 /* ItemViewController.swift in Sources */,
+				9AB8527623435152002CA494 /* BreadShop.xcdatamodeld in Sources */,
+				9AA1BBC02344E13700287B94 /* MenuViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AB8527D23435159002CA494 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AB8528623435159002CA494 /* BreadShopTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AB8528823435159002CA494 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AB8529123435159002CA494 /* BreadShopUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9AB8528323435159002CA494 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9AB8526923435152002CA494 /* BreadShop */;
+			targetProxy = 9AB8528223435159002CA494 /* PBXContainerItemProxy */;
+		};
+		9AB8528E23435159002CA494 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9AB8526923435152002CA494 /* BreadShop */;
+			targetProxy = 9AB8528D23435159002CA494 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9AB8527123435152002CA494 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9AB8527223435152002CA494 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9AB8527923435158002CA494 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9AB8527A23435158002CA494 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9AB8529323435159002CA494 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9AB8529423435159002CA494 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9AB8529623435159002CA494 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86857D45C660614B67CF0D4C /* Pods-BreadShop.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BreadShop/BreadShop.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7GUT2ANK2R;
+				INFOPLIST_FILE = BreadShop/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.garmanapps.breadoven;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		9AB8529723435159002CA494 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DB1FA8F344E5F2820CCAEC1 /* Pods-BreadShop.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BreadShop/BreadShop.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7GUT2ANK2R;
+				INFOPLIST_FILE = BreadShop/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.garmanapps.breadoven;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		9AB8529923435159002CA494 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B358917AD10BEAE4EE78F45 /* Pods-BreadShopTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = BreadShopTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = GarmanApps.BreadShopTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BreadShop.app/BreadShop";
+			};
+			name = Debug;
+		};
+		9AB8529A23435159002CA494 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 232E76B62C63905F0E40A3E8 /* Pods-BreadShopTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = BreadShopTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = GarmanApps.BreadShopTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BreadShop.app/BreadShop";
+			};
+			name = Release;
+		};
+		9AB8529C23435159002CA494 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = BreadShopUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = GarmanApps.BreadShopUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BreadShop;
+			};
+			name = Debug;
+		};
+		9AB8529D23435159002CA494 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = BreadShopUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = GarmanApps.BreadShopUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BreadShop;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9AB8526523435152002CA494 /* Build configuration list for PBXProject "BreadShop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AB8529323435159002CA494 /* Debug */,
+				9AB8529423435159002CA494 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9AB8529523435159002CA494 /* Build configuration list for PBXNativeTarget "BreadShop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AB8529623435159002CA494 /* Debug */,
+				9AB8529723435159002CA494 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9AB8529823435159002CA494 /* Build configuration list for PBXNativeTarget "BreadShopTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AB8529923435159002CA494 /* Debug */,
+				9AB8529A23435159002CA494 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9AB8529B23435159002CA494 /* Build configuration list for PBXNativeTarget "BreadShopUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AB8529C23435159002CA494 /* Debug */,
+				9AB8529D23435159002CA494 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9AB8527423435152002CA494 /* BreadShop.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9AB8527523435152002CA494 /* BreadShop.xcdatamodel */,
+			);
+			currentVersion = 9AB8527523435152002CA494 /* BreadShop.xcdatamodel */;
+			path = BreadShop.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 9AB8526223435152002CA494 /* Project object */;
+}

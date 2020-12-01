@@ -1,0 +1,24 @@
+PODS:
+  - FBSnapshotTestCase (2.1.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - FBSnapshotTestCase/SwiftSupport (2.1.4):
+    - FBSnapshotTestCase/Core
+  - InfiniteScrollCollectionView (1.1)
+
+DEPENDENCIES:
+  - FBSnapshotTestCase
+  - InfiniteScrollCollectionView
+
+SPEC REPOS:
+  trunk:
+    - FBSnapshotTestCase
+    - InfiniteScrollCollectionView
+
+SPEC CHECKSUMS:
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  InfiniteScrollCollectionView: 466181b955b5adcefaee5cac2b8f6d3b705858ad
+
+PODFILE CHECKSUM: 63b7e780e4c34d63d07887393df2e0218948587c
+
+COCOAPODS: 1.8.3

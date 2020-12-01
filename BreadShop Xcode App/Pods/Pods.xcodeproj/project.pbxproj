@@ -1,0 +1,1052 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00224C929D57F45B70E87359E719948D /* FBSnapshotTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 7378792F7DE7AB78CEA9647D2C3E91F7 /* FBSnapshotTestCase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07B6FE53901EA96D5E5CC1B8ED6443B4 /* Pods-BreadShop-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DB1E0F48385C467ADF72DF2F2D113876 /* Pods-BreadShop-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A51763748BF766C29841AACD2C17A60 /* Pods-BreadShopTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F5637D6026219DAE20F5554F7700DDA5 /* Pods-BreadShopTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1171B8162194E55B14FB38BD755FD721 /* InfiniteScrollCollectionView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CCA1424474407DE0043D928FC63D0F97 /* InfiniteScrollCollectionView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11C410135C7E89353B480AC8DE0BFB77 /* UIApplication+StrictKeyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E0867CD95931E835D04B7871B62A8F /* UIApplication+StrictKeyWindow.m */; };
+		14AD81D52FAD9CF2C065C61FB00C3B4F /* UIImage+Diff.m in Sources */ = {isa = PBXBuildFile; fileRef = 20095A72BF1AC1FB457C697450737529 /* UIImage+Diff.m */; };
+		14C511527597E5846AB2627F791C7D8E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716A9972B9D9103B54DB950893FAF104 /* QuartzCore.framework */; };
+		2DCFF0CE0BD295F1D46D3247F36B192C /* UIImage+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E4598E603BFB4D1EBD6688CC7B60FB3 /* UIImage+Compare.m */; };
+		40039E0AF0D764360B1D4FC4F7950D2E /* UIApplication+StrictKeyWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 6945AFF7607DB4CCCCC016A6F04CB95F /* UIApplication+StrictKeyWindow.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		697CD273A755CC00C1BA2A670205D56C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD4ED544B638D07C7D755AF1C27116A /* Foundation.framework */; };
+		6AE239C5D116E1C06F5705699FB9EAF0 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E601BD54DA9BF4071437E60125281FA /* XCTest.framework */; };
+		6BFA0FBE1BCF9239127EDF56DC97B865 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD4ED544B638D07C7D755AF1C27116A /* Foundation.framework */; };
+		6DBC8EB7532E931C2FBDA71D1E0B66A4 /* FBSnapshotTestCase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E330350CC1EBBE8EA1119F6E46DB667A /* FBSnapshotTestCase-dummy.m */; };
+		735703A3B1B27754AD181CA83A1DFF88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD4ED544B638D07C7D755AF1C27116A /* Foundation.framework */; };
+		88396E68DC05A379282F3B374F75F43C /* FBSnapshotTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1D522DE9802AA09B4311DB8F95459B /* FBSnapshotTestController.m */; };
+		8CE3BF0ACE07EA42DD5DAC871BF4B767 /* FBSnapshotTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8A8422396C34D6B5F86BE317B92B47 /* FBSnapshotTestCase.m */; };
+		90142C6259374E18E640396A59AD379A /* FBSnapshotTestController.h in Headers */ = {isa = PBXBuildFile; fileRef = A7631067EB7C27EFE7C648EB6A28CDE0 /* FBSnapshotTestController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9D65089019D558E5A9661F2DCAD20313 /* SwiftSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A0AAE743B022CBDF9C82AAC67E518 /* SwiftSupport.swift */; };
+		A525E29E0A8079B35B793D8A2B5FBDF2 /* UIImage+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB1252BDD5915B87BBE91FBFBC3DC2 /* UIImage+Snapshot.m */; };
+		A8BF26C2900EFDAFDA702C1B6146C976 /* InfiniteScrollCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1304B6B5FB2521C2567A85963F39BBA /* InfiniteScrollCollectionView.swift */; };
+		B25D795BDC4F426BC01EFC911F368B81 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD4ED544B638D07C7D755AF1C27116A /* Foundation.framework */; };
+		B74CD6E6EBEA0B642776BCB37850415D /* UIImage+Snapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B5BDD335B869ED7973AF3098D939593 /* UIImage+Snapshot.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		C49D52712466511E332C952834C81FE1 /* FBSnapshotTestCasePlatform.h in Headers */ = {isa = PBXBuildFile; fileRef = 93C5B4D4B68B1A0E5BA35173F80A8657 /* FBSnapshotTestCasePlatform.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD8CF5E234E99BBB76FCF5302F2972A8 /* Pods-BreadShopTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 44FCE49FF437EC7054DBA2B2514A4C11 /* Pods-BreadShopTests-dummy.m */; };
+		D04AAC8B22E4A4DC4F39891C4E52F251 /* UIImage+Diff.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F8ED4A3842103E90EAF4BDD5F0E79C6 /* UIImage+Diff.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		E0B8D095C732352C854D365B9E5B993D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAA89EEF1039078430D7A886477E365 /* UIKit.framework */; };
+		E8AC509D18EBF21B1FEA909652A01108 /* FBSnapshotTestCasePlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = 423800090EB9E8509AC26D05682427CC /* FBSnapshotTestCasePlatform.m */; };
+		E9D0C1791DC4D97898BE3D2E6237E39E /* InfiniteScrollCollectionView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C71A5F67C05AD8B66036AADBB020B2BC /* InfiniteScrollCollectionView-dummy.m */; };
+		F1AAAE00BB32B733B238E2B4E8424506 /* UIImage+Compare.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FBD894D3FFD4F35D3AC364313E49090 /* UIImage+Compare.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		F720FAF13A108CE6901E0A8B0580E1E8 /* FBSnapshotTestCase-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 86DF175D24EE17148A3E7466B26D0893 /* FBSnapshotTestCase-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F8E9166B232E74BAAB6465F53D5A44E6 /* Pods-BreadShop-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FAFD6F12C6758EF33F2703F5FDD7EEE /* Pods-BreadShop-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		34910FA1F720CD487E59F07E4BAB87D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4E1ADAD2FC0D75885CC1E04EF48ABD9A;
+			remoteInfo = "Pods-BreadShop";
+		};
+		67802B25222791D37F357DBE8456D493 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 97B7D07ED3742AE6D9AFFA96B0A9051F;
+			remoteInfo = InfiniteScrollCollectionView;
+		};
+		CB41C53EEAB94E6627F23D6425FA47E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 98A98149697C80CEF8D5772791E92E66;
+			remoteInfo = FBSnapshotTestCase;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0567FAC70E7EC518EB43C8C0527AC5DD /* Pods_BreadShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_BreadShop.framework; path = "Pods-BreadShop.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EAB1252BDD5915B87BBE91FBFBC3DC2 /* UIImage+Snapshot.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Snapshot.m"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.m"; sourceTree = "<group>"; };
+		1136EB177515869AA36197A1EAE4821F /* Pods_BreadShopTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_BreadShopTests.framework; path = "Pods-BreadShopTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E53A850AA28941DD3C3FD5C58B3A298 /* InfiniteScrollCollectionView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = InfiniteScrollCollectionView.xcconfig; sourceTree = "<group>"; };
+		1EF2D95792CD632EE655B635E654F95C /* Pods-BreadShopTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BreadShopTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1FBD894D3FFD4F35D3AC364313E49090 /* UIImage+Compare.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Compare.h"; path = "FBSnapshotTestCase/Categories/UIImage+Compare.h"; sourceTree = "<group>"; };
+		20095A72BF1AC1FB457C697450737529 /* UIImage+Diff.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Diff.m"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.m"; sourceTree = "<group>"; };
+		21C0CDD8D9378AD0094B4E4B6395AFE5 /* Pods-BreadShop-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BreadShop-frameworks.sh"; sourceTree = "<group>"; };
+		21EA97159294A3D2C9D0B5E9628FBC92 /* Pods-BreadShop-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BreadShop-acknowledgements.markdown"; sourceTree = "<group>"; };
+		27CFA2E99D3F08C83DEFA24DD74A9188 /* Pods-BreadShopTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-BreadShopTests.modulemap"; sourceTree = "<group>"; };
+		2A71B7B85ABD5AB85DB2C0726EFB718A /* Pods-BreadShopTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BreadShopTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		423800090EB9E8509AC26D05682427CC /* FBSnapshotTestCasePlatform.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCasePlatform.m; path = FBSnapshotTestCase/FBSnapshotTestCasePlatform.m; sourceTree = "<group>"; };
+		44FCE49FF437EC7054DBA2B2514A4C11 /* Pods-BreadShopTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BreadShopTests-dummy.m"; sourceTree = "<group>"; };
+		4712A9E8BF22924B2F9098302EF98D3E /* InfiniteScrollCollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = InfiniteScrollCollectionView.framework; path = InfiniteScrollCollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F8ED4A3842103E90EAF4BDD5F0E79C6 /* UIImage+Diff.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Diff.h"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.h"; sourceTree = "<group>"; };
+		5B5BDD335B869ED7973AF3098D939593 /* UIImage+Snapshot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Snapshot.h"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.h"; sourceTree = "<group>"; };
+		5BE5BEBBEFD979AEDD390680065CE067 /* FBSnapshotTestCase-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FBSnapshotTestCase-Info.plist"; sourceTree = "<group>"; };
+		5C4F31330DFA99D699E4BDC8C3573D73 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FBSnapshotTestCase.framework; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E601BD54DA9BF4071437E60125281FA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		5FAFD6F12C6758EF33F2703F5FDD7EEE /* Pods-BreadShop-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BreadShop-dummy.m"; sourceTree = "<group>"; };
+		5FC7F374CB79782278792A06E03D90CA /* Pods-BreadShopTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BreadShopTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		6945AFF7607DB4CCCCC016A6F04CB95F /* UIApplication+StrictKeyWindow.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIApplication+StrictKeyWindow.h"; path = "FBSnapshotTestCase/Categories/UIApplication+StrictKeyWindow.h"; sourceTree = "<group>"; };
+		6E4598E603BFB4D1EBD6688CC7B60FB3 /* UIImage+Compare.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Compare.m"; path = "FBSnapshotTestCase/Categories/UIImage+Compare.m"; sourceTree = "<group>"; };
+		6E5CFEDA779A85F49F9FCD01BFEBC61B /* InfiniteScrollCollectionView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "InfiniteScrollCollectionView-Info.plist"; sourceTree = "<group>"; };
+		716A9972B9D9103B54DB950893FAF104 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		7378792F7DE7AB78CEA9647D2C3E91F7 /* FBSnapshotTestCase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestCase.h; path = FBSnapshotTestCase/FBSnapshotTestCase.h; sourceTree = "<group>"; };
+		7BD4ED544B638D07C7D755AF1C27116A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		86DF175D24EE17148A3E7466B26D0893 /* FBSnapshotTestCase-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSnapshotTestCase-umbrella.h"; sourceTree = "<group>"; };
+		8B965BF41212742277E556678A08CCCD /* FBSnapshotTestCase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FBSnapshotTestCase.modulemap; sourceTree = "<group>"; };
+		8CAA89EEF1039078430D7A886477E365 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		90592AE3957A896D434FCFBC8817CADF /* Pods-BreadShop-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BreadShop-Info.plist"; sourceTree = "<group>"; };
+		93C5B4D4B68B1A0E5BA35173F80A8657 /* FBSnapshotTestCasePlatform.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestCasePlatform.h; path = FBSnapshotTestCase/FBSnapshotTestCasePlatform.h; sourceTree = "<group>"; };
+		9A1A0AAE743B022CBDF9C82AAC67E518 /* SwiftSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftSupport.swift; path = FBSnapshotTestCase/SwiftSupport.swift; sourceTree = "<group>"; };
+		9B6E3AB353755E7A6F25679EFB4F6178 /* Pods-BreadShopTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BreadShopTests-Info.plist"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A73B96C86EDE72B49F76A813E4DBD712 /* FBSnapshotTestCase-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSnapshotTestCase-prefix.pch"; sourceTree = "<group>"; };
+		A7631067EB7C27EFE7C648EB6A28CDE0 /* FBSnapshotTestController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestController.h; path = FBSnapshotTestCase/FBSnapshotTestController.h; sourceTree = "<group>"; };
+		AE49B9813BBEF87740CB70061FB38FE3 /* Pods-BreadShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BreadShop.release.xcconfig"; sourceTree = "<group>"; };
+		AF1D522DE9802AA09B4311DB8F95459B /* FBSnapshotTestController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestController.m; path = FBSnapshotTestCase/FBSnapshotTestController.m; sourceTree = "<group>"; };
+		B04DB943D30C087C0E6BAA843C352691 /* FBSnapshotTestCase.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FBSnapshotTestCase.xcconfig; sourceTree = "<group>"; };
+		B8E0867CD95931E835D04B7871B62A8F /* UIApplication+StrictKeyWindow.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+StrictKeyWindow.m"; path = "FBSnapshotTestCase/Categories/UIApplication+StrictKeyWindow.m"; sourceTree = "<group>"; };
+		BED1FB72F02BF4E341F8A7AFB96DBD2B /* Pods-BreadShop.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-BreadShop.modulemap"; sourceTree = "<group>"; };
+		C71A5F67C05AD8B66036AADBB020B2BC /* InfiniteScrollCollectionView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "InfiniteScrollCollectionView-dummy.m"; sourceTree = "<group>"; };
+		C92924AB1451598FAF8922F0E26EA0D0 /* Pods-BreadShopTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BreadShopTests-frameworks.sh"; sourceTree = "<group>"; };
+		CB8A8422396C34D6B5F86BE317B92B47 /* FBSnapshotTestCase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCase.m; path = FBSnapshotTestCase/FBSnapshotTestCase.m; sourceTree = "<group>"; };
+		CCA1424474407DE0043D928FC63D0F97 /* InfiniteScrollCollectionView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "InfiniteScrollCollectionView-umbrella.h"; sourceTree = "<group>"; };
+		D8E0D658704AF8D3D9DBE162A5026892 /* Pods-BreadShop-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BreadShop-acknowledgements.plist"; sourceTree = "<group>"; };
+		DB1E0F48385C467ADF72DF2F2D113876 /* Pods-BreadShop-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BreadShop-umbrella.h"; sourceTree = "<group>"; };
+		E01112B4CF1B626CA98B2ACCB50E0F9D /* Pods-BreadShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BreadShop.debug.xcconfig"; sourceTree = "<group>"; };
+		E1304B6B5FB2521C2567A85963F39BBA /* InfiniteScrollCollectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InfiniteScrollCollectionView.swift; path = InfiniteScrollCollectionView/Classes/InfiniteScrollCollectionView.swift; sourceTree = "<group>"; };
+		E330350CC1EBBE8EA1119F6E46DB667A /* FBSnapshotTestCase-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FBSnapshotTestCase-dummy.m"; sourceTree = "<group>"; };
+		E38A0066F2ADDD4E285A99DFED151948 /* InfiniteScrollCollectionView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "InfiniteScrollCollectionView-prefix.pch"; sourceTree = "<group>"; };
+		EBAA3EB479DD5E71FAAABB836B887831 /* InfiniteScrollCollectionView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = InfiniteScrollCollectionView.modulemap; sourceTree = "<group>"; };
+		ED29ABE8664DC298DFE4EB41481F3312 /* Pods-BreadShopTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BreadShopTests.release.xcconfig"; sourceTree = "<group>"; };
+		F5637D6026219DAE20F5554F7700DDA5 /* Pods-BreadShopTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BreadShopTests-umbrella.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0AD018ED0A788DDCE82CADFA569CAB03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				697CD273A755CC00C1BA2A670205D56C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		165BB964BE7602E69FE76A013CBB1EDA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				735703A3B1B27754AD181CA83A1DFF88 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E581515110D66F94F80A6937831489A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B25D795BDC4F426BC01EFC911F368B81 /* Foundation.framework in Frameworks */,
+				14C511527597E5846AB2627F791C7D8E /* QuartzCore.framework in Frameworks */,
+				E0B8D095C732352C854D365B9E5B993D /* UIKit.framework in Frameworks */,
+				6AE239C5D116E1C06F5705699FB9EAF0 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBAAF87BE10B05A0196637B44F007126 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BFA0FBE1BCF9239127EDF56DC97B865 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0C69440660E930E5E11505BE8653C339 /* Pods-BreadShopTests */ = {
+			isa = PBXGroup;
+			children = (
+				27CFA2E99D3F08C83DEFA24DD74A9188 /* Pods-BreadShopTests.modulemap */,
+				5FC7F374CB79782278792A06E03D90CA /* Pods-BreadShopTests-acknowledgements.markdown */,
+				2A71B7B85ABD5AB85DB2C0726EFB718A /* Pods-BreadShopTests-acknowledgements.plist */,
+				44FCE49FF437EC7054DBA2B2514A4C11 /* Pods-BreadShopTests-dummy.m */,
+				C92924AB1451598FAF8922F0E26EA0D0 /* Pods-BreadShopTests-frameworks.sh */,
+				9B6E3AB353755E7A6F25679EFB4F6178 /* Pods-BreadShopTests-Info.plist */,
+				F5637D6026219DAE20F5554F7700DDA5 /* Pods-BreadShopTests-umbrella.h */,
+				1EF2D95792CD632EE655B635E654F95C /* Pods-BreadShopTests.debug.xcconfig */,
+				ED29ABE8664DC298DFE4EB41481F3312 /* Pods-BreadShopTests.release.xcconfig */,
+			);
+			name = "Pods-BreadShopTests";
+			path = "Target Support Files/Pods-BreadShopTests";
+			sourceTree = "<group>";
+		};
+		20E3FB7AB07A66C0AA877080F62D83B9 /* InfiniteScrollCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				E1304B6B5FB2521C2567A85963F39BBA /* InfiniteScrollCollectionView.swift */,
+				AB291A521244E0722410DE9B7E388D0F /* Support Files */,
+			);
+			name = InfiniteScrollCollectionView;
+			path = InfiniteScrollCollectionView;
+			sourceTree = "<group>";
+		};
+		311E434B4277461A5A35641D2FA9BCA3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5C4F31330DFA99D699E4BDC8C3573D73 /* FBSnapshotTestCase.framework */,
+				4712A9E8BF22924B2F9098302EF98D3E /* InfiniteScrollCollectionView.framework */,
+				0567FAC70E7EC518EB43C8C0527AC5DD /* Pods_BreadShop.framework */,
+				1136EB177515869AA36197A1EAE4821F /* Pods_BreadShopTests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		37AB7AF65B39A674715F7ED360D10781 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BB56124E98A4E32C52F0CFF932750776 /* Pods-BreadShop */,
+				0C69440660E930E5E11505BE8653C339 /* Pods-BreadShopTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		3C8F2371BFB723D8F66A237F7DFE0869 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				7378792F7DE7AB78CEA9647D2C3E91F7 /* FBSnapshotTestCase.h */,
+				CB8A8422396C34D6B5F86BE317B92B47 /* FBSnapshotTestCase.m */,
+				93C5B4D4B68B1A0E5BA35173F80A8657 /* FBSnapshotTestCasePlatform.h */,
+				423800090EB9E8509AC26D05682427CC /* FBSnapshotTestCasePlatform.m */,
+				A7631067EB7C27EFE7C648EB6A28CDE0 /* FBSnapshotTestController.h */,
+				AF1D522DE9802AA09B4311DB8F95459B /* FBSnapshotTestController.m */,
+				6945AFF7607DB4CCCCC016A6F04CB95F /* UIApplication+StrictKeyWindow.h */,
+				B8E0867CD95931E835D04B7871B62A8F /* UIApplication+StrictKeyWindow.m */,
+				1FBD894D3FFD4F35D3AC364313E49090 /* UIImage+Compare.h */,
+				6E4598E603BFB4D1EBD6688CC7B60FB3 /* UIImage+Compare.m */,
+				4F8ED4A3842103E90EAF4BDD5F0E79C6 /* UIImage+Diff.h */,
+				20095A72BF1AC1FB457C697450737529 /* UIImage+Diff.m */,
+				5B5BDD335B869ED7973AF3098D939593 /* UIImage+Snapshot.h */,
+				0EAB1252BDD5915B87BBE91FBFBC3DC2 /* UIImage+Snapshot.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		5506BE0039FA0645BF02B6237A7B05B2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B447C2CF5B18DA379A196B14F29B026B /* FBSnapshotTestCase */,
+				20E3FB7AB07A66C0AA877080F62D83B9 /* InfiniteScrollCollectionView */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		730BD59C2C843E87B3F01EA03B4559B9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8B965BF41212742277E556678A08CCCD /* FBSnapshotTestCase.modulemap */,
+				B04DB943D30C087C0E6BAA843C352691 /* FBSnapshotTestCase.xcconfig */,
+				E330350CC1EBBE8EA1119F6E46DB667A /* FBSnapshotTestCase-dummy.m */,
+				5BE5BEBBEFD979AEDD390680065CE067 /* FBSnapshotTestCase-Info.plist */,
+				A73B96C86EDE72B49F76A813E4DBD712 /* FBSnapshotTestCase-prefix.pch */,
+				86DF175D24EE17148A3E7466B26D0893 /* FBSnapshotTestCase-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/FBSnapshotTestCase";
+			sourceTree = "<group>";
+		};
+		7DE5752EED0A4C4A430975244947611A /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				7BD4ED544B638D07C7D755AF1C27116A /* Foundation.framework */,
+				716A9972B9D9103B54DB950893FAF104 /* QuartzCore.framework */,
+				8CAA89EEF1039078430D7A886477E365 /* UIKit.framework */,
+				5E601BD54DA9BF4071437E60125281FA /* XCTest.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		AB291A521244E0722410DE9B7E388D0F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EBAA3EB479DD5E71FAAABB836B887831 /* InfiniteScrollCollectionView.modulemap */,
+				1E53A850AA28941DD3C3FD5C58B3A298 /* InfiniteScrollCollectionView.xcconfig */,
+				C71A5F67C05AD8B66036AADBB020B2BC /* InfiniteScrollCollectionView-dummy.m */,
+				6E5CFEDA779A85F49F9FCD01BFEBC61B /* InfiniteScrollCollectionView-Info.plist */,
+				E38A0066F2ADDD4E285A99DFED151948 /* InfiniteScrollCollectionView-prefix.pch */,
+				CCA1424474407DE0043D928FC63D0F97 /* InfiniteScrollCollectionView-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/InfiniteScrollCollectionView";
+			sourceTree = "<group>";
+		};
+		B447C2CF5B18DA379A196B14F29B026B /* FBSnapshotTestCase */ = {
+			isa = PBXGroup;
+			children = (
+				3C8F2371BFB723D8F66A237F7DFE0869 /* Core */,
+				730BD59C2C843E87B3F01EA03B4559B9 /* Support Files */,
+				E171E685E97F4429007EF7EB08875D8E /* SwiftSupport */,
+			);
+			name = FBSnapshotTestCase;
+			path = FBSnapshotTestCase;
+			sourceTree = "<group>";
+		};
+		BA4F31F07263C99FC76E66D632A59F09 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7DE5752EED0A4C4A430975244947611A /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BB56124E98A4E32C52F0CFF932750776 /* Pods-BreadShop */ = {
+			isa = PBXGroup;
+			children = (
+				BED1FB72F02BF4E341F8A7AFB96DBD2B /* Pods-BreadShop.modulemap */,
+				21EA97159294A3D2C9D0B5E9628FBC92 /* Pods-BreadShop-acknowledgements.markdown */,
+				D8E0D658704AF8D3D9DBE162A5026892 /* Pods-BreadShop-acknowledgements.plist */,
+				5FAFD6F12C6758EF33F2703F5FDD7EEE /* Pods-BreadShop-dummy.m */,
+				21C0CDD8D9378AD0094B4E4B6395AFE5 /* Pods-BreadShop-frameworks.sh */,
+				90592AE3957A896D434FCFBC8817CADF /* Pods-BreadShop-Info.plist */,
+				DB1E0F48385C467ADF72DF2F2D113876 /* Pods-BreadShop-umbrella.h */,
+				E01112B4CF1B626CA98B2ACCB50E0F9D /* Pods-BreadShop.debug.xcconfig */,
+				AE49B9813BBEF87740CB70061FB38FE3 /* Pods-BreadShop.release.xcconfig */,
+			);
+			name = "Pods-BreadShop";
+			path = "Target Support Files/Pods-BreadShop";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				BA4F31F07263C99FC76E66D632A59F09 /* Frameworks */,
+				5506BE0039FA0645BF02B6237A7B05B2 /* Pods */,
+				311E434B4277461A5A35641D2FA9BCA3 /* Products */,
+				37AB7AF65B39A674715F7ED360D10781 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		E171E685E97F4429007EF7EB08875D8E /* SwiftSupport */ = {
+			isa = PBXGroup;
+			children = (
+				9A1A0AAE743B022CBDF9C82AAC67E518 /* SwiftSupport.swift */,
+			);
+			name = SwiftSupport;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		384DE8A8021C5DA5E256BCFEC3D478A9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F720FAF13A108CE6901E0A8B0580E1E8 /* FBSnapshotTestCase-umbrella.h in Headers */,
+				00224C929D57F45B70E87359E719948D /* FBSnapshotTestCase.h in Headers */,
+				C49D52712466511E332C952834C81FE1 /* FBSnapshotTestCasePlatform.h in Headers */,
+				90142C6259374E18E640396A59AD379A /* FBSnapshotTestController.h in Headers */,
+				40039E0AF0D764360B1D4FC4F7950D2E /* UIApplication+StrictKeyWindow.h in Headers */,
+				F1AAAE00BB32B733B238E2B4E8424506 /* UIImage+Compare.h in Headers */,
+				D04AAC8B22E4A4DC4F39891C4E52F251 /* UIImage+Diff.h in Headers */,
+				B74CD6E6EBEA0B642776BCB37850415D /* UIImage+Snapshot.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B180979458ABE0B7C747BABE2C2DC7A5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07B6FE53901EA96D5E5CC1B8ED6443B4 /* Pods-BreadShop-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B351347D206033254BB2E684D1E0D85C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1171B8162194E55B14FB38BD755FD721 /* InfiniteScrollCollectionView-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCEE90463E1BFF422AF171EED4C67207 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A51763748BF766C29841AACD2C17A60 /* Pods-BreadShopTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		4E1ADAD2FC0D75885CC1E04EF48ABD9A /* Pods-BreadShop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1AD29B61028A0DB7647ED4F38508C9E7 /* Build configuration list for PBXNativeTarget "Pods-BreadShop" */;
+			buildPhases = (
+				B180979458ABE0B7C747BABE2C2DC7A5 /* Headers */,
+				7F9AEF5C968C7F7CA584914F29413081 /* Sources */,
+				EBAAF87BE10B05A0196637B44F007126 /* Frameworks */,
+				7079330B971D7EA4292984D1C71645FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D012FF99D55E898E0F5AAE9C16CEA760 /* PBXTargetDependency */,
+			);
+			name = "Pods-BreadShop";
+			productName = "Pods-BreadShop";
+			productReference = 0567FAC70E7EC518EB43C8C0527AC5DD /* Pods_BreadShop.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		71FE5D94833E9583867B2DAC203EAC1E /* Pods-BreadShopTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3FD639FFEBE6642ABA8DD125FF6B3A92 /* Build configuration list for PBXNativeTarget "Pods-BreadShopTests" */;
+			buildPhases = (
+				BCEE90463E1BFF422AF171EED4C67207 /* Headers */,
+				9C3F1B574ABB6FC39D3BDDDABD8F503F /* Sources */,
+				165BB964BE7602E69FE76A013CBB1EDA /* Frameworks */,
+				B115B97D5AB4867BDCB2A327F701D348 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				24B738BEEF3E9BAB56C546B51194067B /* PBXTargetDependency */,
+				70EE1BBDDAE5DA68D59DC9096F8FF942 /* PBXTargetDependency */,
+			);
+			name = "Pods-BreadShopTests";
+			productName = "Pods-BreadShopTests";
+			productReference = 1136EB177515869AA36197A1EAE4821F /* Pods_BreadShopTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		97B7D07ED3742AE6D9AFFA96B0A9051F /* InfiniteScrollCollectionView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 771FB0656FF248FE725D31C3B904FDCA /* Build configuration list for PBXNativeTarget "InfiniteScrollCollectionView" */;
+			buildPhases = (
+				B351347D206033254BB2E684D1E0D85C /* Headers */,
+				C7F7A0FE8ABCFE87F6A54D4ACC55AC3F /* Sources */,
+				0AD018ED0A788DDCE82CADFA569CAB03 /* Frameworks */,
+				E15430240109AB5C1E9D5D0849092B9B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = InfiniteScrollCollectionView;
+			productName = InfiniteScrollCollectionView;
+			productReference = 4712A9E8BF22924B2F9098302EF98D3E /* InfiniteScrollCollectionView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		98A98149697C80CEF8D5772791E92E66 /* FBSnapshotTestCase */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A38070E189561F257BBD5A0A55CACCCF /* Build configuration list for PBXNativeTarget "FBSnapshotTestCase" */;
+			buildPhases = (
+				384DE8A8021C5DA5E256BCFEC3D478A9 /* Headers */,
+				A48201AC594B2E6B09C0EE0396BC1377 /* Sources */,
+				E581515110D66F94F80A6937831489A1 /* Frameworks */,
+				5CC655F1A6C7A45A9693160581076BAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FBSnapshotTestCase;
+			productName = FBSnapshotTestCase;
+			productReference = 5C4F31330DFA99D699E4BDC8C3573D73 /* FBSnapshotTestCase.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 311E434B4277461A5A35641D2FA9BCA3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				98A98149697C80CEF8D5772791E92E66 /* FBSnapshotTestCase */,
+				97B7D07ED3742AE6D9AFFA96B0A9051F /* InfiniteScrollCollectionView */,
+				4E1ADAD2FC0D75885CC1E04EF48ABD9A /* Pods-BreadShop */,
+				71FE5D94833E9583867B2DAC203EAC1E /* Pods-BreadShopTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5CC655F1A6C7A45A9693160581076BAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7079330B971D7EA4292984D1C71645FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B115B97D5AB4867BDCB2A327F701D348 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E15430240109AB5C1E9D5D0849092B9B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7F9AEF5C968C7F7CA584914F29413081 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8E9166B232E74BAAB6465F53D5A44E6 /* Pods-BreadShop-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C3F1B574ABB6FC39D3BDDDABD8F503F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD8CF5E234E99BBB76FCF5302F2972A8 /* Pods-BreadShopTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A48201AC594B2E6B09C0EE0396BC1377 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DBC8EB7532E931C2FBDA71D1E0B66A4 /* FBSnapshotTestCase-dummy.m in Sources */,
+				8CE3BF0ACE07EA42DD5DAC871BF4B767 /* FBSnapshotTestCase.m in Sources */,
+				E8AC509D18EBF21B1FEA909652A01108 /* FBSnapshotTestCasePlatform.m in Sources */,
+				88396E68DC05A379282F3B374F75F43C /* FBSnapshotTestController.m in Sources */,
+				9D65089019D558E5A9661F2DCAD20313 /* SwiftSupport.swift in Sources */,
+				11C410135C7E89353B480AC8DE0BFB77 /* UIApplication+StrictKeyWindow.m in Sources */,
+				2DCFF0CE0BD295F1D46D3247F36B192C /* UIImage+Compare.m in Sources */,
+				14AD81D52FAD9CF2C065C61FB00C3B4F /* UIImage+Diff.m in Sources */,
+				A525E29E0A8079B35B793D8A2B5FBDF2 /* UIImage+Snapshot.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7F7A0FE8ABCFE87F6A54D4ACC55AC3F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9D0C1791DC4D97898BE3D2E6237E39E /* InfiniteScrollCollectionView-dummy.m in Sources */,
+				A8BF26C2900EFDAFDA702C1B6146C976 /* InfiniteScrollCollectionView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		24B738BEEF3E9BAB56C546B51194067B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FBSnapshotTestCase;
+			target = 98A98149697C80CEF8D5772791E92E66 /* FBSnapshotTestCase */;
+			targetProxy = CB41C53EEAB94E6627F23D6425FA47E4 /* PBXContainerItemProxy */;
+		};
+		70EE1BBDDAE5DA68D59DC9096F8FF942 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-BreadShop";
+			target = 4E1ADAD2FC0D75885CC1E04EF48ABD9A /* Pods-BreadShop */;
+			targetProxy = 34910FA1F720CD487E59F07E4BAB87D6 /* PBXContainerItemProxy */;
+		};
+		D012FF99D55E898E0F5AAE9C16CEA760 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = InfiniteScrollCollectionView;
+			target = 97B7D07ED3742AE6D9AFFA96B0A9051F /* InfiniteScrollCollectionView */;
+			targetProxy = 67802B25222791D37F357DBE8456D493 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1A11B8FEB2154C2C9C60E675C68D7149 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE49B9813BBEF87740CB70061FB38FE3 /* Pods-BreadShop.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-BreadShop/Pods-BreadShop-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-BreadShop/Pods-BreadShop.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		29B89AC39698C1A037CDDC9554A421A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B04DB943D30C087C0E6BAA843C352691 /* FBSnapshotTestCase.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FBSnapshotTestCase/FBSnapshotTestCase-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FBSnapshotTestCase/FBSnapshotTestCase-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/FBSnapshotTestCase/FBSnapshotTestCase.modulemap";
+				PRODUCT_MODULE_NAME = FBSnapshotTestCase;
+				PRODUCT_NAME = FBSnapshotTestCase;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		304C156ACD5396E376E0C9AEC8761B8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E53A850AA28941DD3C3FD5C58B3A298 /* InfiniteScrollCollectionView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/InfiniteScrollCollectionView/InfiniteScrollCollectionView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/InfiniteScrollCollectionView/InfiniteScrollCollectionView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/InfiniteScrollCollectionView/InfiniteScrollCollectionView.modulemap";
+				PRODUCT_MODULE_NAME = InfiniteScrollCollectionView;
+				PRODUCT_NAME = InfiniteScrollCollectionView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		32C2FB3BD9A2402E2347CE50F405010A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		5647E54C012FB644126AAFE52B63094B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E01112B4CF1B626CA98B2ACCB50E0F9D /* Pods-BreadShop.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-BreadShop/Pods-BreadShop-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-BreadShop/Pods-BreadShop.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		65E8432CA1AC1817F746BE6B5C4F067E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		79092EA44C4680B50F51F08961B01C88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E53A850AA28941DD3C3FD5C58B3A298 /* InfiniteScrollCollectionView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/InfiniteScrollCollectionView/InfiniteScrollCollectionView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/InfiniteScrollCollectionView/InfiniteScrollCollectionView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/InfiniteScrollCollectionView/InfiniteScrollCollectionView.modulemap";
+				PRODUCT_MODULE_NAME = InfiniteScrollCollectionView;
+				PRODUCT_NAME = InfiniteScrollCollectionView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D874327C5BAF66319F3A454EF4963A9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B04DB943D30C087C0E6BAA843C352691 /* FBSnapshotTestCase.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FBSnapshotTestCase/FBSnapshotTestCase-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FBSnapshotTestCase/FBSnapshotTestCase-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/FBSnapshotTestCase/FBSnapshotTestCase.modulemap";
+				PRODUCT_MODULE_NAME = FBSnapshotTestCase;
+				PRODUCT_NAME = FBSnapshotTestCase;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EFFFBFB5A2448CAC3A04DDC54C64D672 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EF2D95792CD632EE655B635E654F95C /* Pods-BreadShopTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-BreadShopTests/Pods-BreadShopTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-BreadShopTests/Pods-BreadShopTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F3A8BA084634969D47900EE1DBEC08DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED29ABE8664DC298DFE4EB41481F3312 /* Pods-BreadShopTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-BreadShopTests/Pods-BreadShopTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-BreadShopTests/Pods-BreadShopTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1AD29B61028A0DB7647ED4F38508C9E7 /* Build configuration list for PBXNativeTarget "Pods-BreadShop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5647E54C012FB644126AAFE52B63094B /* Debug */,
+				1A11B8FEB2154C2C9C60E675C68D7149 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3FD639FFEBE6642ABA8DD125FF6B3A92 /* Build configuration list for PBXNativeTarget "Pods-BreadShopTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFFFBFB5A2448CAC3A04DDC54C64D672 /* Debug */,
+				F3A8BA084634969D47900EE1DBEC08DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65E8432CA1AC1817F746BE6B5C4F067E /* Debug */,
+				32C2FB3BD9A2402E2347CE50F405010A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		771FB0656FF248FE725D31C3B904FDCA /* Build configuration list for PBXNativeTarget "InfiniteScrollCollectionView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				304C156ACD5396E376E0C9AEC8761B8B /* Debug */,
+				79092EA44C4680B50F51F08961B01C88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A38070E189561F257BBD5A0A55CACCCF /* Build configuration list for PBXNativeTarget "FBSnapshotTestCase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D874327C5BAF66319F3A454EF4963A9A /* Debug */,
+				29B89AC39698C1A037CDDC9554A421A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
