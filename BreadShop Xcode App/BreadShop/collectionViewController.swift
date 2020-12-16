@@ -14,11 +14,11 @@ class collectionViewController: UIViewController {
 
     @IBOutlet weak var datePicker: UIDatePicker!
     override func viewDidLoad() {
-        datePicker.setValue(UIColor.white, forKeyPath: "textColor")
+        /*datePicker.setValue(UIColor.white, forKeyPath: "textColor")
         datePicker.subviews[0].subviews[1].backgroundColor = UIColor.white
         datePicker.subviews[0].subviews[2].backgroundColor = UIColor.white
         datePicker.subviews[0].setNeedsLayout()
-        datePicker.subviews[0].layoutIfNeeded()
+        datePicker.subviews[0].layoutIfNeeded()*/
         
         
         let calendar = Calendar.current

@@ -7,3 +7,6 @@ Pass: Beng0264
 
 Database: wordpress_b
 
+Usefull Commands 
+chmod a+x '........................../Pods-BreadShop-frameworks.sh'
+pod install
