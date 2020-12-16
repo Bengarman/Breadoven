@@ -5,8 +5,11 @@
 #
 # WARNING! All changes made in this file will be lost!
 from PyQt5 import QtCore, QtGui, QtWidgets
-# import printerFunction
-import printerFunction2 as printerFunction
+import getpass
+if str(getpass.getuser()) == "root":
+    import printerFunction
+else:
+    import printerFunction2 as printerFunction
 import mysql.connector
 from functools import partial
 
@@ -212,11 +215,11 @@ class Ui_Dialog(object):
         self.pushButton_6.setText(_translate("Dialog", "Collected"))
         self.label.setText(_translate("Dialog", "Order Number:  " + str(orderNumber)))
         self.pushButton_3.setText(_translate("Dialog", "Waiting"))
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
-    ui.setupUi(Dialog)
-    Dialog.show()
-    sys.exit(app.exec_())
+# if __name__ == "__main__":
+#     import sys
+#     app = QtWidgets.QApplication(sys.argv)
+#     Dialog = QtWidgets.QDialog()
+#     ui = Ui_Dialog()
+#     ui.setupUi(Dialog)
+#     Dialog.show()
+#     sys.exit(app.exec_())

@@ -44,7 +44,7 @@ def printInitalOrderTicket(newValue):
 
     receiptPrinter.text("\n")
     ean = EAN(str(complete[0][0][0]), writer=ImageWriter())
-    fullname = ean.save('ean13_barcode')
+    fullname = ean.save('/home/pi/ean13_barcode')
     receiptPrinter.image("/home/pi/ean13_barcode.png")
     receiptPrinter.cut()
     mydb.close()
@@ -95,7 +95,7 @@ def reprintOrderTicket(orderNumber):
 
     receiptPrinter.text("\n")
     ean = EAN(str(complete[0][0][0]), writer=ImageWriter())
-    fullname = ean.save('ean13_barcode')
+    fullname = ean.save('/home/pi/ean13_barcode')
     receiptPrinter.image("/home/pi/ean13_barcode.png")
     receiptPrinter.cut()
     mydb.close()

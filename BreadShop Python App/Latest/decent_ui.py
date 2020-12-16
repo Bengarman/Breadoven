@@ -7,8 +7,11 @@ from iZettle.iZettle import Izettle, RequestException
 import time
 import threading
 from functools import partial
-# import printerFunction
-import printerFunction2 as printerFunction
+import getpass
+if str(getpass.getuser()) == "root":
+    import printerFunction
+else:
+    import printerFunction2 as printerFunction
 
 
 def on_message(self12, client, userdata, msg):
@@ -127,6 +130,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setUnderline(True)
         font.setWeight(75)
+        print("here")
         self.label.setFont(font)
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
@@ -176,8 +180,11 @@ class Ui_MainWindow(object):
         self.tableWidget.cellDoubleClicked.connect(self.tableClicked)
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        print("here")
         self.initaliseTable()
+        print("here")
         self.initalisePrint()
+        print("here")
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
