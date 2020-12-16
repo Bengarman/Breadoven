@@ -1,78 +1,73 @@
-
+# -*- coding: utf-8 -*-
+# Form implementation generated from reading ui file 'main.ui'
+#
+# Created by: PyQt5 UI code generator 5.14.
+#
+# WARNING! All changes made in this file will be lost!
 from PyQt5 import QtCore, QtGui, QtWidgets
 from orderDetails import Ui_Dialog as ver3
+
+import subprocess 
+import sys
+# p = subprocess.Popen([sys.executable, 'test.py'], 
+#                                     stdout=subprocess.PIPE, 
+#                                     stderr=subprocess.STDOUT)
+
 import mysql.connector
-import paho.mqtt.client as mqtt
-from iZettle.iZettle import Izettle, RequestException
-import time
-import threading
-from functools import partial
-# import printerFunction
-import printerFunction2 as printerFunction
+import subprocess
+
+#subprocess.run("python3 iot.py &", shell=True)
 
 
-def on_message(self12, client, userdata, msg):
-    if "Bread Oven" in str(msg.payload):
-        self12.initaliseTable()
-        newValue = str(msg.payload).split(':')[1]
-        newValue = int(newValue.split("'")[0])
-        printerFunction.printInitalOrderTicket(newValue)
-
-
+        
 
 class Ui_MainWindow(object):
     
+    def networkDown(self):
+        input("down")
+
     def tableClicked(self, x, y):
         dialog = QtWidgets.QDialog()
         dialog.ui = ver3()
         dialog.ui.setupUi(dialog, int(self.tableWidget.item(x, 0).text()))
         dialog.exec_()
-        self.initaliseTable()
+        dialog.show()
         self.lineEdit.setFocus()
-
-    def initalisePrint(self):
-        client = mqtt.Client()
-        client.connect("broker.mqttdashboard.com", 1883)
-        client.subscribe("newOrderGarmanApps/")
-
-
-        def subscribing():
-            client.on_message = partial(on_message, self)
-            client.loop_forever()
-        sub=threading.Thread(target=subscribing)
-        sub.start()
 
     def initaliseTable(self):
         mydb = mysql.connector.connect(host="62.75.152.102", user="login", passwd="GA2019!?", database="wordpress_b")
         mydb.autocommit = True
         mycursor = mydb.cursor()
-        mycursor.execute("SELECT orderPlaced.orderID, cast(orderPlaced.time as date) AS Date, cast(orderPlaced.time as time) AS Time, IF(preparing = 0,'Waiting', IF(made = 0, 'Preparing', IF (collected = 0,'Made', 'Collected'))) AS 'Status', (SELECT COUNT(orderLine.orderID) FROM orderLine WHERE orderPlaced.orderID = orderLine.orderID) AS 'Items', IF(orderPlaced.paid = 1,'Apple Pay', 'On Collection') AS 'Payment Status', orderPlaced.collection FROM orderPlaced WHERE orderPlaced.collected = 0")
+        mycursor.execute("SELECT orderPlaced.orderID, cast(orderPlaced.time as date) AS Date, cast(orderPlaced.time as time) AS Time, IF(made = 0,'Preparing', IF(collected = 0, 'Made','Complete')) AS 'Status', (SELECT COUNT(orderLine.orderID) FROM orderLine WHERE orderPlaced.orderID = orderLine.orderID) AS 'Items', IF(orderPlaced.paid = 1,'Apple Pay', 'On Collection') AS 'Payment Status', orderPlaced.collection FROM orderPlaced WHERE orderPlaced.paid = 0 OR orderPlaced.made = 0 OR orderPlaced.collected = 0")
         myresult = mycursor.fetchall()
         self.tableWidget.clearContents()
-        self.tableWidget.setRowCount(len(myresult))
-        for y, x in enumerate(myresult):
-            self.tableWidget.setItem(y , 0, QtWidgets.QTableWidgetItem(str(x[0])))
-            self.tableWidget.setItem(y , 1, QtWidgets.QTableWidgetItem(str(x[1])))
-            self.tableWidget.setItem(y , 2, QtWidgets.QTableWidgetItem(str(x[2])))
-            self.tableWidget.setItem(y , 3, QtWidgets.QTableWidgetItem(str(x[3])))
-            self.tableWidget.setItem(y , 4, QtWidgets.QTableWidgetItem(str(x[4])))
-            self.tableWidget.setItem(y , 5, QtWidgets.QTableWidgetItem(str(x[5])))
-            self.tableWidget.setItem(y , 6, QtWidgets.QTableWidgetItem(str(x[6])))
+        self.tableWidget.setRowCount(0)
+        for x in myresult:
+            rowPosition = self.tableWidget.rowCount()
+            self.tableWidget.insertRow(rowPosition)
+            self.tableWidget.setItem(rowPosition , 0, QtWidgets.QTableWidgetItem(str(x[0])))
+            self.tableWidget.setItem(rowPosition , 1, QtWidgets.QTableWidgetItem(str(x[1])))
+            self.tableWidget.setItem(rowPosition , 2, QtWidgets.QTableWidgetItem(str(x[2])))
+            self.tableWidget.setItem(rowPosition , 3, QtWidgets.QTableWidgetItem(str(x[3])))
+            self.tableWidget.setItem(rowPosition , 4, QtWidgets.QTableWidgetItem(str(x[4])))
+            self.tableWidget.setItem(rowPosition , 5, QtWidgets.QTableWidgetItem(str(x[5])))
+            self.tableWidget.setItem(rowPosition , 6, QtWidgets.QTableWidgetItem(str(x[6])))
         mydb.close()
         print("initalise")
 
     def searchOrder(self):
-        if self.pushButton.text() == "Search" and self.lineEdit.text() != "":
+        if self.pushButton.text() == "Search":
             mydb = mysql.connector.connect(host="62.75.152.102", user="login", passwd="GA2019!?", database="wordpress_b")
             mydb.autocommit = True
             mycursor = mydb.cursor()
-            mycursor.execute("SELECT orderPlaced.orderID, cast(orderPlaced.time as date) AS Date, cast(orderPlaced.time as time) AS Time, IF(preparing = 0,'Waiting', IF(made = 0, 'Preparing', IF (collected = 0,'Made', 'Collected'))) AS 'Status', (SELECT COUNT(orderLine.orderID) FROM orderLine WHERE orderPlaced.orderID = orderLine.orderID) AS 'Items', IF(orderPlaced.paid = 1,'Apple Pay', 'On Collection') AS 'Payment Status', orderPlaced.collection FROM orderPlaced WHERE orderPlaced.orderID = " + str(self.lineEdit.text()))
+            mycursor.execute("SELECT orderPlaced.orderID, cast(orderPlaced.time as date) AS Date, cast(orderPlaced.time as time) AS Time, IF(made = 0,'Preparing', IF(collected = 0, 'Made','Complete')) AS 'Status', (SELECT COUNT(orderLine.orderID) FROM orderLine WHERE orderPlaced.orderID = orderLine.orderID) AS 'Items', IF(orderPlaced.paid = 1,'Apple Pay', 'On Collection') AS 'Payment Status', orderPlaced.collection FROM orderPlaced WHERE orderPlaced.orderID = " + str(self.lineEdit.text()))
             myresult = mycursor.fetchall()
             if len(myresult) == 1:
                 dialog = QtWidgets.QDialog()
                 dialog.ui = ver3()
                 dialog.ui.setupUi(dialog, int(myresult[0][0]))
                 dialog.exec_()
+                dialog.show()
                 self.lineEdit.setText("")
                 self.lineEdit.setFocus()
             else:
@@ -177,7 +172,6 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         self.initaliseTable()
-        self.initalisePrint()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -206,7 +200,7 @@ if __name__ == "__main__":
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
-#    MainWindow.showFullScreen()
+    MainWindow.showFullScreen()
     MainWindow.show()
     ui.lineEdit.setFocus()
     sys.exit(app.exec_())

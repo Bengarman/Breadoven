@@ -4,19 +4,63 @@ from orderDetails import Ui_Dialog as ver3
 import mysql.connector
 import paho.mqtt.client as mqtt
 from iZettle.iZettle import Izettle, RequestException
+import ssl as ssl_lib
+import certifi
 import time
+import concurrent
+import mysql.connector
+import urllib
+from datetime import datetime
+import subprocess 
+import sys
 import threading
 from functools import partial
-# import printerFunction
-import printerFunction2 as printerFunction
-
 
 def on_message(self12, client, userdata, msg):
     if "Bread Oven" in str(msg.payload):
         self12.initaliseTable()
         newValue = str(msg.payload).split(':')[1]
         newValue = int(newValue.split("'")[0])
-        printerFunction.printInitalOrderTicket(newValue)
+        mydb = mysql.connector.connect(host="62.75.152.102", user="login", passwd="GA2019!?", database="wordpress_b")
+        mydb.autocommit = True
+        mycursor = mydb.cursor()
+        mycursor.execute("SELECT MAX(lineID) FROM `orderLine`")
+        myresult = mycursor.fetchall()
+        for x in myresult:
+            highest = x[0]
+
+        complete = []	
+
+        for x in range(newValue, (highest + 1)):
+            mycursor = mydb.cursor()
+            mycursor.execute("SELECT orderPlaced.orderID, DATE_FORMAT(orderPlaced.time, '%D %M %Y %T'), orderPlaced.collection, (SELECT itemDB.itemName FROM itemDB, orderLine WHERE itemDB.itemID = orderLine.foodID AND orderLine.lineID = " + str(x) + ") AS baguette, ( SELECT itemDB.itemName FROM itemDB, orderLine WHERE itemDB.itemID = orderLine.snackID AND orderLine.lineID = " + str(x) + ") AS snack, ( SELECT itemDB.itemName FROM itemDB, orderLine WHERE itemDB.itemID = orderLine.drinkID AND orderLine.lineID = " + str(x) + ") AS drink, orderLine.extras, orderLine.sauces, orderPlaced.paid, orderPlaced.amount FROM orderPlaced, orderLine WHERE orderPlaced.orderID = orderLine.orderID AND orderLine.lineID = " + str(x))
+            myresult = mycursor.fetchall()
+            complete.append(myresult)
+            
+        print("New Order Received")
+        print("Order Number: " + str(complete[0][0][0]) + "\n")
+        print("Date: " + str(complete[0][0][1]))
+        print("***************************************\n")
+        for x in complete:
+            print(str(x[0][3]).title() + " Baguette")
+            print("(" + str(x[0][6]) + ")")
+            print("(" + str(x[0][7]) + ")\n")
+            if str(x[0][4]) != "None":
+                print(str(x[0][4]))
+                print(str(x[0][5]) + "\n\n")  
+
+        mydb.close()
+        if str(complete[0][0][8]) == "0":
+            client = Izettle(
+                client_id='ccfe6b88-67e1-4f6d-94c5-34b91b11a5fa',
+                client_secret='IZSEC33534207-7d83-4f70-b64d-8c54d4e21f00',
+                user='benj.garman@gmail.com',
+                password='Beng0264'
+            )
+            print("izettle")
+            client.create_product_variant('d62f7bb0-2728-11e6-85b5-dd108c223139',{"name": "Order " + str(complete[0][0][0]) , "barcode": str(complete[0][0][0]), "price": {"amount": str(complete[0][0][9]), "currencyId": "GBP"}})
+
+
 
 
 
@@ -27,7 +71,7 @@ class Ui_MainWindow(object):
         dialog.ui = ver3()
         dialog.ui.setupUi(dialog, int(self.tableWidget.item(x, 0).text()))
         dialog.exec_()
-        self.initaliseTable()
+        dialog.show()
         self.lineEdit.setFocus()
 
     def initalisePrint(self):
@@ -43,10 +87,11 @@ class Ui_MainWindow(object):
         sub.start()
 
     def initaliseTable(self):
+
         mydb = mysql.connector.connect(host="62.75.152.102", user="login", passwd="GA2019!?", database="wordpress_b")
         mydb.autocommit = True
         mycursor = mydb.cursor()
-        mycursor.execute("SELECT orderPlaced.orderID, cast(orderPlaced.time as date) AS Date, cast(orderPlaced.time as time) AS Time, IF(preparing = 0,'Waiting', IF(made = 0, 'Preparing', IF (collected = 0,'Made', 'Collected'))) AS 'Status', (SELECT COUNT(orderLine.orderID) FROM orderLine WHERE orderPlaced.orderID = orderLine.orderID) AS 'Items', IF(orderPlaced.paid = 1,'Apple Pay', 'On Collection') AS 'Payment Status', orderPlaced.collection FROM orderPlaced WHERE orderPlaced.collected = 0")
+        mycursor.execute("SELECT orderPlaced.orderID, cast(orderPlaced.time as date) AS Date, cast(orderPlaced.time as time) AS Time, IF(made = 0,'Preparing', IF(collected = 0, 'Made','Complete')) AS 'Status', (SELECT COUNT(orderLine.orderID) FROM orderLine WHERE orderPlaced.orderID = orderLine.orderID) AS 'Items', IF(orderPlaced.paid = 1,'Apple Pay', 'On Collection') AS 'Payment Status', orderPlaced.collection FROM orderPlaced WHERE orderPlaced.paid = 0 OR orderPlaced.made = 0 OR orderPlaced.collected = 0")
         myresult = mycursor.fetchall()
         self.tableWidget.clearContents()
         self.tableWidget.setRowCount(len(myresult))
@@ -66,13 +111,14 @@ class Ui_MainWindow(object):
             mydb = mysql.connector.connect(host="62.75.152.102", user="login", passwd="GA2019!?", database="wordpress_b")
             mydb.autocommit = True
             mycursor = mydb.cursor()
-            mycursor.execute("SELECT orderPlaced.orderID, cast(orderPlaced.time as date) AS Date, cast(orderPlaced.time as time) AS Time, IF(preparing = 0,'Waiting', IF(made = 0, 'Preparing', IF (collected = 0,'Made', 'Collected'))) AS 'Status', (SELECT COUNT(orderLine.orderID) FROM orderLine WHERE orderPlaced.orderID = orderLine.orderID) AS 'Items', IF(orderPlaced.paid = 1,'Apple Pay', 'On Collection') AS 'Payment Status', orderPlaced.collection FROM orderPlaced WHERE orderPlaced.orderID = " + str(self.lineEdit.text()))
+            mycursor.execute("SELECT orderPlaced.orderID, cast(orderPlaced.time as date) AS Date, cast(orderPlaced.time as time) AS Time, IF(made = 0,'Preparing', IF(collected = 0, 'Made','Complete')) AS 'Status', (SELECT COUNT(orderLine.orderID) FROM orderLine WHERE orderPlaced.orderID = orderLine.orderID) AS 'Items', IF(orderPlaced.paid = 1,'Apple Pay', 'On Collection') AS 'Payment Status', orderPlaced.collection FROM orderPlaced WHERE orderPlaced.orderID = " + str(self.lineEdit.text()))
             myresult = mycursor.fetchall()
             if len(myresult) == 1:
                 dialog = QtWidgets.QDialog()
                 dialog.ui = ver3()
                 dialog.ui.setupUi(dialog, int(myresult[0][0]))
                 dialog.exec_()
+                dialog.show()
                 self.lineEdit.setText("")
                 self.lineEdit.setFocus()
             else:
@@ -206,7 +252,7 @@ if __name__ == "__main__":
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
-#    MainWindow.showFullScreen()
+    #MainWindow.showFullScreen()
     MainWindow.show()
     ui.lineEdit.setFocus()
     sys.exit(app.exec_())
