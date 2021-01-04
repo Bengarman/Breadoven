@@ -14,6 +14,9 @@ class cartTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    //Items in the cart table view
+    //Pretty simple
     @IBOutlet weak var details: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var bottomSlide: UIView!

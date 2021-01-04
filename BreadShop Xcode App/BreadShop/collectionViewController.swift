@@ -9,11 +9,16 @@
 import UIKit
 import PassKit
 
-
+//View controller for click and collect and deciding how to pay
 class collectionViewController: UIViewController {
 
     @IBOutlet weak var datePicker: UIDatePicker!
     override func viewDidLoad() {
+        
+        //THIS NEEDS A COMPLETE REDESIGN
+        //WHAT WAS I THINKING LOL
+        
+        
         /*datePicker.setValue(UIColor.white, forKeyPath: "textColor")
         datePicker.subviews[0].subviews[1].backgroundColor = UIColor.white
         datePicker.subviews[0].subviews[2].backgroundColor = UIColor.white
@@ -21,7 +26,10 @@ class collectionViewController: UIViewController {
         datePicker.subviews[0].layoutIfNeeded()*/
         
         
+        //Calendar that is used for date picker
         let calendar = Calendar.current
+        
+        //Getting the current year, month, day
         let date2 = Date()
         let calendar2 = Calendar.current
         let year = calendar2.component(.year, from: date2)
@@ -50,43 +58,52 @@ class collectionViewController: UIViewController {
         minDateComponent.minute = 00
         let minDate = calendar.date(from: minDateComponent)
         
-        print(minDate)
-        print(curDate)
-        print(maxDate)
-        
         datePicker.minimumDate = minDate! as Date
         datePicker.maximumDate = maxDate! as Date
         datePicker.date = curDate! as Date
         
         super.viewDidLoad()
     }
+    
+    
+    
+    //Set the default start time and create variables
     var collectionTime = "12:30"
     var deviceID = ""
     
     
-    
+    //Apple pay vaild cards
     let SupportedPaymentNetworks = [PKPaymentNetwork.visa, PKPaymentNetwork.masterCard, PKPaymentNetwork.amex]
+    //Merchant ID
     let ApplePayMerchantID = "merchant.com.garmanapps.breadoven"
     
     @IBAction func applePayPressed(_ sender: Any) {
-        var productToBuy = [PKPaymentSummaryItem(label: "Meal Deal", amount:  3.50, type: .final)]
-        productToBuy.removeAll()
+        //Apple pay pressed
+        //Setting up the product to be purchased with blank array
+        var productToBuy = [PKPaymentSummaryItem]()
+        //Loop through each item in cart and append to array
         for x in Global.cartDetail{
             if x.mealDeal == true{
                 productToBuy.append(PKPaymentSummaryItem(label: "Meal Deal", amount:  NSDecimalNumber(decimal:Decimal(x.price)), type: .final))
             }else{
-                productToBuy.append(PKPaymentSummaryItem(label: "Item", amount:  NSDecimalNumber(decimal:Decimal(x.price)), type: .final))
+                productToBuy.append(PKPaymentSummaryItem(label: "Baguette", amount:  NSDecimalNumber(decimal:Decimal(x.price)), type: .final))
             }
         }
+        //Append the total price at end
+        productToBuy.append(PKPaymentSummaryItem(label: "Total", amount: NSDecimalNumber(decimal:Decimal(payment.total))))
+
+        //Setup payment request details
         let request = PKPaymentRequest()
         request.merchantIdentifier = ApplePayMerchantID
         request.supportedNetworks = SupportedPaymentNetworks
         request.merchantCapabilities = PKMerchantCapability.capability3DS
+        //Pounds
         request.countryCode = "GB"
         request.currencyCode = "GBP"
         
-        productToBuy.append(PKPaymentSummaryItem(label: "Total", amount: NSDecimalNumber(decimal:Decimal(payment.total))))
-        request.paymentSummaryItems = productToBuy as! [PKPaymentSummaryItem]
+        //Put payment summary in the details
+        request.paymentSummaryItems = productToBuy
+        //Create the controller and present it
         let applePayController = PKPaymentAuthorizationViewController(paymentRequest: request)
         self.present(applePayController!, animated: true, completion: nil)
         
@@ -94,22 +111,35 @@ class collectionViewController: UIViewController {
 
     }
     @IBAction func cashOnCollectionPressed(_ sender: Any) {
+        //Cash on collection payment
         
+        //Get date from ticker
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "hh:mm"
         collectionTime = dateFormatter.string(from: datePicker.date)
-        print(collectionTime)
-        
+
+        //Create the order using php script
+        //Gets the device id for later identification
+        //Gets the collection time and price
         if let url = URL(string: "http://garman.live/BreadShop/code/createOrder.php?deviceID=" + String(UIDevice.current.identifierForVendor!.uuidString) + "&collection=" + String(collectionTime) + "&amount=" + String(Int(payment.total * 100))){
             do {
+                //Gets the order id bvut calls it device id
                 deviceID = try String(contentsOf: url)
                 deviceID = deviceID.replacingOccurrences(of: " ", with: "")
             } catch {}
         } else {
             print("catch")
         }
+        
+        
+        //I just looked and implemented this shit
+        // Currently sends the first order and then checks the hoghest and assigns all of the products
+        // really shit as two could order and fuck it up
+        //Needs reimplementaion
+        
+        
+        
         var counter = 0
-        //foodID, extra, sauces, snackID, drinkID
         for x in Global.cart{
             if x.mealDeal == true{
                 var urlString = "http://garman.live/BreadShop/code/addItems.php?orderID=" + deviceID + "&foodID=" + String(x.baguetteId) + "&snack=" + String(x.snackID) + "&drink=" + String(x.drinkID) + "&extra=" + String(x.toppings) + "&sauces=" + String(x.sauces)
@@ -119,7 +149,6 @@ class collectionViewController: UIViewController {
                 urlString = urlString.replacingOccurrences(of: "    ", with: "")
                 urlString = urlString.replacingOccurrences(of: "(£1.00)", with: "")
                 let urlNew:String = urlString.replacingOccurrences(of: " ", with: "%20")
-                print(urlNew)
                 if let url = URL(string: urlNew ){
                     do {
                         let output = try String(contentsOf: url)
@@ -170,15 +199,6 @@ class collectionViewController: UIViewController {
     @IBAction func backpressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
