@@ -3,7 +3,7 @@
 //  BreadShop
 //
 //  Created by Ben Garman on 05/12/2019.
-//  Copyright © 2019 Ben Garman. All rights reserved.
+//  Copyright © 2019 Ben GarmaAll rights reserved.
 //
 
 import UIKit
