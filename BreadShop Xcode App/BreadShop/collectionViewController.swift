@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 import PassKit
 
 //View controller for click and collect and deciding how to pay
@@ -69,8 +70,9 @@ class collectionViewController: UIViewController {
     
     //Set the default start time and create variables
     var collectionTime = "12:30"
-    var deviceID = ""
-    
+    var orderID = ""
+    var queryDetails = [URLQueryItem]()
+
     
     //Apple pay vaild cards
     let SupportedPaymentNetworks = [PKPaymentNetwork.visa, PKPaymentNetwork.masterCard, PKPaymentNetwork.amex]
@@ -110,90 +112,78 @@ class collectionViewController: UIViewController {
         applePayController?.delegate = self
 
     }
-    @IBAction func cashOnCollectionPressed(_ sender: Any) {
-        //Cash on collection payment
-        
-        //Get date from ticker
+    func orderComplete(paid: Bool) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "hh:mm"
         collectionTime = dateFormatter.string(from: datePicker.date)
+        
+        
+        queryDetails = [
+            URLQueryItem(name: "deviceID", value: String(UIDevice.current.identifierForVendor!.uuidString)),
+            URLQueryItem(name: "collection", value: String(collectionTime)),
+            URLQueryItem(name: "amount", value: String(Int(payment.total)))
+        ]
 
-        //Create the order using php script
-        //Gets the device id for later identification
-        //Gets the collection time and price
-        if let url = URL(string: "http://garman.live/BreadShop/code/createOrder.php?deviceID=" + String(UIDevice.current.identifierForVendor!.uuidString) + "&collection=" + String(collectionTime) + "&amount=" + String(Int(payment.total * 100))){
-            do {
-                //Gets the order id bvut calls it device id
-                deviceID = try String(contentsOf: url)
-                deviceID = deviceID.replacingOccurrences(of: " ", with: "")
-            } catch {}
-        } else {
-            print("catch")
+        if paid == true{
+            queryDetails.append(URLQueryItem(name: "paid", value: "1"))
+        }else{
+            queryDetails.append(URLQueryItem(name: "paid", value: "0"))
         }
         
+        if let url = URL(string: getURLAddress(pathName: "createOrder.php", querys: queryDetails)){
+            do {
+                orderID = try String(contentsOf: url).replacingOccurrences(of: " ", with: "")
+            } catch {}
+        } else {
+            print("Unable to create Order in database")
+        }
         
-        //I just looked and implemented this shit
-        // Currently sends the first order and then checks the hoghest and assigns all of the products
-        // really shit as two could order and fuck it up
-        //Needs reimplementaion
-        
-        
-        
-        var counter = 0
         for x in Global.cart{
+            queryDetails = [
+                URLQueryItem(name: "orderID", value: orderID),
+                URLQueryItem(name: "foodID", value: String(x.baguetteId).cleanNumb),
+                URLQueryItem(name: "extra", value: String(x.toppings).clean),
+                URLQueryItem(name: "sauces", value: String(x.sauces).clean)
+            ]
             if x.mealDeal == true{
-                var urlString = "http://garman.live/BreadShop/code/addItems.php?orderID=" + deviceID + "&foodID=" + String(x.baguetteId) + "&snack=" + String(x.snackID) + "&drink=" + String(x.drinkID) + "&extra=" + String(x.toppings) + "&sauces=" + String(x.sauces)
-                urlString = urlString.replacingOccurrences(of: "-", with: "")
-                urlString = urlString.replacingOccurrences(of: "/ ", with: "- ")
-                urlString = urlString.replacingOccurrences(of: "(£0.70)", with: "")
-                urlString = urlString.replacingOccurrences(of: "    ", with: "")
-                urlString = urlString.replacingOccurrences(of: "(£1.00)", with: "")
-                let urlNew:String = urlString.replacingOccurrences(of: " ", with: "%20")
-                if let url = URL(string: urlNew ){
-                    do {
-                        let output = try String(contentsOf: url)
-                        if counter == 0{
-                            counter = Int(output)!
-                        }
-                    } catch {}
-                } else {
-                    print("catch")
-                }
-            }else{
-                var urlString = "http://garman.live/BreadShop/code/addItem.php?orderID=" + deviceID + "&foodID=" + String(x.baguetteId) + "&extra=" + String(x.toppings) + "&sauces=" + String(x.sauces)
-                urlString = urlString.replacingOccurrences(of: "-", with: "")
-                urlString = urlString.replacingOccurrences(of: "/ ", with: "- ")
-                urlString = urlString.replacingOccurrences(of: "(£0.70)", with: "")
-                urlString = urlString.replacingOccurrences(of: "    ", with: "")
-                urlString = urlString.replacingOccurrences(of: "(£1.00)", with: "")
-                let urlNew:String = urlString.replacingOccurrences(of: " ", with: "%20")
-                print(urlNew)
-                if let url = URL(string: urlNew ){
-                    do {
-                        let output = try String(contentsOf: url)
-                        if counter == 0{
-                            counter = Int(output)!
-                        }
-                    } catch {}
-                } else {
-                    print("catch")
-                }
+                queryDetails.append(contentsOf:
+                [
+                    URLQueryItem(name: "meal", value: "TRUE"),
+                    URLQueryItem(name: "snack", value: String(x.snackID).cleanNumb),
+                    URLQueryItem(name: "drink", value: String(x.drinkID).cleanNumb)
+                ])
             }
-            
+            if let url = URL(string: getURLAddress(pathName: "addOrderItems.php", querys: queryDetails)){
+                do {
+                    let content = try String(contentsOf: url)
+                    print(content)
+                } catch { }
+            } else {
+                print("Unable to add food item in database")
+            }
         }
-        print(counter)
-        payment.orderNumber = String(counter)
-        payment.collectionTime = String(collectionTime)
-        if let url = URL(string: "http://garman.live/test.php?number=" + String(counter)){
+        
+        
+        queryDetails = [ URLQueryItem(name: "orderID", value: orderID)]
+        if let url = URL(string: getURLAddress(pathName: "notifyShop.php", querys: queryDetails)){
             do {
-                let test = try String(contentsOf: url)
+                let content = try String(contentsOf: url)
+                print(content)
             } catch {}
         } else {
-            print("catch")
+            print("Unable to create Order in database")
         }
+        
+        payment.orderNumber = orderID
+        payment.collectionTime = String(collectionTime)
+        
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "done") as! CompleteViewController
         self.present(newViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func cashOnCollectionPressed(_ sender: Any) {
+        orderComplete(paid: false)
     }
     
     @IBAction func backpressed(_ sender: Any) {
@@ -207,6 +197,7 @@ extension collectionViewController: PKPaymentAuthorizationViewControllerDelegate
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping ((PKPaymentAuthorizationStatus) -> Void)) {
         completion(PKPaymentAuthorizationStatus.success)
         print("paid")
+        orderComplete(paid: true)
     }
     
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {

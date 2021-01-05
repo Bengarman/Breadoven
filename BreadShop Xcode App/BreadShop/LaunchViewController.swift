@@ -72,6 +72,35 @@ struct optionsData{
 }
 
 import UIKit
+import Foundation
+
+extension String {
+
+    var clean: String {
+        let okayChars = Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ-&")
+        var part = self.replacingOccurrences(of: "/ ", with: "- ")
+        if part.hasPrefix("-"){
+            part.removeFirst(2)
+        }else{
+            part = "N-A"
+        }
+        return part.filter {okayChars.contains($0) }
+    }
+    var cleanNumb: String {
+        let okayChars = Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ-&0123456789")
+        let part = self.replacingOccurrences(of: "/ ", with: "- ")
+        return part.filter {okayChars.contains($0) }
+    }
+}
+
+func getURLAddress(pathName: String, querys: [URLQueryItem]) -> String{
+    var urlComponents = URLComponents()
+    urlComponents.scheme = "http"
+    urlComponents.host = "garman.live"
+    urlComponents.path = "/api/" + pathName
+    urlComponents.queryItems = querys
+    return urlComponents.url!.absoluteString
+}
 
 class LaunchViewController: UIViewController {
 
@@ -84,6 +113,11 @@ class LaunchViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
+    
+    
+    
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         Global.cart.removeAll()
         optionsData.freeOptions.removeAll()
