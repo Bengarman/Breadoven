@@ -18,6 +18,7 @@ def on_message(self12, client, userdata, msg):
     if "Bread Oven" in str(msg.payload):
         self12.initaliseTable()
         newValue = str(msg.payload).split(':')[1]
+        print(newValue)
         newValue = int(newValue.split("'")[0])
         printerFunction.printInitalOrderTicket(newValue)
 

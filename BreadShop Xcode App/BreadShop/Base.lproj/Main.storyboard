@@ -858,7 +858,7 @@ DRINKS - DIET COKE</string>
         <!--Complete View Controller-->
         <scene sceneID="9bj-N3-mbk">
             <objects>
-                <viewController storyboardIdentifier="done" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VpZ-IY-hk9" customClass="CompleteViewController" customModule="BreadShop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="done" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VpZ-IY-hk9" customClass="CompleteViewController" customModule="BreadShop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iKE-wq-vgc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -907,7 +907,7 @@ DRINKS - DIET COKE</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="83f-fr-WOw"/>
-        <segue reference="mfK-Uw-n6j"/>
+        <segue reference="9hP-vi-hJc"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="42855.jpg" width="141.60000610351562" height="89.760002136230469"/>
