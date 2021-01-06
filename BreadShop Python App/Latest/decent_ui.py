@@ -12,7 +12,7 @@ if str(getpass.getuser()) == "root":
     import printerFunction
 else:
     import printerFunction2 as printerFunction
-
+    #test
 
 def on_message(self12, client, userdata, msg):
     if "Bread Oven" in str(msg.payload):
