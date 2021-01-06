@@ -30,14 +30,7 @@ struct TabbarView: View {
                 Text("Cart")
             }
             
-            NavigationView {
-                     AccountView()
-                  }
-                   .tag(2)
-                    .tabItem {
-                    Image("profile-glyph-icon")
-                    Text("Account")
-                }
+            
         }
     }
 }

@@ -11,9 +11,9 @@ import SwiftUI
 class ActivitiesMockStore {
     
     static let activities: [ActivitiesItem] = [
-        ActivitiesItem(id: 0, activityName: "SURFING", activityNameLabel: "Surfing", activityImage: "surfing", selectedActivity: false),
-        ActivitiesItem(id: 1, activityName: "SNOWBOARD", activityNameLabel: "Snowboarding", activityImage: "snowboarding", selectedActivity: false),
-        ActivitiesItem(id: 2, activityName: "HIKING", activityNameLabel: "Hiking", activityImage: "hiking", selectedActivity: false)
+        ActivitiesItem(id: 0, activityName: "Bread", activityNameLabel: "Surfing", activityImage: "surfing", selectedActivity: false),
+        ActivitiesItem(id: 1, activityName: "Snack", activityNameLabel: "Snowboarding", activityImage: "snowboarding", selectedActivity: false),
+        ActivitiesItem(id: 2, activityName: "Drink", activityNameLabel: "Hiking", activityImage: "hiking", selectedActivity: false)
         
     ]
     
