@@ -22,14 +22,14 @@ extension View {
 struct PlaceDetailView : View {
     @Binding var isShowing: Bool
     @Binding var placeItem: ActivitiesPlaces?
-    let defaultPoint = ActivitiesFamousPoints(id: 0, pointName: "Default", pointImage: "Default PlaceHolder", pointDescription: "Default Description PlaceHolder")
+    let defaultPoint = ActivitiesFamousPoints(id: 0, sizeName: "Default", sizePrice: 0, sizeDescription: "Default Description PlaceHolder")
     
     @ObservedObject var selectedPoint = SelectedPoint()
     
     var body: some View {
         GeometryReader { g in
             ZStack {
-                Image(self.placeItem?.famousPointsArray[self.selectedPoint.selectedIndex].pointImage ?? "")
+                Image(self.placeItem?.itemImage ?? "")
                     .resizable()
                     .frame(width: g.size.width, height: g.size.height)
                     .aspectRatio(contentMode: .fit)
@@ -40,7 +40,7 @@ struct PlaceDetailView : View {
                 }
                 
                 VStack(alignment: .leading) {
-                    Text(self.placeItem?.activityPlace ?? "")
+                    Text(self.placeItem?.itemName ?? "")
                         .foregroundColor(Color.white)
                         .font(.system(size: 30, weight: .bold, design: .default))
                         .padding(.top, 34)
@@ -54,7 +54,7 @@ struct PlaceDetailView : View {
                     PlacesDetail(placeItems: self.placeItem?.famousPointsArray[self.selectedPoint.selectedIndex] ?? self.defaultPoint)
                         .padding(.bottom, 50)
                     
-                    if self.placeItem?.activityDisplay == true {
+                    if self.placeItem?.itemDisplaySize == true {
                         ZStack {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack{
@@ -66,7 +66,7 @@ struct PlaceDetailView : View {
                                         })
                                         {
                                             ZStack {
-                                                Image(item.pointImage).renderingMode(.original)
+                                                Image(self.placeItem?.itemImage ?? "").renderingMode(.original)
                                                     .resizable()
                                                     .frame(width: 110, height: 110)
                                                     .background(Color.red)
@@ -82,26 +82,25 @@ struct PlaceDetailView : View {
                                     }
                                 }.frame(width: g.size.width, height: 130)
                             }
-                        }.padding(.bottom, 50)
+                        }
                     }
                     
                     Button(action: {
-                        let newelement = ActivitiesCartItem(itemID: String(Int.random(in: 6 ..< 100)), itemName: (self.placeItem?.activityPlace)!, itemPrice: 500, itemColor: "", itemManufacturer: (self.placeItem?.famousPointsArray[self.selectedPoint.selectedIndex].pointName)!, itemImage: "4")
+                        let newelement = ActivitiesCartItem(itemID: String(Int.random(in: 6 ..< 100)), itemName: (self.placeItem?.itemName)!, itemPrice: (self.placeItem?.famousPointsArray[self.selectedPoint.selectedIndex].sizePrice)!, itemColor: "", itemManufacturer: (self.placeItem?.famousPointsArray[self.selectedPoint.selectedIndex].sizeName)!, itemImage: "4")
                             ActivitiesMockStore.shoppingCartData.append(newelement)
                         
                         
-                        }) {
+                        })
+                        {
                             HStack {
-                            Text("Checkout")
+                            Text("Add to basket - £" + String((self.placeItem?.famousPointsArray[self.selectedPoint.selectedIndex].sizePrice)!))
                         }
-                        .padding()
-                        .frame(width: g.size.width - 24, height: 40)
-                        .foregroundColor(Color.white)
-                        .background(Color.blue)
-                        .cornerRadius(5)
-                        }
-                        .padding(.top, 10)
-                        .padding(.bottom, 20)
+                            .frame(width: g.size.width - 35, height: 40)
+                            .foregroundColor(Color.white)
+                            .background(Color.blue)
+                            .cornerRadius(5)
+                            .padding()
+                        }.padding(.bottom, 50)
                 }
             }
         }
@@ -125,12 +124,12 @@ struct PlacesDetail: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(placeItems.pointName)
+            Text(placeItems.sizeName)
                 .foregroundColor(Color.white)
                 .font(.system(size: 24, weight: .bold, design: .default))
                 .padding(.leading, 30)
             
-            Text(placeItems.pointDescription)
+            Text(placeItems.sizeDescription)
                 .foregroundColor(Color.white)
                 .font(.system(size: 16, weight: .regular, design: .default))
                 .padding(.leading, 30)

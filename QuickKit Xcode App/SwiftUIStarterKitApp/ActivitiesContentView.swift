@@ -19,9 +19,9 @@ struct ActivitiesItem {
 
 struct ActivitiesPlaces {
     var id: Int
-    var activityDisplay: Bool
-    var activityPlace: String
-    var activityPlaceImage: String
+    var itemDisplaySize: Bool
+    var itemName: String
+    var itemImage: String
     var famousPointsArray: [ActivitiesFamousPoints]
    
 }
@@ -48,9 +48,9 @@ struct ActivitiesData {
 
 struct ActivitiesFamousPoints {
     var id: Int
-    var pointName: String
-    var pointImage: String
-    var pointDescription: String
+    var sizeName: String
+    var sizePrice: Int
+    var sizeDescription: String
 }
 
 class Activities: ObservableObject {
@@ -146,7 +146,7 @@ struct ShopBestSellerViews: View {
     
     var body: some View {
             ZStack{
-                Image("\(activityPlaces.activityPlaceImage)").renderingMode(.original)
+                Image("\(activityPlaces.itemImage)").renderingMode(.original)
                         .resizable()
                         .frame(width: 155, height: 225)
                         .background(Color.black)
@@ -157,7 +157,7 @@ struct ShopBestSellerViews: View {
                 VStack (alignment: .leading) {
                     Spacer()
                     
-                    Text(activityPlaces.activityPlace)
+                    Text(activityPlaces.itemName)
                         .foregroundColor(Color.white)
                         .font(.system(size: 20, weight: .bold, design: Font.Design.default))
                         .padding(.bottom, 24)
