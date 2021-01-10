@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		17244EBE2353DC4F00D31F7E /* UIScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17244EBD2353DC4F00D31F7E /* UIScrollViewController.swift */; };
+		9AFF1CA525A68BFF00493ED2 /* Meticula.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AFF1CA425A68BFE00493ED2 /* Meticula.ttf */; };
 		F50A2ED222F60C2C00235DAE /* ActivitiesCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A2ED122F60C2C00235DAE /* ActivitiesCartView.swift */; };
 		F5143EB22301F435008D8C89 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5143EB12301F435008D8C89 /* BlurView.swift */; };
 		F51B590722F4CBD300660704 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51B590622F4CBD300660704 /* SignUpView.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		17244EBD2353DC4F00D31F7E /* UIScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewController.swift; sourceTree = "<group>"; };
+		9AFF1CA425A68BFE00493ED2 /* Meticula.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Meticula.ttf; sourceTree = "<group>"; };
 		F50A2ED122F60C2C00235DAE /* ActivitiesCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesCartView.swift; sourceTree = "<group>"; };
 		F5143EB12301F435008D8C89 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		F51B590622F4CBD300660704 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				F5DDF13822F9EC5A0045277B /* ActivitiesContentView.swift */,
 				F57143C423008A27005F4724 /* PlaceDetailView.swift */,
 				F5143EB12301F435008D8C89 /* BlurView.swift */,
+				9AFF1CA425A68BFE00493ED2 /* Meticula.ttf */,
 				F553B7E722FCA19400314585 /* AccountView.swift */,
 				F552983422F8BBAE00C07997 /* ActivitiesMockStore.swift */,
 				F50A2ED122F60C2C00235DAE /* ActivitiesCartView.swift */,
@@ -270,6 +273,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AFF1CA525A68BFF00493ED2 /* Meticula.ttf in Resources */,
 				F542B65522F2DBF300E490A1 /* LaunchScreen.storyboard in Resources */,
 				F542B65222F2DBF300E490A1 /* Preview Assets.xcassets in Resources */,
 				F542B64F22F2DBF300E490A1 /* Assets.xcassets in Resources */,

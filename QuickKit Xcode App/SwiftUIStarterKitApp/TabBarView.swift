@@ -16,17 +16,17 @@ struct TabbarView: View {
             }
             .tag(0)
             .tabItem {
-                Image("activity-1")
+                Image(systemName: "doc.plaintext")
                     .resizable()
-                Text("Activities")
+                Text("Menu")
             }
             
             NavigationView {
-                ActivitiesCartView(ShoppingCartItemsData: ActivitiesCart(data: ActivitiesMockStore.shoppingCartData))
+                ActivitiesCartViewNav()
             }
             .tag(1)
             .tabItem {
-                Image("shopping-cart-icon")
+                Image(systemName: "cart")
                 Text("Cart")
             }
             

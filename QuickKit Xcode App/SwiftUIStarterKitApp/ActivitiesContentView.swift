@@ -19,6 +19,7 @@ struct ActivitiesItem {
 
 struct ActivitiesPlaces {
     var id: Int
+    var activityDisplay: Bool
     var activityPlace: String
     var activityPlaceImage: String
     var famousPointsArray: [ActivitiesFamousPoints]
@@ -98,9 +99,8 @@ struct ActivitiesContentView: View {
                             .padding(.trailing, 30)
                             .padding(.bottom, 10)
                         }
-                        .padding(.top, 20)
                         
-                        Text("\(self.activtiesData.activities[self.selectedActivity.index].activityNameLabel) Regions")
+                        Text("Most Popular \(self.activtiesData.activities[self.selectedActivity.index].activityNameLabel)")
                             .font(.system(size: 20))
                             .padding(.leading, 30)
                             .padding(.top, 10)
@@ -132,13 +132,9 @@ struct ActivitiesContentView: View {
                         
                         
                     }
-                    .navigationBarTitle("Activities")
-                    .navigationBarItems(trailing:
-                    Button(action: {
-                        self.settings.loggedIn = false
-                    }) {
-                        Text("Log Out")
-                    })
+                    .navigationBarTitle(Text("Menu"))
+                    
+                    
             }.sheet(isPresented: self.$isShowing) { PlaceDetailView(isShowing: self.$isShowing, placeItem: self.$placeItemSelected)}
         }
     }

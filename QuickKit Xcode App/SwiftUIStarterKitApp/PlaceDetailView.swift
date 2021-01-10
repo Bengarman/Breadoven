@@ -12,6 +12,12 @@ import Combine
 class SelectedPoint: ObservableObject {
     @Published var selectedIndex: Int = 0
 }
+extension View {
+    func Print(_ vars: Any...) -> some View {
+        for v in vars { print(v) }
+        return EmptyView()
+    }
+}
 
 struct PlaceDetailView : View {
     @Binding var isShowing: Bool
@@ -48,18 +54,54 @@ struct PlaceDetailView : View {
                     PlacesDetail(placeItems: self.placeItem?.famousPointsArray[self.selectedPoint.selectedIndex] ?? self.defaultPoint)
                         .padding(.bottom, 50)
                     
-                    ZStack {
-                        BlurView(style: .light)
-                            .frame(width: g.size.width, height: 130)
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack {
-                                ForEach(self.placeItem?.famousPointsArray ?? [], id: \.id) { item in
-                                    PlacesCircleView(placeItems: item, selectedPoint: self.selectedPoint)
-                                }
-                            }.frame(width: g.size.width, height: 130)
-                        }
-                    }.padding(.bottom, 50)
+                    if self.placeItem?.activityDisplay == true {
+                        ZStack {
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack{
+                                    ForEach(self.placeItem?.famousPointsArray ?? [], id: \.id) { item in
+                                        //PlacesCircleView(placeItems: item, selectedPoint: self.selectedPoint)
+                                        
+                                        Button(action: {
+                                            self.selectedPoint.selectedIndex = item.id
+                                        })
+                                        {
+                                            ZStack {
+                                                Image(item.pointImage).renderingMode(.original)
+                                                    .resizable()
+                                                    .frame(width: 110, height: 110)
+                                                    .background(Color.red)
+                                                    .clipShape(Circle())
+                                                
+                                                if (self.selectedPoint.selectedIndex == item.id) {
+                                                       Text("✓")
+                                                            .font(.system(size: 30, weight: .bold, design: Font.Design.default))
+                                                            .foregroundColor(Color.white)
+                                                }
+                                            }
+                                        }
+                                    }
+                                }.frame(width: g.size.width, height: 130)
+                            }
+                        }.padding(.bottom, 50)
+                    }
                     
+                    Button(action: {
+                        let newelement = ActivitiesCartItem(itemID: String(Int.random(in: 6 ..< 100)), itemName: (self.placeItem?.activityPlace)!, itemPrice: 500, itemColor: "", itemManufacturer: (self.placeItem?.famousPointsArray[self.selectedPoint.selectedIndex].pointName)!, itemImage: "4")
+                            ActivitiesMockStore.shoppingCartData.append(newelement)
+                        
+                        
+                        }) {
+                            HStack {
+                            Text("Checkout")
+                        }
+                        .padding()
+                        .frame(width: g.size.width - 24, height: 40)
+                        .foregroundColor(Color.white)
+                        .background(Color.blue)
+                        .cornerRadius(5)
+                        }
+                        .padding(.top, 10)
+                        .padding(.bottom, 20)
                 }
             }
         }
@@ -73,23 +115,7 @@ struct PlacesCircleView: View {
     
     var body: some View {
         GeometryReader { g in
-            Button(action: {
-                self.selectedPoint.selectedIndex = self.placeItems.id
-            }) {
-                ZStack {
-                    Image(self.placeItems.pointImage).renderingMode(.original)
-                        .resizable()
-                        .frame(width: 110, height: 110)
-                        .background(Color.red)
-                        .clipShape(Circle())
-                    
-                    if (self.selectedPoint.selectedIndex == self.placeItems.id) {
-                           Text("✓")
-                                .font(.system(size: 30, weight: .bold, design: Font.Design.default))
-                                .foregroundColor(Color.white)
-                    }
-                }
-            }
+            
         }
     }
 }

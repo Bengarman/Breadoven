@@ -32,10 +32,17 @@ struct ActivitiesCartItem {
     var itemImage: String
 }
 
+struct ActivitiesCartViewNav: View {
+    var body: some View {
+        ActivitiesCartView(ShoppingCartItemsData: ActivitiesCart(data: ActivitiesMockStore.shoppingCartData))
+    }
+}
+
+
 struct ActivitiesCartView: View {
     
     @ObservedObject var ShoppingCartItemsData : ActivitiesCart
-    
+
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -88,6 +95,8 @@ struct ActivitiesCartView: View {
                     .padding(.bottom, 20)
           
             }
+        }.onAppear {
+            self.ShoppingCartItemsData.ActivitiesCartArray = ActivitiesMockStore.shoppingCartData
         }
     }
 }
@@ -121,7 +130,9 @@ struct ShoppingFinalInfoView: View {
                         .font(.system(.title))
                 }.frame(width: geometry.size.width / 2 - 12)
                 
+                
             }
+            .padding()
             
         }
 
