@@ -29,6 +29,15 @@ struct TabbarView: View {
                 Image(systemName: "cart")
                 Text("Cart")
             }
+            NavigationView {
+                SignUpView()
+            }
+            .tag(1)
+            .tabItem {
+                Image(systemName: "cart")
+                Text("Login")
+            }
+            
             
             
         }

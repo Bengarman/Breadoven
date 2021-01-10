@@ -55,13 +55,7 @@ struct ActivitiesCartView: View {
                             .padding(.leading, 12)
                             .padding(.top, 8)
                         Spacer()
-                        Button(action: {
-                            print("Edit Cells")
-                        }){
-                            Text("Edit")
-                        }.foregroundColor(Color.blue)
-                        .padding(.trailing, 12)
-                        .padding(.top, 8)
+                        
                     }
                     .navigationBarTitle("Shopping Cart")
                     
@@ -71,7 +65,7 @@ struct ActivitiesCartView: View {
                             ShoppingCartCellView(shoppingCartItem: item)
                                 .frame(width: geometry.size.width - 24, height: 80)
                                 
-                            }
+                        }
                     }
                 }
                 .frame(height: 87 * 4)
@@ -148,7 +142,25 @@ struct ShoppingCartCellView: View {
     
     var body: some View {
         GeometryReader { geometry in
+             
+            
             ZStack {
+                
+                LinearGradient(gradient: .init(colors: [Color("lightblue"),Color("blue")]), startPoint: .leading, endPoint: .trailing)
+                
+                HStack{
+                    
+                    Spacer()
+                    
+                    
+                    Button(action: {}){
+                        
+                        Image(systemName: "trash")
+                            .font(.title)
+                            .frame(width: 90, height: 50)
+                    }
+                }
+                
                 HStack (spacing: 10) {
                     Image("\(self.shoppingCartItem.itemImage)")
                         .renderingMode(.original)
@@ -190,9 +202,11 @@ struct ShoppingCartCellView: View {
                 }
             }
             
+            
         }.background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
         .cornerRadius(10)
        
        
     }
 }
+

@@ -86,7 +86,7 @@ struct PlaceDetailView : View {
                     }
                     
                     Button(action: {
-                        let newelement = ActivitiesCartItem(itemID: String(Int.random(in: 6 ..< 100)), itemName: (self.placeItem?.itemName)!, itemPrice: (self.placeItem?.famousPointsArray[self.selectedPoint.selectedIndex].sizePrice)!, itemColor: "", itemManufacturer: (self.placeItem?.famousPointsArray[self.selectedPoint.selectedIndex].sizeName)!, itemImage: "4")
+                        let newelement = ActivitiesCartItem(itemID: String(Int.random(in: 6 ..< 100)), itemName: (self.placeItem?.itemName)!, itemPrice: (self.placeItem?.famousPointsArray[self.selectedPoint.selectedIndex].sizePrice)!, itemColor: "", itemManufacturer: (self.placeItem?.famousPointsArray[self.selectedPoint.selectedIndex].sizeName)!, itemImage: (self.placeItem?.itemImage)!)
                             ActivitiesMockStore.shoppingCartData.append(newelement)
                         
                         
