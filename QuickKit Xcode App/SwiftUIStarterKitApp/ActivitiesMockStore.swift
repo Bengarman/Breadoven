@@ -30,7 +30,7 @@ class ActivitiesMockStore {
                     ActivitiesFamousPoints(id: 2, sizeName: "Large", sizePrice: 4, sizeDescription: "Dominical is a beach-front town in Bahía Ballena.")
                 ]),
              
-                ActivitiesPlaces(id: 1, itemDisplaySize: false, itemName: "Bali", itemImage: "bali", famousPointsArray: [
+                ActivitiesPlaces(id: 1, itemDisplaySize: false, itemName: "Balti", itemImage: "bali", famousPointsArray: [
                     ActivitiesFamousPoints(id: 0, sizeName: "Kuta", sizePrice: 2, sizeDescription: "Kuta is a beach and resort area"),
                  
                     ActivitiesFamousPoints(id: 1, sizeName: "Jimbaran", sizePrice: 3, sizeDescription: "Jimbaran Bay has a long beach with calm waters.")
