@@ -9,44 +9,29 @@
 import SwiftUI
 import Combine
 
-struct ActivitiesItem {
-    var id: Int
-    var activityName: String
-    var activityNameLabel: String
-    var activityImage: String
-    var selectedActivity: Bool
-}
-
-struct ActivitiesPlaces {
+struct CategoryItem {
     var id: Int
     var itemDisplaySize: Bool
     var itemName: String
     var itemImage: String
-    var famousPointsArray: [ActivitiesFamousPoints]
+    var itemSizes: [CategoryItemSize]
    
 }
 
-struct ActivityResource {
+struct CategoryGroup {
     var id: Int
     var resourceName: String
     var resourceDescription: String
-    var resources : [ActivityResourcesItem]
+    var resources : [CategoryItem]
 }
 
-struct ActivityResourcesItem {
-    var id: Int
-    var resourceName: String
-    var resourceImage: String
-    var resourceDescription: String
-}
 
 struct ActivitiesData {
-    var id: Int
-    var activitiesPlaces: [ActivitiesPlaces]
-    var activityResources: [ActivityResource]
+    var featuredItems: [CategoryItem]
+    var categoryItems: [CategoryGroup]
 }
 
-struct ActivitiesFamousPoints {
+struct CategoryItemSize {
     var id: Int
     var sizeName: String
     var sizePrice: Int
@@ -56,21 +41,14 @@ struct ActivitiesFamousPoints {
 class Activities: ObservableObject {
     let objectWillChange = PassthroughSubject<Void, Never>()
     
-    var activitiesCollection : [ActivitiesData] {
+    var activitiesCollection : ActivitiesData {
        willSet {
             objectWillChange.send()
         }
     }
     
-    var activities: [ActivitiesItem] {
-        willSet {
-                   objectWillChange.send()
-               }
-    }
-    
-    init(data: [ActivitiesData], items: [ActivitiesItem] ) {
+    init(data: ActivitiesData ) {
         self.activitiesCollection = data
-        self.activities = items
     }
 }
 
@@ -83,36 +61,32 @@ struct ActivitiesContentView: View {
     @ObservedObject var activtiesData : Activities
     @ObservedObject var selectedActivity = ActivitySelected()
     @State var isShowing: Bool = false
-    @State var placeItemSelected: ActivitiesPlaces? = nil
+    @State var placeItemSelected: CategoryItem? = nil
     
     var body: some View {
         GeometryReader { g in
             ScrollView{
                     VStack(alignment: .leading) {
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack (spacing: 10){
-                                ForEach(self.activtiesData.activities, id: \.id) { item in
-                                    ShopPromotionBannerView(activtiesItems: item, selectedActivity: self.selectedActivity)
-                                            .frame(width: 120, height: 60)
-                                }
-                            }.padding(.leading, 30)
-                            .padding(.trailing, 30)
-                            .padding(.bottom, 10)
+                        Image("logofish")
+                            .resizable()
+                            .frame(width: g.size.width, height: g.size.height / 3)
+                        
+                        HStack{
+                            Spacer()
+                            Text("OUR SPECIALS")
+                                .font(.custom("Montserrat-Bold", size: 20))
+                                .padding(.top, 10)
+                                .foregroundColor(Color(red: 238/255, green: 129/255, blue: 13/255))
+                            Spacer()
                         }
-                        
-                        Text("Most Popular \(self.activtiesData.activities[self.selectedActivity.index].activityNameLabel)")
-                            .font(.system(size: 20))
-                            .padding(.leading, 30)
-                            .padding(.top, 10)
-                        
                         ScrollView(.horizontal, showsIndicators: false) {
                                     HStack (spacing: 10) {
-                                        ForEach(self.activtiesData.activitiesCollection[self.selectedActivity.index].activitiesPlaces, id: \.id) { item in
+                                        ForEach(self.activtiesData.activitiesCollection.featuredItems, id: \.id) { item in
                                             Button(action: {
                                                 self.placeItemSelected = item
                                                 self.isShowing = true
                                             }) {
-                                                ShopBestSellerViews(activityPlaces: item)
+                                                FeaturedItemsView(featuredItem: item)
                                                                     .frame(width: 155, height: 225)
                                             }
                                         }
@@ -124,44 +98,86 @@ struct ActivitiesContentView: View {
                         }
                         
                         VStack (spacing: 20) {
-                            
-                            ForEach(self.activtiesData.activitiesCollection[self.selectedActivity.index].activityResources, id: \.id) { item in
-                                ShopNewProductViews(activityResources: item)
-                                         .frame(width: g.size.width - 60, height: g.size.width - 60)
+                            ForEach(self.activtiesData.activitiesCollection.categoryItems, id: \.id) { item in
+                                ZStack {
+                                    VStack (alignment: .leading){
+                                        Text(item.resourceName)
+                                            .padding(.top, 18)
+                                            .padding(.leading, 18)
+                                            .font(.system(size: 20, weight: .bold, design: Font.Design.default))
+                                            .foregroundColor(Color.black)
+                                        Text(item.resourceDescription)
+                                            .padding(.leading, 18)
+                                            .padding(.trailing, 18)
+                                            .font(.system(size: 14))
+                                            .foregroundColor(Color.black)
+                                        
+                                        
+                                        ScrollView (.horizontal, showsIndicators: false) {
+                                            HStack (spacing: 10) {
+                                                Print(item.resources.count)
+                                                ForEach(0..<item.resources.count, id: \.self) { index in
+                                                    Button(action: {
+                                                        self.placeItemSelected = item.resources[index]
+                                                        self.isShowing = true
+                                                    })
+                                                    {
+                                                        CategoryIcon(categoryItem: item.resources[index])
+                                                            .frame(width: 150, height: 200)
+                                                    }
+                                                    
+                                                }
+                                                
+                                               
+                                            }.padding(.leading, 18)
+                                            .padding(.trailing, 18)
+                                                .padding(.top, 25)
+                                        }
+                                        
+                                         Spacer()
+                                    }
+                                    }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                                    .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
+                                    .cornerRadius(10)
+                                         
                             }
                         }.padding(.leading, 30)
                         
                         
                     }
-                    .navigationBarTitle(Text("Menu"))
-                    
+                    .navigationBarTitle("")
+                    .navigationBarHidden(true)
                     
             }.sheet(isPresented: self.$isShowing) { PlaceDetailView(isShowing: self.$isShowing, placeItem: self.$placeItemSelected)}
         }
+        .edgesIgnoringSafeArea(.top)
+
     }
+
 }
 
-struct ShopBestSellerViews: View {
+
+
+struct FeaturedItemsView: View {
     
-    var activityPlaces: ActivitiesPlaces
+    var featuredItem: CategoryItem
     
     var body: some View {
             ZStack{
-                Image("\(activityPlaces.itemImage)").renderingMode(.original)
+                Image("\(featuredItem.itemImage)").renderingMode(.original)
                         .resizable()
                         .frame(width: 155, height: 225)
                         .background(Color.black)
                         .cornerRadius(10)
                         .opacity(0.8)
-                        .aspectRatio(contentMode: .fill)
+                        .aspectRatio(contentMode: .fit)
                
                 VStack (alignment: .leading) {
-                    Spacer()
                     
-                    Text(activityPlaces.itemName)
+                    Text(featuredItem.itemName)
                         .foregroundColor(Color.white)
+                        .multilineTextAlignment(.center)
                         .font(.system(size: 20, weight: .bold, design: Font.Design.default))
-                        .padding(.bottom, 24)
                 }
                     
                 
@@ -172,106 +188,29 @@ struct ShopBestSellerViews: View {
     }
 }
 
-struct ShopPromotionBannerView: View {
-    var activtiesItems: ActivitiesItem
-    @ObservedObject var selectedActivity: ActivitySelected
+
+struct CategoryIcon: View {
+    
+    var categoryItem: CategoryItem
     
     var body: some View {
-        
-        Button(action: {
-            self.selectedActivity.index = self.activtiesItems.id
-            
-        }) {
-            GeometryReader { g in
-                   ZStack{
-                    Image("\(self.activtiesItems.activityImage)").renderingMode(.original)
-                       .resizable()
-                       .opacity(0.8)
-                       .aspectRatio(contentMode: .fill)
-                       .background(Color.black)
-                    
-                    
-                    if (self.selectedActivity.index == self.activtiesItems.id) {
-                           Text("✓ \(self.activtiesItems.activityName)")
-                                    .font(.system(size: 14, weight: .bold, design: Font.Design.default))
-                                    .foregroundColor(Color.white)
-                    } else {
-                             Text(self.activtiesItems.activityName)
-                                    .font(.system(size: 14, weight: .bold, design: Font.Design.default))
-                                     .foregroundColor(Color.white)
-                    }
-                               
-                   }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                   .cornerRadius(15)
-               }
-        }
-    }
-}
+        ZStack{
+            Image("\(categoryItem.itemImage)")
+            .resizable()
+            .opacity(0.8)
+            .aspectRatio(contentMode: .fill)
+            .background(Color.black)
+            VStack(alignment: .center) {
 
-
-struct ShopNewProductViews: View {
-    var activityResources: ActivityResource
-    
-    var body: some View {
-        GeometryReader { g in
-            ZStack {
-                VStack (alignment: .leading){
-                    Text(self.activityResources.resourceName)
-                        .padding(.top, 18)
-                        .padding(.leading, 18)
-                        .font(.system(size: 20, weight: .bold, design: Font.Design.default))
-                        .foregroundColor(Color.black)
-                    Text(self.activityResources.resourceDescription)
-                        .padding(.leading, 18)
-                        .padding(.trailing, 18)
-                        .font(.system(size: 14))
-                        .foregroundColor(Color.black)
-                    
-                        
-                    ScrollView (.horizontal, showsIndicators: false) {
-                        HStack (spacing: 10) {
-                            
-                            ForEach(self.activityResources.resources, id: \.id) { item in
-                                ActivityResourceItems(resourceItems: item)
-                                                    .frame(width: 150, height: 200)
-                            }
-                            
-                        }.padding(.leading, 18)
-                        .padding(.trailing, 18)
-                            .padding(.top, 25)
-                    }
-                    
-                     Spacer()
-                }
-                }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
-                .cornerRadius(10)
-                
+                Text(categoryItem.itemName)
+                    .font(.system(size: 16, weight: .bold, design: Font.Design.default))
+                    .frame(width: 150)
+                    .foregroundColor(Color.white)
+                    .multilineTextAlignment(.center)
             }
-        }
+                    
+        }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+        .cornerRadius(10)
     }
-
-struct ActivityResourceItems: View {
-    var resourceItems: ActivityResourcesItem
-    var body: some View {
-        GeometryReader { g in
-            ZStack{
-                Image("\(self.resourceItems.resourceImage)")
-                .resizable()
-                .opacity(0.8)
-                .aspectRatio(contentMode: .fill)
-                .background(Color.black)
-                VStack(alignment: .center) {
-
-                    Text(self.resourceItems.resourceName)
-                        .font(.system(size: 16, weight: .bold, design: Font.Design.default))
-                        .frame(width: 150)
-                        .foregroundColor(Color.white)
-                        .multilineTextAlignment(.center)
-                }
-                        
-            }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-            .cornerRadius(10)
-        }
-    }
+          
 }

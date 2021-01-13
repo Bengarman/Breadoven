@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		17244EBE2353DC4F00D31F7E /* UIScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17244EBD2353DC4F00D31F7E /* UIScrollViewController.swift */; };
+		9A48498F25AF974300CF239C /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A48498E25AF974300CF239C /* Montserrat-Bold.ttf */; };
 		9AFF1CA525A68BFF00493ED2 /* Meticula.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AFF1CA425A68BFE00493ED2 /* Meticula.ttf */; };
 		F50A2ED222F60C2C00235DAE /* ActivitiesCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A2ED122F60C2C00235DAE /* ActivitiesCartView.swift */; };
 		F5143EB22301F435008D8C89 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5143EB12301F435008D8C89 /* BlurView.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		17244EBD2353DC4F00D31F7E /* UIScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewController.swift; sourceTree = "<group>"; };
+		9A48498E25AF974300CF239C /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		9AFF1CA425A68BFE00493ED2 /* Meticula.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Meticula.ttf; sourceTree = "<group>"; };
 		F50A2ED122F60C2C00235DAE /* ActivitiesCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesCartView.swift; sourceTree = "<group>"; };
 		F5143EB12301F435008D8C89 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				F553995622F4998F00872F1B /* LogInView.swift */,
 				F52AA7A622F4883A0051F943 /* TabBarView.swift */,
 				F5DDF13822F9EC5A0045277B /* ActivitiesContentView.swift */,
+				9A48498E25AF974300CF239C /* Montserrat-Bold.ttf */,
 				F57143C423008A27005F4724 /* PlaceDetailView.swift */,
 				F5143EB12301F435008D8C89 /* BlurView.swift */,
 				9AFF1CA425A68BFE00493ED2 /* Meticula.ttf */,
@@ -273,6 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A48498F25AF974300CF239C /* Montserrat-Bold.ttf in Resources */,
 				9AFF1CA525A68BFF00493ED2 /* Meticula.ttf in Resources */,
 				F542B65522F2DBF300E490A1 /* LaunchScreen.storyboard in Resources */,
 				F542B65222F2DBF300E490A1 /* Preview Assets.xcassets in Resources */,

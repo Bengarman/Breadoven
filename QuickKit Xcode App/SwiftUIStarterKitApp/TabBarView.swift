@@ -12,7 +12,7 @@ struct TabbarView: View {
     var body: some View {
         TabView {
             NavigationView {
-                ActivitiesContentView(activtiesData: Activities(data: ActivitiesMockStore.activityData, items: ActivitiesMockStore.activities))
+                ActivitiesContentView(activtiesData: Activities(data: ActivitiesMockStore.activityData))
             }
             .tag(0)
             .tabItem {

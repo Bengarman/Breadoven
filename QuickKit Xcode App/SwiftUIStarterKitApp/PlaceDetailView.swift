@@ -21,8 +21,8 @@ extension View {
 
 struct PlaceDetailView : View {
     @Binding var isShowing: Bool
-    @Binding var placeItem: ActivitiesPlaces?
-    let defaultPoint = ActivitiesFamousPoints(id: 0, sizeName: "Default", sizePrice: 0, sizeDescription: "Default Description PlaceHolder")
+    @Binding var placeItem: CategoryItem?
+    let defaultPoint = CategoryItemSize(id: 0, sizeName: "Default", sizePrice: 0, sizeDescription: "Default Description PlaceHolder")
     
     @ObservedObject var selectedPoint = SelectedPoint()
     
@@ -51,14 +51,14 @@ struct PlaceDetailView : View {
                     
                     Spacer()
                     
-                    PlacesDetail(placeItems: self.placeItem?.famousPointsArray[self.selectedPoint.selectedIndex] ?? self.defaultPoint)
+                    PlacesDetail(placeItems: self.placeItem?.itemSizes[self.selectedPoint.selectedIndex] ?? self.defaultPoint)
                         .padding(.bottom, 50)
                     
                     if self.placeItem?.itemDisplaySize == true {
                         ZStack {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack{
-                                    ForEach(self.placeItem?.famousPointsArray ?? [], id: \.id) { item in
+                                    ForEach(self.placeItem?.itemSizes ?? [], id: \.id) { item in
                                         //PlacesCircleView(placeItems: item, selectedPoint: self.selectedPoint)
                                         
                                         Button(action: {
@@ -86,13 +86,13 @@ struct PlaceDetailView : View {
                     }
                     
                     Button(action: {
-                        cartData.items.append(Item(itemName: (self.placeItem?.itemName)!, itemPrice: String((self.placeItem?.famousPointsArray[self.selectedPoint.selectedIndex].sizePrice)!), itemColor: "", itemManufacturer: (self.placeItem?.famousPointsArray[self.selectedPoint.selectedIndex].sizeName)!, itemImage: (self.placeItem?.itemImage)!, offset: 0, isSwiped: false))
+                        cartData.items.append(Item(itemName: (self.placeItem?.itemName)!, itemPrice: String((self.placeItem?.itemSizes[self.selectedPoint.selectedIndex].sizePrice)!), itemColor: "", itemManufacturer: (self.placeItem?.itemSizes[self.selectedPoint.selectedIndex].sizeName)!, itemImage: (self.placeItem?.itemImage)!, offset: 0, isSwiped: false))
                         
                         
                         })
                         {
                             HStack {
-                            Text("Add to basket - £" + String((self.placeItem?.famousPointsArray[self.selectedPoint.selectedIndex].sizePrice)!))
+                            Text("Add to basket - £" + String((self.placeItem?.itemSizes[self.selectedPoint.selectedIndex].sizePrice)!))
                         }
                             .frame(width: g.size.width - 35, height: 40)
                             .foregroundColor(Color.white)
@@ -108,7 +108,7 @@ struct PlaceDetailView : View {
 }
 
 struct PlacesCircleView: View {
-    var placeItems: ActivitiesFamousPoints
+    var placeItems: CategoryItemSize
     @ObservedObject var selectedPoint: SelectedPoint
     
     var body: some View {
@@ -119,7 +119,7 @@ struct PlacesCircleView: View {
 }
 
 struct PlacesDetail: View {
-    var placeItems: ActivitiesFamousPoints
+    var placeItems: CategoryItemSize
     
     var body: some View {
         VStack(alignment: .leading) {
