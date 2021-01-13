@@ -124,6 +124,7 @@ struct ActivitiesContentView: View {
                         }
                         
                         VStack (spacing: 20) {
+                            
                             ForEach(self.activtiesData.activitiesCollection[self.selectedActivity.index].activityResources, id: \.id) { item in
                                 ShopNewProductViews(activityResources: item)
                                          .frame(width: g.size.width - 60, height: g.size.width - 60)

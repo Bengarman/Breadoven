@@ -143,10 +143,19 @@ class ActivitiesMockStore {
        
     ]
     
-    static var shoppingCartData: [ActivitiesCartItem] = [
-           ActivitiesCartItem(itemID: "1", itemName: "Snow board", itemPrice: 450, itemColor: "Red", itemManufacturer: "Elan Explore", itemImage: "snowboardred"),
-           ActivitiesCartItem(itemID: "2", itemName: "Camping Tent", itemPrice: 235, itemColor: "Yellow", itemManufacturer: "Explorers", itemImage: "campingtent"),
-           ActivitiesCartItem(itemID: "3", itemName: "Surf board", itemPrice: 825, itemColor: "Black", itemManufacturer: "WaveExplore", itemImage: "surfboard")
-       ]
-    
 }
+class CartViewModel: ObservableObject{
+    @Published var items = [Item]()
+}
+
+struct Item : Identifiable{
+    var id = UUID().uuidString
+    var itemName : String
+    var itemPrice : String
+    var itemColor: String
+    var itemManufacturer: String
+    var itemImage: String
+    var offset: CGFloat
+    var isSwiped: Bool
+}
+    
