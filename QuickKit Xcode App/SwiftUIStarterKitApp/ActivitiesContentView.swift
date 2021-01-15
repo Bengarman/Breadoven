@@ -65,7 +65,8 @@ struct ActivitiesContentView: View {
     
     var body: some View {
         GeometryReader { g in
-            ScrollView{
+            if #available(iOS 14.0, *) {
+                ScrollView{
                     VStack(alignment: .leading) {
                         Image("logofish")
                             .resizable()
@@ -80,21 +81,21 @@ struct ActivitiesContentView: View {
                             Spacer()
                         }
                         ScrollView(.horizontal, showsIndicators: false) {
-                                    HStack (spacing: 10) {
-                                        ForEach(self.activtiesData.activitiesCollection.featuredItems, id: \.id) { item in
-                                            Button(action: {
-                                                self.placeItemSelected = item
-                                                self.isShowing = true
-                                            }) {
-                                                FeaturedItemsView(featuredItem: item)
-                                                                    .frame(width: 155, height: 225)
-                                            }
-                                        }
-                                        
-                                }.padding(.leading, 30)
-                                 .padding(.trailing, 30)
-                                 .padding(.bottom, 10)
+                            HStack (spacing: 10) {
+                                ForEach(self.activtiesData.activitiesCollection.featuredItems, id: \.id) { item in
+                                    Button(action: {
+                                        self.placeItemSelected = item
+                                        self.isShowing = true
+                                    }) {
+                                        FeaturedItemsView(featuredItem: item)
+                                            .frame(width: 155, height: 225)
+                                    }
+                                }
                                 
+                            }.padding(.leading, 30)
+                            .padding(.trailing, 30)
+                            .padding(.bottom, 10)
+                            
                         }
                         
                         VStack (spacing: 20) {
@@ -128,18 +129,18 @@ struct ActivitiesContentView: View {
                                                     
                                                 }
                                                 
-                                               
+                                                
                                             }.padding(.leading, 18)
                                             .padding(.trailing, 18)
-                                                .padding(.top, 25)
+                                            .padding(.top, 25)
                                         }
                                         
-                                         Spacer()
+                                        Spacer()
                                     }
-                                    }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                                    .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
-                                    .cornerRadius(10)
-                                         
+                                }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                                .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
+                                .cornerRadius(10)
+                                
                             }
                         }.padding(.leading, 30)
                         
@@ -148,7 +149,12 @@ struct ActivitiesContentView: View {
                     .navigationBarTitle("")
                     .navigationBarHidden(true)
                     
-            }.sheet(isPresented: self.$isShowing) { PlaceDetailView(isShowing: self.$isShowing, placeItem: self.$placeItemSelected)}
+                }
+                .edgesIgnoringSafeArea(.top)
+                .sheet(isPresented: self.$isShowing) { PlaceDetailView(isShowing: self.$isShowing, placeItem: self.$placeItemSelected)}
+            } else {
+                // Fallback on earlier versions
+            }
         }
         .edgesIgnoringSafeArea(.top)
 

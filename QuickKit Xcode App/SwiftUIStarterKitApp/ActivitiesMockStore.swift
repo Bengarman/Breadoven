@@ -19,7 +19,11 @@ class ActivitiesMockStore {
                                                                                                                            
                     CategoryItemSize(id: 1, sizeName: "Medium", sizePrice: 3, sizeDescription: "Jacó is a town on the Pacific coast of Costa Rica."),
             
-                    CategoryItemSize(id: 2, sizeName: "Large", sizePrice: 4, sizeDescription: "Dominical is a beach-front town in Bahía Ballena.")
+                    CategoryItemSize(id: 2, sizeName: "Large", sizePrice: 4, sizeDescription: "Dominical is a beach-front town in Bahía Ballena."),
+                    
+                    CategoryItemSize(id: 3, sizeName: "Large", sizePrice: 4, sizeDescription: "Dominical is a beach-front town in Bahía Ballena."),
+                    
+                    CategoryItemSize(id: 4, sizeName: "Large", sizePrice: 4, sizeDescription: "Dominical is a beach-front town in Bahía Ballena.")
                 ]),
              
                 CategoryItem(id: 1, itemDisplaySize: false, itemName: "Kebab Meat, Chips & Drink", itemImage: "kebab", itemSizes: [
