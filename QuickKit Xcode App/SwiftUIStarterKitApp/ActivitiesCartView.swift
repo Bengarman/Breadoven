@@ -31,18 +31,19 @@ struct ActivitiesCartView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Divider()
-                    .padding(.leading, 20)
-                    .padding(.trailing, 20)
+                
                     HStack {
                         Text("\(cartData.items.count) items")
                             .font(.system(size: 24, weight: .bold, design: .default))
                             .padding(.leading, 12)
-                            .padding(.top, 8)
+                            .padding(.top, 30)
+                        
                         Spacer()
                         
                     }
                     .navigationBarTitle("Shopping Cart")
+                    
+                
                 ScrollView (.vertical, showsIndicators: false) {
                     VStack (alignment: .leading) {
                         ForEach(cartData.items){item in
@@ -81,7 +82,11 @@ struct ActivitiesCartView: View {
                     
                 }
                 .padding()
-                Button(action: {}) {
+                Button(action: {
+                    UserDefaults.standard.set(false, forKey: "hasLaunchedBefore")
+
+                }) {
+
                         HStack {
                         Text("Checkout")
                     }

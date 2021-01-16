@@ -68,8 +68,12 @@ struct ActivitiesContentView: View {
             if #available(iOS 14.0, *) {
                 ScrollView{
                     VStack(alignment: .leading) {
-                        Image("logofish")
+                        Rectangle()
+                            .fill(Color(red: 23/255, green: 86/255, blue: 119/255))
+                            .frame(width: g.size.width, height: 30)
+                        Image("LogoDefault")
                             .resizable()
+                            .padding(.top,-10)
                             .frame(width: g.size.width, height: g.size.height / 3)
                         
                         HStack{
@@ -77,7 +81,7 @@ struct ActivitiesContentView: View {
                             Text("OUR SPECIALS")
                                 .font(.custom("Montserrat-Bold", size: 20))
                                 .padding(.top, 10)
-                                .foregroundColor(Color(red: 238/255, green: 129/255, blue: 13/255))
+                                //.foregroundColor(Color(red: 238/255, green: 129/255, blue: 13/255))
                             Spacer()
                         }
                         ScrollView(.horizontal, showsIndicators: false) {

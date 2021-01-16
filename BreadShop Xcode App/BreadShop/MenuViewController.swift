@@ -59,7 +59,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         idArray.removeAll()
         descArray.removeAll()
         imageArray.removeAll()
-        if let url = URL(string: "http://garman.live/BreadShop/menu/menu.php?category=" + String(Global.menuID)){
+        if let url = URL(string: "http://garmanapps.co.uk/BreadShop/menu/menu.php?category=" + String(Global.menuID)){
             do {
                 
                 let contents = try String(contentsOf: url)

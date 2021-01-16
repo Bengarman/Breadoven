@@ -17,16 +17,11 @@ struct LogInView: View {
     var body: some View {
     GeometryReader { geometry in
             VStack (alignment: .center){
-                HStack {
-                    Image("2")
-                    .resizable()
-                    .frame(width: 20, height: 20)
-                    Text("SwiftUI Starter")
-                        .font(.system(size: 12))
-                        
-                }.padding(.top, 30)
-                .padding(.bottom, 10)
-                
+                Spacer()
+                Image("placeholder-image")
+                .resizable()
+                    .frame(width: geometry.size.width - 40, height: 200)
+                Spacer()
                 Text("Log Into Your Account")
                     .font(.title)
                     .font(.system(size: 14, weight: .bold, design: Font.Design.default))
@@ -61,10 +56,8 @@ struct LogInView: View {
                             .background(Color.blue)
                             .cornerRadius(5)
                     }
-                     .padding(.bottom, 40)
-                
-                Divider()
-                
+                     .padding(.bottom, 20)
+                                
                 Button(action: {
                         print("Take to forget password VC")
                         }) {

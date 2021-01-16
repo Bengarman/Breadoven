@@ -19,11 +19,7 @@ class ActivitiesMockStore {
                                                                                                                            
                     CategoryItemSize(id: 1, sizeName: "Medium", sizePrice: 3, sizeDescription: "Jacó is a town on the Pacific coast of Costa Rica."),
             
-                    CategoryItemSize(id: 2, sizeName: "Large", sizePrice: 4, sizeDescription: "Dominical is a beach-front town in Bahía Ballena."),
-                    
-                    CategoryItemSize(id: 3, sizeName: "Large", sizePrice: 4, sizeDescription: "Dominical is a beach-front town in Bahía Ballena."),
-                    
-                    CategoryItemSize(id: 4, sizeName: "Large", sizePrice: 4, sizeDescription: "Dominical is a beach-front town in Bahía Ballena.")
+                    CategoryItemSize(id: 2, sizeName: "Large", sizePrice: 4, sizeDescription: "Dominical is a beach-front town in Bahía Ballena.")
                 ]),
              
                 CategoryItem(id: 1, itemDisplaySize: false, itemName: "Kebab Meat, Chips & Drink", itemImage: "kebab", itemSizes: [
@@ -41,62 +37,62 @@ class ActivitiesMockStore {
             categoryItems:[
                        
                 CategoryGroup(id: 0, resourceName: "Fish", resourceDescription: "Placeholder.... Fish is fish", resources:[
-                    CategoryItem(id: 0, itemDisplaySize: true, itemName: "Hadock", itemImage: "yoga", itemSizes: [
+                    CategoryItem(id: 0, itemDisplaySize: true, itemName: "Hadock", itemImage: "f+c", itemSizes: [
                         CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
                     ]),
-                    CategoryItem(id: 1, itemDisplaySize: true, itemName: "Cod", itemImage: "yoga", itemSizes: [
+                    CategoryItem(id: 1, itemDisplaySize: true, itemName: "Cod", itemImage: "f+c", itemSizes: [
                         CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
                     ]),
-                    CategoryItem(id: 2, itemDisplaySize: true, itemName: "Plaice", itemImage: "yoga", itemSizes: [
+                    CategoryItem(id: 2, itemDisplaySize: true, itemName: "Plaice", itemImage: "f+c", itemSizes: [
                         CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
                     ]),
-                    CategoryItem(id: 3, itemDisplaySize: true, itemName: "Scampi", itemImage: "yoga", itemSizes: [
+                    CategoryItem(id: 3, itemDisplaySize: true, itemName: "Scampi", itemImage: "f+c", itemSizes: [
                         CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
                     ]),
-                    CategoryItem(id: 4, itemDisplaySize: true, itemName: "Roe", itemImage: "yoga", itemSizes: [
+                    CategoryItem(id: 4, itemDisplaySize: true, itemName: "Roe", itemImage: "f+c", itemSizes: [
                         CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
                     ])
                 ]),
                 
                 CategoryGroup(id: 1, resourceName: "Others", resourceDescription: "Placeholder... stuff thats not fish and chips", resources:[
-                    CategoryItem(id: 0, itemDisplaySize: true, itemName: "Burgers", itemImage: "yoga", itemSizes: [
+                    CategoryItem(id: 0, itemDisplaySize: true, itemName: "Burgers", itemImage: "burger", itemSizes: [
                         CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
                     ]),
-                    CategoryItem(id: 1, itemDisplaySize: true, itemName: "Sausages", itemImage: "yoga", itemSizes: [
+                    CategoryItem(id: 1, itemDisplaySize: true, itemName: "Sausages", itemImage: "burger", itemSizes: [
                         CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
                     ]),
-                    CategoryItem(id: 2, itemDisplaySize: true, itemName: "Chicken", itemImage: "yoga", itemSizes: [
+                    CategoryItem(id: 2, itemDisplaySize: true, itemName: "Chicken", itemImage: "burger", itemSizes: [
                         CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
                     ]),
-                    CategoryItem(id: 3, itemDisplaySize: true, itemName: "Pies", itemImage: "yoga", itemSizes: [
+                    CategoryItem(id: 3, itemDisplaySize: true, itemName: "Pies", itemImage: "burger", itemSizes: [
                         CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
                     ]),
-                    CategoryItem(id: 4, itemDisplaySize: true, itemName: "Vegetarian", itemImage: "yoga", itemSizes: [
+                    CategoryItem(id: 4, itemDisplaySize: true, itemName: "Vegetarian", itemImage: "burger", itemSizes: [
                         CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
                     ])
                 ]),
                 CategoryGroup(id: 2, resourceName: "Kebabs", resourceDescription: "Placeholder ..... kebab is kebab", resources:[
-                    CategoryItem(id: 0, itemDisplaySize: true, itemName: "Donner", itemImage: "yoga", itemSizes: [
+                    CategoryItem(id: 0, itemDisplaySize: true, itemName: "Donner", itemImage: "kebab", itemSizes: [
                         CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
                     ]),
-                    CategoryItem(id: 1, itemDisplaySize: true, itemName: "Chicken", itemImage: "yoga", itemSizes: [
+                    CategoryItem(id: 1, itemDisplaySize: true, itemName: "Chicken", itemImage: "kebab", itemSizes: [
                         CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
                     ]),
-                    CategoryItem(id: 2, itemDisplaySize: true, itemName: "Mixed", itemImage: "yoga", itemSizes: [
+                    CategoryItem(id: 2, itemDisplaySize: true, itemName: "Mixed", itemImage: "kebab", itemSizes: [
                         CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
                     ]),
-                    CategoryItem(id: 3, itemDisplaySize: true, itemName: "Hasllumi", itemImage: "yoga", itemSizes: [
+                    CategoryItem(id: 3, itemDisplaySize: true, itemName: "Hasllumi", itemImage: "kebab", itemSizes: [
                         CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
                     ])
                 ]),
                 CategoryGroup(id: 3, resourceName: "Extras", resourceDescription: "Placeholder ..... Extras init", resources:[
-                    CategoryItem(id: 0, itemDisplaySize: true, itemName: "Sauces", itemImage: "yoga", itemSizes: [
+                    CategoryItem(id: 0, itemDisplaySize: true, itemName: "Sauces", itemImage: "burger", itemSizes: [
                         CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
                     ]),
-                    CategoryItem(id: 1, itemDisplaySize: true, itemName: "Sides", itemImage: "yoga", itemSizes: [
+                    CategoryItem(id: 1, itemDisplaySize: true, itemName: "Sides", itemImage: "burger", itemSizes: [
                         CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
                     ]),
-                    CategoryItem(id: 2, itemDisplaySize: true, itemName: "Drinks", itemImage: "yoga", itemSizes: [
+                    CategoryItem(id: 2, itemDisplaySize: true, itemName: "Drinks", itemImage: "burger", itemSizes: [
                         CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
                     ])
                 ])

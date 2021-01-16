@@ -96,7 +96,7 @@ extension String {
 func getURLAddress(pathName: String, querys: [URLQueryItem]) -> String{
     var urlComponents = URLComponents()
     urlComponents.scheme = "http"
-    urlComponents.host = "garman.live"
+    urlComponents.host = "garmanapps.co.uk"
     urlComponents.path = "/api/" + pathName
     urlComponents.queryItems = querys
     return urlComponents.url!.absoluteString
@@ -126,7 +126,7 @@ class LaunchViewController: UIViewController {
         optionsData.paidSauce.removeAll()
         
         optionsData.options.removeAll()
-        if let url = URL(string: "http://garman.live/BreadShop/options/options.php"){
+        if let url = URL(string: "http://garmanapps.co.uk/BreadShop/options/options.php"){
             do {
                 let contents = try String(contentsOf: url)
                 let feed = contents.components(separatedBy: "\n")
@@ -148,7 +148,7 @@ class LaunchViewController: UIViewController {
         Global.drinks.removeAll()
         Global.snacks.removeAll()
         
-        if let url = URL(string: "http://garman.live/BreadShop/menu/sides.php"){
+        if let url = URL(string: "http://garmanapps.co.uk/BreadShop/menu/sides.php"){
             do {
                 let contents = try String(contentsOf: url)
                 let feed = contents.components(separatedBy: "\n")
@@ -175,7 +175,7 @@ class LaunchViewController: UIViewController {
         
         Global.menu.removeAll()
         Global.category.removeAll()
-        if let url = URL(string: "http://garman.live/BreadShop/categorys/menu.php"){
+        if let url = URL(string: "http://garmanapps.co.uk/BreadShop/categorys/menu.php"){
             do {
                 
                 let contents = try String(contentsOf: url)
@@ -193,7 +193,7 @@ class LaunchViewController: UIViewController {
             print("catch")
         }
         
-        if let url = URL(string: "http://garman.live/BreadShop/categorys/category.php"){
+        if let url = URL(string: "http://garmanapps.co.uk/BreadShop/categorys/category.php"){
             do {
                 
                 let contents = try String(contentsOf: url)
