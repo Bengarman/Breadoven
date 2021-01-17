@@ -14,8 +14,25 @@ struct CategoryItem {
     var itemDisplaySize: Bool
     var itemName: String
     var itemImage: String
-    var itemSizes: [CategoryItemSize]
+    var itemQuantity: Int = 0
+    var itemBasePrice : Double
+    var itemDescription: String
+    var itemAdditions: [CategoryItemMods]
    
+}
+
+struct CategoryItemMods {
+    var id: Int
+    var modName : String
+    var compulsary : Bool
+    var selected: Int?
+    var modifiers: [CategoryItemModifier]
+}
+
+struct CategoryItemModifier {
+    var id: Int
+    var sizeName: String
+    var sizePriceAddition: Double
 }
 
 struct CategoryGroup {
@@ -31,12 +48,7 @@ struct ActivitiesData {
     var categoryItems: [CategoryGroup]
 }
 
-struct CategoryItemSize {
-    var id: Int
-    var sizeName: String
-    var sizePrice: Int
-    var sizeDescription: String
-}
+
 
 class Activities: ObservableObject {
     let objectWillChange = PassthroughSubject<Void, Never>()
@@ -120,7 +132,6 @@ struct ActivitiesContentView: View {
                                         
                                         ScrollView (.horizontal, showsIndicators: false) {
                                             HStack (spacing: 10) {
-                                                Print(item.resources.count)
                                                 ForEach(0..<item.resources.count, id: \.self) { index in
                                                     Button(action: {
                                                         self.placeItemSelected = item.resources[index]

@@ -27,6 +27,7 @@ struct ActivitiesCartViewNav: View {
 @available(iOS 14.0, *)
 struct ActivitiesCartView: View {
     @StateObject var cartData : CartViewModel
+    @State var top = UIApplication.shared.windows.last?.safeAreaInsets.top
 
     var body: some View {
         GeometryReader { geometry in
@@ -52,10 +53,9 @@ struct ActivitiesCartView: View {
                         }
                     }
                 }
-                .frame(height: 87 * 4)
+                .frame(height: geometry.size.height - 270)
                 
-                Spacer()
-                HStack {
+                HStack (alignment: .bottom){
                     VStack (alignment: .leading){
                         Spacer()
                         HStack {
@@ -137,7 +137,6 @@ struct ItemView: View {
         GeometryReader { geometry in
             ZStack {
                 HStack{
-                    Print(shoppingCartItem.id)
                     Spacer()
                     Button(action: {
                         withAnimation(.easeIn){deleteItem()}
@@ -155,7 +154,8 @@ struct ItemView: View {
                     Image("\(shoppingCartItem.itemImage)")
                         .renderingMode(.original)
                         .resizable()
-                        .frame(width: 60, height: 60)
+                        .frame(width: 40)
+                        .aspectRatio(contentMode: ContentMode.fit)
                         .padding(.trailing, 5)
                         .padding(.leading, 5)
                     
@@ -166,11 +166,11 @@ struct ItemView: View {
                         Text("\(shoppingCartItem.itemName)")
                             .lineLimit(nil)
                             .foregroundColor(.primary)
-                        Text("\(shoppingCartItem.itemManufacturer)")
+                        Text("\(shoppingCartItem.itemOptions)")
                             .foregroundColor(.primary)
                             .font(.system(size: 12))
                             .foregroundColor(Color.gray)
-                        Text("\(shoppingCartItem.itemColor)")
+                        Text("\(shoppingCartItem.itemQuantity)")
                             .foregroundColor(.primary)
                             .font(.system(size: 12))
                             .foregroundColor(Color.gray)

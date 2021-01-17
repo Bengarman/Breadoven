@@ -14,86 +14,114 @@ class ActivitiesMockStore {
         
         featuredItems:[
             
-                CategoryItem(id: 0, itemDisplaySize: true, itemName: "Fish & Chips", itemImage: "f+c", itemSizes: [
-                    CategoryItemSize(id: 0, sizeName: "Small", sizePrice: 2, sizeDescription: "Tamarindo is a town in the Guanacaste Province."),
-                                                                                                                           
-                    CategoryItemSize(id: 1, sizeName: "Medium", sizePrice: 3, sizeDescription: "Jacó is a town on the Pacific coast of Costa Rica."),
-            
-                    CategoryItemSize(id: 2, sizeName: "Large", sizePrice: 4, sizeDescription: "Dominical is a beach-front town in Bahía Ballena.")
+            CategoryItem(id: 0, itemDisplaySize: true, itemName: "Fish & Chips", itemImage: "f+c", itemBasePrice: 2.00, itemDescription: "Tamarindo is a town in the Guanacaste Province.", itemAdditions: [
+                CategoryItemMods(id: 0, modName: "Size", compulsary: true, selected: nil, modifiers: [
+                    CategoryItemModifier(id: 0, sizeName: "Small", sizePriceAddition: 0.10),
+                    CategoryItemModifier(id: 1, sizeName: "Medium", sizePriceAddition: 0.30),
+                    CategoryItemModifier(id: 2, sizeName: "Large", sizePriceAddition: 0.40)
+                ])
+            ]),
+            CategoryItem(id: 1, itemDisplaySize: true, itemName: "Fish & Chips", itemImage: "kebab", itemBasePrice: 2.00, itemDescription: "Tamarindo is a town in the Guanacaste Province.", itemAdditions: [
+                CategoryItemMods(id: 0, modName: "Size", compulsary: true, selected: nil, modifiers: [
+                    CategoryItemModifier(id: 0, sizeName: "Small", sizePriceAddition: 0.10),
+                    CategoryItemModifier(id: 1, sizeName: "Medium", sizePriceAddition: 0.30),
+                    CategoryItemModifier(id: 2, sizeName: "Large", sizePriceAddition: 0.40)
                 ]),
-             
-                CategoryItem(id: 1, itemDisplaySize: false, itemName: "Kebab Meat, Chips & Drink", itemImage: "kebab", itemSizes: [
-                    CategoryItemSize(id: 0, sizeName: "Kuta", sizePrice: 2, sizeDescription: "Kuta is a beach and resort area"),
-                 
-                    CategoryItemSize(id: 1, sizeName: "Jimbaran", sizePrice: 3, sizeDescription: "Jimbaran Bay has a long beach with calm waters.")
-                 ]),
-                 
-                CategoryItem(id: 2, itemDisplaySize: true, itemName: "Small Portions", itemImage: "burger", itemSizes: [
-                    CategoryItemSize(id: 0, sizeName: "Muizenberg", sizePrice: 4, sizeDescription: "Surfer’s Corner at Muizenberg is a popular learning spot"),
-                     
-                    CategoryItemSize(id: 1, sizeName: "Long Beach", sizePrice: 5, sizeDescription: "Long Beach at Kommetjie is just that, a long, sandy beach")
-                 ])
+                CategoryItemMods(id: 1, modName: "Color", compulsary: false, selected: nil, modifiers: [
+                    CategoryItemModifier(id: 0, sizeName: "Blue", sizePriceAddition: 0),
+                    CategoryItemModifier(id: 1, sizeName: "Green", sizePriceAddition: 0.30),
+                    CategoryItemModifier(id: 2, sizeName: "Red", sizePriceAddition: 0.40)
+                ]),
+                CategoryItemMods(id: 2, modName: "Time", compulsary: false, selected: nil, modifiers: [
+                    CategoryItemModifier(id: 0, sizeName: "Blue", sizePriceAddition: 0),
+                    CategoryItemModifier(id: 1, sizeName: "Green", sizePriceAddition: 0.30),
+                    CategoryItemModifier(id: 2, sizeName: "Red", sizePriceAddition: 0.40)
+                ])
+            ]),
+            CategoryItem(id: 2, itemDisplaySize: true, itemName: "Fish & Chips", itemImage: "burger", itemBasePrice: 2.00, itemDescription: "Tamarindo is a town in the Guanacaste Province.", itemAdditions: [
+                CategoryItemMods(id: 0, modName: "Size", compulsary: true, selected: nil, modifiers: [
+                    CategoryItemModifier(id: 0, sizeName: "Small", sizePriceAddition: 0.10),
+                    CategoryItemModifier(id: 1, sizeName: "Medium", sizePriceAddition: 0.30),
+                    CategoryItemModifier(id: 2, sizeName: "Large", sizePriceAddition: 0.40)
+                ])
+            ])
             ],
             categoryItems:[
                        
                 CategoryGroup(id: 0, resourceName: "Fish", resourceDescription: "Placeholder.... Fish is fish", resources:[
-                    CategoryItem(id: 0, itemDisplaySize: true, itemName: "Hadock", itemImage: "f+c", itemSizes: [
-                        CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
+                    CategoryItem(id: 0, itemDisplaySize: true, itemName: "Hadock", itemImage: "f+c", itemBasePrice: 2.00, itemDescription: "Tamarindo is a town in the Guanacaste Province.", itemAdditions: [
+                        CategoryItemMods(id: 0, modName: "Size", compulsary: true, selected: nil, modifiers: [
+                            CategoryItemModifier(id: 0, sizeName: "Small", sizePriceAddition: 0.10),
+                            CategoryItemModifier(id: 1, sizeName: "Medium", sizePriceAddition: 0.30),
+                            CategoryItemModifier(id: 2, sizeName: "Large", sizePriceAddition: 0.40),
+                            CategoryItemModifier(id: 3, sizeName: "X Large", sizePriceAddition: 0.50),
+                            CategoryItemModifier(id: 4, sizeName: "X X Large", sizePriceAddition: 0.60)
+                        ])
                     ]),
-                    CategoryItem(id: 1, itemDisplaySize: true, itemName: "Cod", itemImage: "f+c", itemSizes: [
-                        CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
+                    CategoryItem(id: 1, itemDisplaySize: true, itemName: "Cod", itemImage: "f+c", itemBasePrice: 2.00, itemDescription: "Tamarindo is a town in the Guanacaste Province.", itemAdditions: [
+                        CategoryItemMods(id: 0, modName: "Size", compulsary: true, selected: nil, modifiers: [
+                            CategoryItemModifier(id: 0, sizeName: "Small", sizePriceAddition: 0.10),
+                            CategoryItemModifier(id: 1, sizeName: "Medium", sizePriceAddition: 0.30),
+                            CategoryItemModifier(id: 2, sizeName: "Large", sizePriceAddition: 0.40)
+                        ])
                     ]),
-                    CategoryItem(id: 2, itemDisplaySize: true, itemName: "Plaice", itemImage: "f+c", itemSizes: [
-                        CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
+                    CategoryItem(id: 2, itemDisplaySize: true, itemName: "Plaice", itemImage: "f+c", itemBasePrice: 2.00, itemDescription: "Tamarindo is a town in the Guanacaste Province.", itemAdditions: [
+                        CategoryItemMods(id: 0, modName: "Size", compulsary: true, selected: nil, modifiers: [
+                            CategoryItemModifier(id: 0, sizeName: "Small", sizePriceAddition: 0.10),
+                            CategoryItemModifier(id: 1, sizeName: "Medium", sizePriceAddition: 0.30),
+                            CategoryItemModifier(id: 2, sizeName: "Large", sizePriceAddition: 0.40)
+                        ])
                     ]),
-                    CategoryItem(id: 3, itemDisplaySize: true, itemName: "Scampi", itemImage: "f+c", itemSizes: [
-                        CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
+                    CategoryItem(id: 3, itemDisplaySize: true, itemName: "Scampi", itemImage: "f+c", itemBasePrice: 2.00, itemDescription: "Tamarindo is a town in the Guanacaste Province.", itemAdditions: [
+                        CategoryItemMods(id: 0, modName: "Size", compulsary: true, selected: nil, modifiers: [
+                            CategoryItemModifier(id: 0, sizeName: "Small", sizePriceAddition: 0.10),
+                            CategoryItemModifier(id: 1, sizeName: "Medium", sizePriceAddition: 0.30),
+                            CategoryItemModifier(id: 2, sizeName: "Large", sizePriceAddition: 0.40)
+                        ])
                     ]),
-                    CategoryItem(id: 4, itemDisplaySize: true, itemName: "Roe", itemImage: "f+c", itemSizes: [
-                        CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
+                    CategoryItem(id: 4, itemDisplaySize: true, itemName: "Roe", itemImage: "f+c", itemBasePrice: 2.00, itemDescription: "Tamarindo is a town in the Guanacaste Province.", itemAdditions: [
+                        CategoryItemMods(id: 0, modName: "Size", compulsary: true,  selected: nil, modifiers: [
+                            CategoryItemModifier(id: 0, sizeName: "Small", sizePriceAddition: 0.10),
+                            CategoryItemModifier(id: 1, sizeName: "Medium", sizePriceAddition: 0.30),
+                            CategoryItemModifier(id: 2, sizeName: "Large", sizePriceAddition: 0.40)
+                        ])
                     ])
                 ]),
-                
-                CategoryGroup(id: 1, resourceName: "Others", resourceDescription: "Placeholder... stuff thats not fish and chips", resources:[
-                    CategoryItem(id: 0, itemDisplaySize: true, itemName: "Burgers", itemImage: "burger", itemSizes: [
-                        CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
+                CategoryGroup(id: 1, resourceName: "Fish", resourceDescription: "Placeholder.... Fish is fish", resources:[
+                    CategoryItem(id: 0, itemDisplaySize: true, itemName: "Hadock", itemImage: "f+c", itemBasePrice: 2.00, itemDescription: "Tamarindo is a town in the Guanacaste Province.", itemAdditions: [
+                        CategoryItemMods(id: 0, modName: "Size", compulsary: true, selected: nil, modifiers: [
+                            CategoryItemModifier(id: 0, sizeName: "Small", sizePriceAddition: 0.10),
+                            CategoryItemModifier(id: 1, sizeName: "Medium", sizePriceAddition: 0.30),
+                            CategoryItemModifier(id: 2, sizeName: "Large", sizePriceAddition: 0.40)
+                        ])
                     ]),
-                    CategoryItem(id: 1, itemDisplaySize: true, itemName: "Sausages", itemImage: "burger", itemSizes: [
-                        CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
+                    CategoryItem(id: 1, itemDisplaySize: true, itemName: "Cod", itemImage: "f+c", itemBasePrice: 2.00, itemDescription: "Tamarindo is a town in the Guanacaste Province.", itemAdditions: [
+                        CategoryItemMods(id: 0, modName: "Size", compulsary: true, selected: nil, modifiers: [
+                            CategoryItemModifier(id: 0, sizeName: "Small", sizePriceAddition: 0.10),
+                            CategoryItemModifier(id: 1, sizeName: "Medium", sizePriceAddition: 0.30),
+                            CategoryItemModifier(id: 2, sizeName: "Large", sizePriceAddition: 0.40)
+                        ])
                     ]),
-                    CategoryItem(id: 2, itemDisplaySize: true, itemName: "Chicken", itemImage: "burger", itemSizes: [
-                        CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
+                    CategoryItem(id: 2, itemDisplaySize: true, itemName: "Plaice", itemImage: "f+c", itemBasePrice: 2.00, itemDescription: "Tamarindo is a town in the Guanacaste Province.", itemAdditions: [
+                        CategoryItemMods(id: 0, modName: "Size", compulsary: true, selected: nil, modifiers: [
+                            CategoryItemModifier(id: 0, sizeName: "Small", sizePriceAddition: 0.10),
+                            CategoryItemModifier(id: 1, sizeName: "Medium", sizePriceAddition: 0.30),
+                            CategoryItemModifier(id: 2, sizeName: "Large", sizePriceAddition: 0.40)
+                        ])
                     ]),
-                    CategoryItem(id: 3, itemDisplaySize: true, itemName: "Pies", itemImage: "burger", itemSizes: [
-                        CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
+                    CategoryItem(id: 3, itemDisplaySize: true, itemName: "Scampi", itemImage: "f+c", itemBasePrice: 2.00, itemDescription: "Tamarindo is a town in the Guanacaste Province.", itemAdditions: [
+                        CategoryItemMods(id: 0, modName: "Size", compulsary: true, selected: nil, modifiers: [
+                            CategoryItemModifier(id: 0, sizeName: "Small", sizePriceAddition: 0.10),
+                            CategoryItemModifier(id: 1, sizeName: "Medium", sizePriceAddition: 0.30),
+                            CategoryItemModifier(id: 2, sizeName: "Large", sizePriceAddition: 0.40)
+                        ])
                     ]),
-                    CategoryItem(id: 4, itemDisplaySize: true, itemName: "Vegetarian", itemImage: "burger", itemSizes: [
-                        CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
-                    ])
-                ]),
-                CategoryGroup(id: 2, resourceName: "Kebabs", resourceDescription: "Placeholder ..... kebab is kebab", resources:[
-                    CategoryItem(id: 0, itemDisplaySize: true, itemName: "Donner", itemImage: "kebab", itemSizes: [
-                        CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
-                    ]),
-                    CategoryItem(id: 1, itemDisplaySize: true, itemName: "Chicken", itemImage: "kebab", itemSizes: [
-                        CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
-                    ]),
-                    CategoryItem(id: 2, itemDisplaySize: true, itemName: "Mixed", itemImage: "kebab", itemSizes: [
-                        CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
-                    ]),
-                    CategoryItem(id: 3, itemDisplaySize: true, itemName: "Hasllumi", itemImage: "kebab", itemSizes: [
-                        CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
-                    ])
-                ]),
-                CategoryGroup(id: 3, resourceName: "Extras", resourceDescription: "Placeholder ..... Extras init", resources:[
-                    CategoryItem(id: 0, itemDisplaySize: true, itemName: "Sauces", itemImage: "burger", itemSizes: [
-                        CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
-                    ]),
-                    CategoryItem(id: 1, itemDisplaySize: true, itemName: "Sides", itemImage: "burger", itemSizes: [
-                        CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
-                    ]),
-                    CategoryItem(id: 2, itemDisplaySize: true, itemName: "Drinks", itemImage: "burger", itemSizes: [
-                        CategoryItemSize(id: 0, sizeName: "test", sizePrice: 9, sizeDescription: "yolo")
+                    CategoryItem(id: 4, itemDisplaySize: true, itemName: "Roe", itemImage: "f+c", itemBasePrice: 2.00, itemDescription: "Tamarindo is a town in the Guanacaste Province.", itemAdditions: [
+                        CategoryItemMods(id: 0, modName: "Size", compulsary: true, selected: nil, modifiers: [
+                            CategoryItemModifier(id: 0, sizeName: "Small", sizePriceAddition: 0.10),
+                            CategoryItemModifier(id: 1, sizeName: "Medium", sizePriceAddition: 0.30),
+                            CategoryItemModifier(id: 2, sizeName: "Large", sizePriceAddition: 0.40)
+                        ])
                     ])
                 ])
             ]
@@ -110,8 +138,8 @@ struct Item : Identifiable{
     var id = UUID().uuidString
     var itemName : String
     var itemPrice : String
-    var itemColor: String
-    var itemManufacturer: String
+    var itemOptions: String
+    var itemQuantity: String
     var itemImage: String
     var offset: CGFloat
     var isSwiped: Bool

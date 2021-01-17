@@ -18,20 +18,30 @@ extension View {
         return EmptyView()
     }
 }
+extension Double {
+    func round(to places: Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
+}
 
 struct PlaceDetailView : View {
     @Binding var isShowing: Bool
     @Binding var placeItem: CategoryItem?
-    let defaultPoint = CategoryItemSize(id: 0, sizeName: "Default", sizePrice: 0, sizeDescription: "Default Description PlaceHolder")
+    let defaultPoint = CategoryItemModifier(id: 0, sizeName: "Default", sizePriceAddition: 0)
     @State var top = UIApplication.shared.windows.last?.safeAreaInsets.top
     @ObservedObject var selectedPoint = SelectedPoint()
+    @State var selectedSize = "S"
+    @State var prices  =  [Int: Double]()
+    @State var count = 1
+
     
     var body: some View {
         GeometryReader { g in
             
-            ZStack {
-                
-                ScrollView{
+            VStack {
+                ScrollView(.vertical, showsIndicators: false) {
+                    
                     VStack(alignment: .center) {
                         Image(self.placeItem?.itemImage ?? "")
                             .resizable()
@@ -39,135 +49,234 @@ struct PlaceDetailView : View {
                             .onDisappear {
                                 self.isShowing = false
                             }
-                        ScrollView(.vertical, showsIndicators: false) {
-                            VStack(alignment: .leading) {
+                        VStack(alignment: .leading) {
+                            HStack{
                                 Text(self.placeItem?.itemName ?? "")
-                                    .font(.system(size: 30, weight: .bold, design: .default))
+                                    .font(.custom("Montserrat-Bold", size: 25))
                                     .padding(.top, 50)
-                                //.padding(.leading, 30)
-                                
+                                    .padding(.leading, 20)
                                 Spacer()
-                                
-                                VStack(alignment: .leading) {
-                                    Text((self.placeItem?.itemSizes[self.selectedPoint.selectedIndex].sizeName)!)
-                                        .font(.system(size: 24, weight: .bold, design: .default))
-                                    //.padding(.leading, 30)
-                                    
-                                    Text((self.placeItem?.itemSizes[self.selectedPoint.selectedIndex].sizeDescription)!)
-                                        .font(.system(size: 16, weight: .regular, design: .default))
-                                        //.padding(.leading, 30)
-                                        .padding(.trailing, 30)
-                                }.padding(.bottom, 50)
-                                
-                                
-                                if self.placeItem?.itemDisplaySize == true {
-                                    ZStack {
-                                        ScrollView(.horizontal, showsIndicators: false) {
-                                            HStack{
-                                                ForEach(self.placeItem?.itemSizes ?? [], id: \.id) { item in
-                                                    
-                                                    Button(action: {
-                                                        self.selectedPoint.selectedIndex = item.id
-                                                    })
-                                                    {
-                                                        ZStack {
-                                                            Image(self.placeItem?.itemImage ?? "").renderingMode(.original)
-                                                                .resizable()
-                                                                .frame(width: 110, height: 110)
-                                                                .background(Color.red)
-                                                                .clipShape(Circle())
-                                                            
-                                                            if (self.selectedPoint.selectedIndex == item.id) {
-                                                                Text("✓")
-                                                                    .font(.system(size: 30, weight: .bold, design: Font.Design.default))
-                                                                    .foregroundColor(Color.white)
-                                                            }
-                                                        }
-                                                        
-                                                    }
-                                                }
-                                            }.frame(width: g.size.width, height: 130)
-                                        }
-                                    }.padding(.bottom, 50)
-                                }
-                                
-                                Button(action: {
-                                    cartData.items.append(Item(itemName: (self.placeItem?.itemName)!, itemPrice: String((self.placeItem?.itemSizes[self.selectedPoint.selectedIndex].sizePrice)!), itemColor: "", itemManufacturer: (self.placeItem?.itemSizes[self.selectedPoint.selectedIndex].sizeName)!, itemImage: (self.placeItem?.itemImage)!, offset: 0, isSwiped: false))
-                                    
-                                    
-                                    self.isShowing = false
-                                    
-                                })
-                                {
-                                    HStack (alignment: .center){
-                                        
-                                        Text("Add to basket - £" + String((self.placeItem?.itemSizes[self.selectedPoint.selectedIndex].sizePrice)!))
-                                    }
-                                    .padding()
-                                    .frame(width: g.size.width - 35, height: 40)
-                                    .foregroundColor(Color.white)
-                                    .background(Color.blue)
-                                    .cornerRadius(5)
-                                }.padding(.bottom, 50)
+                            }
+                            
+                            Spacer()
+                            
+                            VStack(alignment: .leading) {
+                                Text((self.placeItem?.itemDescription)!)
+                                    .font(.custom("Montserrat-Bold", size: 14))
+                                    .padding(.trailing, 30)
+                                    .padding(.leading, 20)
+
                                 
                             }
-                        }
-                        .padding()
+                            Spacer()
+                        }.frame(width: g.size.width)
                         .background(RoundedCorner().fill(Color.white))
                         .padding(.top, -top!)
+                        Spacer()
+                        
+                        
+                        ForEach(self.placeItem!.itemAdditions, id: \.id) { item in
+                            //Modifications
+                            HStack{
+                                if item.compulsary {
+                                    Text(item.modName + ": *")
+                                        .padding(.leading,16)
+                                        .font(.custom("Montserrat-Bold", size: 17))
+                                }else{
+                                    Text(item.modName + ":")
+                                        .padding(.leading,16)
+                                        .font(.custom("Montserrat-Bold", size: 17))
+                                }
+                                
+                                Spacer()
+                            }
+                            VStack{
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack( alignment: .center){
+                                        Spacer()
+                                        ForEach(item.modifiers, id: \.id) { i in
+                                            let textVal = i.sizeName
+                                            let price = String(format: "%.2f", i.sizePriceAddition)
+                                            if price != "0.00" {
+                                                Button(action: {
+                                                    if (self.placeItem!.itemAdditions[item.id].compulsary == false) && (self.placeItem!.itemAdditions[item.id].selected == i.id){
+                                                        self.prices.removeValue(forKey: item.id)
+                                                        self.placeItem!.itemAdditions[item.id].selected = nil
+
+                                                    }else{
+                                                        self.prices[item.id] = i.sizePriceAddition
+                                                        self.placeItem!.itemAdditions[item.id].selected = i.id
+                                                    }
+                                                    
+                                                }) {
+                                                    
+                                                    Text(textVal + " + £" + price)
+                                                        .font(.custom("Montserrat-Bold", size: 13))
+                                                        .foregroundColor(self.placeItem!.itemAdditions[item.id].selected == i.id ? .white : .black)
+                                                        .padding(.vertical,8)
+                                                        .padding(.horizontal,10)
+                                                        .background(
+                                                            
+                                                            ZStack{
+                                                                
+                                                                RoundedRectangle(cornerRadius: 5)
+                                                                    .fill(Color.blue.opacity(self.placeItem!.itemAdditions[item.id].selected == i.id ? 1 : 0))
+                                                                
+                                                                RoundedRectangle(cornerRadius: 5)
+                                                                    .stroke(Color.black,lineWidth: 1.5)
+                                                            }
+                                                        )
+                                                }
+                                            }else{
+                                                Button(action: {
+                                                    if (self.placeItem!.itemAdditions[item.id].compulsary == false) && (self.placeItem!.itemAdditions[item.id].selected == i.id){
+                                                        self.prices.removeValue(forKey: item.id)
+                                                        self.placeItem!.itemAdditions[item.id].selected = nil
+
+                                                    }else{
+                                                        self.prices[item.id] = i.sizePriceAddition
+                                                        self.placeItem!.itemAdditions[item.id].selected = i.id
+                                                    }
+                                                }) {
+                                                    
+                                                    Text(textVal)
+                                                        .font(.custom("Montserrat-Bold", size: 13))
+                                                        .foregroundColor(self.placeItem!.itemAdditions[item.id].selected == i.id ? .white : .black)
+                                                        .padding(.vertical,8)
+                                                        .padding(.horizontal,10)
+                                                        .background(
+                                                            
+                                                            ZStack{
+                                                                
+                                                                RoundedRectangle(cornerRadius: 5)
+                                                                    .fill(Color.blue.opacity(self.placeItem!.itemAdditions[item.id].selected == i.id ? 1 : 0))
+                                                                
+                                                                RoundedRectangle(cornerRadius: 5)
+                                                                    .stroke(Color.black,lineWidth: 1.5)
+                                                            }
+                                                        )
+                                                }
+                                            }
+                                            
+                                            
+                                        }
+                                        .padding(.top,2)
+                                        .padding(.bottom,2)
+                                        Spacer()
+                                    }
+                                    .frame(minWidth: g.size.width - 70)
+                                    
+                                    
+                                    
+                                }
+                                
+                            }
+                            
+                            .padding()
+                            .frame(width: g.size.width - 30)
+                            .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
+                            .cornerRadius(10)
+                        }
+                        Spacer()
+                        
+                        HStack{
+                            Text("Quantity:")
+                                .padding(.leading,20)
+                                .font(.custom("Montserrat-Bold", size: 17))
+                            
+                            Spacer()
+                        }
+                        VStack{
+                                HStack( alignment: .center){
+                                    
+                                    Spacer()
+                                    Button(action: {
+                                        if self.count > 1 {
+                                            
+                                            self.count -= 1
+                                        }
+                                    }) {
+                                        
+                                        Image(systemName: "minus.circle").font(.system(size: 24))
+                                        
+                                    }.foregroundColor(.black)
+                                    Spacer()
+                                    Text("\(self.count)")
+                                        .font(.custom("Montserrat-Bold", size: 16))
+
+                                    Spacer()
+                                    Button(action: {
+                                        self.count += 1
+
+                                    }) {
+                                        
+                                        Image(systemName: "plus.circle").font(.system(size: 24))
+                                        
+                                    }.foregroundColor(.black)
+                                    Spacer()
+                                    
+                                }
+                                
+                            
+                            
+                        }
+                        
+                        .padding()
+                        .frame(width: g.size.width - 30)
+                        .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
+                        .cornerRadius(10)
                         
                     }
                 }
+                .frame(height: g.size.height )
+                .offset(y: -80)
             }
+            VStack(alignment: .center){
+                
+                Spacer()
+                HStack(alignment: .bottom){
+                    Spacer()
+                    
+                    
+                    Button(action: {
+                        //cartData.items.append(Item(itemName: (self.placeItem?.itemName)!, itemPrice: String((self.placeItem?.itemSizes[self.selectedPoint.selectedIndex].sizePrice)!), itemColor: "", itemManufacturer: (self.placeItem?.itemSizes[self.selectedPoint.selectedIndex].sizeName)!, itemImage: (self.placeItem?.itemImage)!, offset: 0, isSwiped: false))
+                        
+                        self.isShowing = false
+                        
+                        
+                    })
+                    {
+                        HStack (alignment: .bottom){
+                            Text("Add to basket - £" + String(format: "%.2f", (total(price: self.prices, base: self.placeItem!.itemBasePrice, quantity: self.count))))
+                                .font(.custom("Montserrat-Bold", size: 16))
+
+                        }
+                        //.padding()
+                        .frame(width: g.size.width - 35, height: 40)
+                        .foregroundColor(Color.white)
+                        .background(Color.blue)
+                        .cornerRadius(5)
+                    }.padding(.bottom, 30)
+                    Spacer()
+                }
+                //.padding(.bottom, 40)
+                
+            }
+            .frame(width: g.size.width)
+            
         }
         .edgesIgnoringSafeArea(.bottom)
     }
 }
 
-struct PlacesCircleView: View {
-    var placeItems: CategoryItemSize
-    @ObservedObject var selectedPoint: SelectedPoint
-    
-    var body: some View {
-        GeometryReader { g in
-            Button(action: {
-                self.selectedPoint.selectedIndex = self.placeItems.id
-            }) {
-                ZStack {
-                    Image("burger").renderingMode(.original)
-                        .resizable()
-                        .frame(width: 90, height: 110)
-                        .background(Color.red)
-                        .clipShape(Circle())
-                    
-                    if (self.selectedPoint.selectedIndex == self.placeItems.id) {
-                        Text("✓")
-                            .font(.system(size: 30, weight: .bold, design: Font.Design.default))
-                            .foregroundColor(Color.white)
-                    }
-                }
-            }
-        }
+func total(price: [Int:Double], base: Double, quantity: Int) -> Double {
+    var tot = base
+    for item in price.keys {
+        print(price.count)
+        tot += price[item]!
     }
+    return tot * Double(quantity)
 }
-
-struct PlacesDetail: View {
-    var placeItems: CategoryItemSize
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(placeItems.sizeName)
-                .font(.system(size: 24, weight: .bold, design: .default))
-            //.padding(.leading, 30)
-            
-            Text(placeItems.sizeDescription)
-                .font(.system(size: 16, weight: .regular, design: .default))
-                //.padding(.leading, 30)
-                .padding(.trailing, 30)
-        }
-    }
-}
-
 
 struct RoundedCorner : Shape {
     
@@ -181,198 +290,3 @@ struct RoundedCorner : Shape {
 
 
 
-struct Detail : View {
-    
-    @Binding var show : Bool
-    @State var top = UIApplication.shared.windows.last?.safeAreaInsets.top
-    @State var count = 0
-    
-    var body : some View{
-        
-        VStack(spacing: 0){
-            
-            Image("header")
-                .resizable()
-                .frame(height: UIScreen.main.bounds.height / 2.5)
-                .edgesIgnoringSafeArea(.top)
-                .overlay(
-                    
-                    VStack{
-                        
-                        HStack(spacing: 12){
-                            
-                            Button(action: {
-                                
-                                self.show.toggle()
-                                
-                            }) {
-                                
-                                Image("back").renderingMode(.original)
-                            }
-                            
-                            Spacer()
-                            
-                            Button(action: {
-                                
-                            }) {
-                                
-                                Image("download").renderingMode(.original)
-                            }
-                            
-                            Button(action: {
-                                
-                            }) {
-                                
-                                Image("Wishlist").renderingMode(.original)
-                            }
-                            
-                        }.padding()
-                        
-                        Spacer()
-                    }
-                    
-                )
-            
-            ScrollView(.vertical, showsIndicators: false) {
-                
-                VStack(alignment: .leading,spacing: 15){
-                    
-                    Text("Seedless Lemon").font(.title)
-                    
-                    Text("30.00 / kg").foregroundColor(.green)
-                    
-                    Divider().padding(.vertical, 15)
-                    
-                    HStack{
-                        
-                        Image("rp1").renderingMode(.original)
-                        
-                        Text("Diana Organic Farm")
-                        
-                        Spacer()
-                        
-                        Button(action: {
-                            
-                        }) {
-                            
-                            Image("chat").renderingMode(.original)
-                        }
-                    }
-                    
-                    Text("Organic seedless lemon will enhance the flavor of all your favorite recipes, including chicken, fish, vegetables, and soups without the hassle of picking out the seeds. They are also fantastic in marinades, sauces, and fruit salads.").foregroundColor(.gray)
-                    
-                    HStack{
-                        
-                        Text("Reviews (48)")
-                        
-                        Spacer()
-                        
-                        Button(action: {
-                            
-                        }) {
-                            
-                            Text("More")
-                            
-                        }.foregroundColor(Color("Color"))
-                        
-                    }.padding(.vertical, 10)
-                    
-                    HStack{
-                        
-                        Image("rp2").renderingMode(.original)
-                        
-                        VStack(alignment: .leading, spacing: 6){
-                            
-                            HStack{
-                                
-                                Text("4")
-                                Image(systemName: "star.fill").foregroundColor(.yellow)
-                                
-                            }
-                            
-                            Text("Oh Yeon Seo")
-                            Text("The Lemon is So Fresh And Delivery is So Speed....")
-                        }
-                        
-                    }.padding()
-                    .background(Color("Color1"))
-                    .cornerRadius(12)
-                    
-                    HStack(spacing: 20){
-                        
-                        Spacer(minLength: 12)
-                        
-                        Button(action: {
-                            
-                            self.count += 1
-                        }) {
-                            
-                            Image(systemName: "plus.circle").font(.largeTitle)
-                            
-                        }.foregroundColor(.green)
-                        
-                        Text("\(self.count)")
-                        
-                        Button(action: {
-                            
-                            if self.count != 0{
-                                
-                                self.count -= 1
-                            }
-                            
-                        }) {
-                            
-                            Image(systemName: "minus.circle").font(.largeTitle)
-                            
-                        }.foregroundColor(.green)
-                        
-                        Button(action: {
-                            
-                        }) {
-                            
-                            Text("Add to Cart").padding()
-                            
-                        }.foregroundColor(.white)
-                        .background(Color("Color"))
-                        .cornerRadius(12)
-                        
-                        Spacer(minLength: 12)
-                    }
-                }
-                
-            }.padding()
-            .overlay(
-                
-                
-                VStack{
-                    
-                    HStack{
-                        
-                        Spacer()
-                        
-                        HStack{
-                            
-                            Text("4").foregroundColor(.white)
-                            Image(systemName: "star.fill").foregroundColor(.yellow)
-                            
-                        }.padding()
-                        .background(Color.green)
-                        .cornerRadius(12)
-                    }
-                    .padding(.top,-20)
-                    .padding(.trailing)
-                    
-                    
-                    Spacer()
-                }
-                
-            )
-            .background(RoundedCorner().fill(Color.white))
-            .padding(.top, -top! - 25)
-            
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
-            .navigationBarBackButtonHidden(true)
-        }
-    }
-}
