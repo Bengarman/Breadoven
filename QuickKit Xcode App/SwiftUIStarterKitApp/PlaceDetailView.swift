@@ -25,6 +25,67 @@ extension Double {
     }
 }
 
+@available(iOS 14.0, *)
+struct RemoteImage: View {
+    private enum LoadState {
+        case loading, success, failure
+    }
+
+    private class Loader: ObservableObject {
+        var data = Data()
+        var state = LoadState.loading
+
+        init(url: String) {
+            guard let parsedURL = URL(string: url) else {
+                fatalError("Invalid URL: \(url)")
+            }
+
+            URLSession.shared.dataTask(with: parsedURL) { data, response, error in
+                if let data = data, data.count > 0 {
+                    self.data = data
+                    self.state = .success
+                } else {
+                    self.state = .failure
+                }
+
+                DispatchQueue.main.async {
+                    self.objectWillChange.send()
+                }
+            }.resume()
+        }
+    }
+
+    @StateObject private var loader: Loader
+    var loading: Image
+    var failure: Image
+
+    var body: some View {
+        selectImage()
+            .resizable()
+    }
+
+    init(url: String, loading: Image = Image(systemName: "photo"), failure: Image = Image(systemName: "multiply.circle")) {
+        _loader = StateObject(wrappedValue: Loader(url: url))
+        self.loading = loading
+        self.failure = failure
+    }
+
+    private func selectImage() -> Image {
+        switch loader.state {
+        case .loading:
+            return loading
+        case .failure:
+            return failure
+        default:
+            if let image = UIImage(data: loader.data) {
+                return Image(uiImage: image)
+            } else {
+                return failure
+            }
+        }
+    }
+}
+
 struct PlaceDetailView : View {
     @Binding var isShowing: Bool
     @Binding var placeItem: CategoryItem?
@@ -43,12 +104,16 @@ struct PlaceDetailView : View {
                 ScrollView(.vertical, showsIndicators: false) {
                     
                     VStack(alignment: .center) {
-                        Image(self.placeItem?.itemImage ?? "")
-                            .resizable()
-                            .frame(width: g.size.width, height: g.size.height / 3)
-                            .onDisappear {
-                                self.isShowing = false
-                            }
+                        if #available(iOS 14.0, *) {
+                            RemoteImage(url: (self.placeItem?.itemImage)!)
+                                //.resizable()
+                                .frame(width: g.size.width, height: g.size.height / 3)
+                                .onDisappear {
+                                    self.isShowing = false
+                                }
+                        } else {
+                            // Fallback on earlier versions
+                        }
                         VStack(alignment: .leading) {
                             HStack{
                                 Text(self.placeItem?.itemName ?? "")
@@ -239,7 +304,13 @@ struct PlaceDetailView : View {
                     
                     
                     Button(action: {
-                        //cartData.items.append(Item(itemName: (self.placeItem?.itemName)!, itemPrice: String((self.placeItem?.itemSizes[self.selectedPoint.selectedIndex].sizePrice)!), itemColor: "", itemManufacturer: (self.placeItem?.itemSizes[self.selectedPoint.selectedIndex].sizeName)!, itemImage: (self.placeItem?.itemImage)!, offset: 0, isSwiped: false))
+                        var options = ""
+                        for tings in self.prices.keys{
+                            options += self.placeItem!.itemAdditions[tings].modifiers[self.placeItem!.itemAdditions[tings].selected!].sizeName + ", "
+                        }
+                        
+                        options = String(options.dropLast(2))
+                        cartData.items.append(Item(itemName: (self.placeItem?.itemName)!, itemPrice: total(price: self.prices, base: self.placeItem!.itemBasePrice, quantity: self.count), itemOptions: options, itemQuantity: 1, itemImage: (self.placeItem?.itemImage)!))
                         
                         self.isShowing = false
                         

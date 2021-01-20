@@ -216,11 +216,12 @@ struct CategoryIcon: View {
     
     var body: some View {
         ZStack{
-            Image("\(categoryItem.itemImage)")
-            .resizable()
-            .opacity(0.8)
-            .aspectRatio(contentMode: .fill)
-            .background(Color.black)
+            if #available(iOS 14.0, *) {
+                RemoteImage(url: (categoryItem.itemImage))
+                    .opacity(0.8)
+                    .aspectRatio(contentMode: .fill)
+                    .background(Color.black)
+            }
             VStack(alignment: .center) {
 
                 Text(categoryItem.itemName)

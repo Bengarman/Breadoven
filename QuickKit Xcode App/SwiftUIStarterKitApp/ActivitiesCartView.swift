@@ -84,7 +84,6 @@ struct ActivitiesCartView: View {
                 .padding()
                 Button(action: {
                     UserDefaults.standard.set(false, forKey: "hasLaunchedBefore")
-
                 }) {
 
                         HStack {
@@ -117,13 +116,13 @@ struct ActivitiesCartView: View {
     
     func calculateTotalPrice()->String{
         
-        var price : Float = 0
-        
-        cartData.items.forEach { (item) in
-            price += Float(item.itemPrice)!
+        var tot = 0.0
+        for item in cartData.items {
+            tot += item.itemPrice
         }
         
-        return getPrice(value: price)
+        
+        return getPrice(value: tot)
     }
 }
 
@@ -182,7 +181,7 @@ struct ItemView: View {
                         HStack {
                             Spacer()
                         }
-                        Text("£\(shoppingCartItem.itemPrice)")
+                        Text("£" + String(format: "%.2f",shoppingCartItem.itemPrice))
                             .font(.system(size: 16))
                             .foregroundColor(Color.black)
                             .padding(.trailing, 15)
@@ -249,11 +248,8 @@ struct ItemView: View {
     }
 }
 
-func getPrice(value: Float)->String{
+func getPrice(value: Double)->String{
     
-    let format = NumberFormatter()
-    format.numberStyle = .currency
-    
-    return format.string(from: NSNumber(value: value)) ?? ""
+    return "£" + String(format: "%.2f",value)
 }
 
