@@ -16,16 +16,12 @@ func getURLAddress(pathName: String, querys: [URLQueryItem] = []) -> String{
     return urlComponents.url!.absoluteString
 }
 
-/*
- CategoryGroup(id: 0, resourceName: "Fish", resourceDescription: "Placeholder.... Fish is fish", resources:[
-     CategoryItem(id: 0, itemDisplaySize: true, itemName: "Hadock", itemImage: "f+c", itemBasePrice: 2.00, itemDescription: "Tamarindo is a town in the Guanacaste Province.", itemAdditions: [
-         CategoryItemMods(id: 0, modName: "Size", compulsary: true, selected: nil, modifiers: [
-             CategoryItemModifier(id: 0, sizeName: "Small", sizePriceAddition: 0.10),
- */
-func getCategories() -> [CategoryGroup]{
+
+func getCategories() -> ActivitiesData{
     //Get categories
     var queryDetails = [URLQueryItem]()
     var tempCategorys = [CategoryGroup]()
+    var tempFeatured = [CategoryItem]()
     if let url = URL(string: getURLAddress(pathName: "getCategories.php")){
         do {
             let contentcategories = try String(contentsOf: url).split(separator: "^")
@@ -63,56 +59,22 @@ func getCategories() -> [CategoryGroup]{
                         }
                     } catch {}
                 }
-                tempCategorys.append(CategoryGroup(id: Int(categories[0])! - 1, resourceName: String(categories[1]), resourceDescription: String(categories[2]), resources: tempItems))
+                if categories[1] == "SPECIALS"{
+                    tempFeatured = tempItems
+
+                }else{
+                    tempCategorys.append(CategoryGroup(id: Int(categories[0])! - 1, resourceName: String(categories[1]), resourceDescription: String(categories[2]), resources: tempItems))
+                }
             }
         } catch {}
     }
-    return tempCategorys
+    return ActivitiesData(featuredItems: tempFeatured, categoryItems: tempCategorys)
+    
 }
 
 class ActivitiesMockStore {
     
-    static let activityData =  ActivitiesData(
-        
-        featuredItems:[
-            
-            
-            CategoryItem(id: 0, itemDisplaySize: true, itemName: "Fish & Chips", itemImage: "f+c", itemBasePrice: 2.00, itemDescription: "Tamarindo is a town in the Guanacaste Province.", itemAdditions: [
-                CategoryItemMods(id: 0, modName: "Size", compulsary: true, selected: nil, modifiers: [
-                    CategoryItemModifier(id: 0, sizeName: "Small", sizePriceAddition: 0.10),
-                    CategoryItemModifier(id: 1, sizeName: "Medium", sizePriceAddition: 0.30),
-                    CategoryItemModifier(id: 2, sizeName: "Large", sizePriceAddition: 0.40)
-                ])
-            ]),
-            CategoryItem(id: 1, itemDisplaySize: true, itemName: "Fish & Chips", itemImage: "kebab", itemBasePrice: 2.00, itemDescription: "Tamarindo is a town in the Guanacaste Province.", itemAdditions: [
-                CategoryItemMods(id: 0, modName: "Size", compulsary: true, selected: nil, modifiers: [
-                    CategoryItemModifier(id: 0, sizeName: "Small", sizePriceAddition: 0.10),
-                    CategoryItemModifier(id: 1, sizeName: "Medium", sizePriceAddition: 0.30),
-                    CategoryItemModifier(id: 2, sizeName: "Large", sizePriceAddition: 0.40)
-                ]),
-                CategoryItemMods(id: 1, modName: "Color", compulsary: false, selected: nil, modifiers: [
-                    CategoryItemModifier(id: 0, sizeName: "Blue", sizePriceAddition: 0),
-                    CategoryItemModifier(id: 1, sizeName: "Green", sizePriceAddition: 0.30),
-                    CategoryItemModifier(id: 2, sizeName: "Red", sizePriceAddition: 0.40)
-                ]),
-                CategoryItemMods(id: 2, modName: "Time", compulsary: false, selected: nil, modifiers: [
-                    CategoryItemModifier(id: 0, sizeName: "Blue", sizePriceAddition: 0),
-                    CategoryItemModifier(id: 1, sizeName: "Green", sizePriceAddition: 0.30),
-                    CategoryItemModifier(id: 2, sizeName: "Red", sizePriceAddition: 0.40)
-                ])
-            ]),
-            CategoryItem(id: 2, itemDisplaySize: true, itemName: "Fish & Chips", itemImage: "burger", itemBasePrice: 2.00, itemDescription: "Tamarindo is a town in the Guanacaste Province.", itemAdditions: [
-                CategoryItemMods(id: 0, modName: "Size", compulsary: true, selected: nil, modifiers: [
-                    CategoryItemModifier(id: 0, sizeName: "Small", sizePriceAddition: 0.10),
-                    CategoryItemModifier(id: 1, sizeName: "Medium", sizePriceAddition: 0.30),
-                    CategoryItemModifier(id: 2, sizeName: "Large", sizePriceAddition: 0.40)
-                ])
-            ])
-            ],
-            categoryItems: getCategories()
-        )
-    
-    
+    static let activityData =  getCategories()
 }
 
 class CartViewModel: ObservableObject{

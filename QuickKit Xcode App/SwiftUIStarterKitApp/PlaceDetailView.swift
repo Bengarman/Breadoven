@@ -135,7 +135,7 @@ struct PlaceDetailView : View {
                             }
                             Spacer()
                         }.frame(width: g.size.width)
-                        .background(RoundedCorner().fill(Color.white))
+                        .background(RoundedCorner().fill(Color(UIColor.systemBackground)))
                         .padding(.top, -top!)
                         Spacer()
                         
@@ -268,7 +268,7 @@ struct PlaceDetailView : View {
                                     Spacer()
                                     Text("\(self.count)")
                                         .font(.custom("Montserrat-Bold", size: 16))
-
+                                        .foregroundColor(.black)
                                     Spacer()
                                     Button(action: {
                                         self.count += 1

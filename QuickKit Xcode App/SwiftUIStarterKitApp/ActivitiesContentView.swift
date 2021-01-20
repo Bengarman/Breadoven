@@ -78,7 +78,7 @@ struct ActivitiesContentView: View {
     var body: some View {
         GeometryReader { g in
             if #available(iOS 14.0, *) {
-                ScrollView{
+                ScrollView(showsIndicators: false){
                     VStack(alignment: .leading) {
                         Rectangle()
                             .fill(Color(red: 23/255, green: 86/255, blue: 119/255))
@@ -157,7 +157,8 @@ struct ActivitiesContentView: View {
                                 .cornerRadius(10)
                                 
                             }
-                        }.padding(.leading, 30)
+                        }.padding(.leading, 20)
+                        .padding(.trailing, 20)
                         
                         
                     }
@@ -185,13 +186,13 @@ struct FeaturedItemsView: View {
     
     var body: some View {
             ZStack{
-                Image("\(featuredItem.itemImage)").renderingMode(.original)
-                        .resizable()
+                if #available(iOS 14.0, *) {
+                    RemoteImage(url: (featuredItem.itemImage))
                         .frame(width: 155, height: 225)
                         .background(Color.black)
                         .cornerRadius(10)
                         .opacity(0.8)
-                        .aspectRatio(contentMode: .fit)
+                }
                
                 VStack (alignment: .leading) {
                     
@@ -204,7 +205,6 @@ struct FeaturedItemsView: View {
                 
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-            .background(Color.white)
           
     }
 }
