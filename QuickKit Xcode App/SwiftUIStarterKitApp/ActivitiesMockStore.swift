@@ -46,7 +46,7 @@ func getCategories() -> ActivitiesData{
                                         var count = 0
                                         for modifier in modifiers{
                                             let modifierDet = modifier.split(separator: ":")
-                                            tempModifiers.append(CategoryItemModifier(id: count, sizeName: String(modifierDet[0]), sizePriceAddition: Double(modifierDet[1])!))
+                                            tempModifiers.append(CategoryItemModifier(id: count, modID: Int(modifierDet[0])!, sizeName: String(modifierDet[1]), sizePriceAddition: Double(modifierDet[2])!))
                                             count += 1
                                         }
                                         print(tempModifiers)
@@ -83,9 +83,10 @@ class CartViewModel: ObservableObject{
 
 struct Item : Identifiable{
     var id = UUID().uuidString
+    var itemID : Int
     var itemName : String
     var itemPrice : Double
-    var itemOptions: String
+    var itemOptions: [CategoryItemModifier]
     var itemQuantity: Int
     var itemImage: String
     var offset: CGFloat = 0

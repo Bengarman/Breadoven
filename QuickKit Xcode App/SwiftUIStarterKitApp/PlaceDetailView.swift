@@ -88,13 +88,16 @@ struct RemoteImage: View {
 
 struct PlaceDetailView : View {
     @Binding var isShowing: Bool
+    @Binding var selected: Int
     @Binding var placeItem: CategoryItem?
-    let defaultPoint = CategoryItemModifier(id: 0, sizeName: "Default", sizePriceAddition: 0)
+    let defaultPoint = CategoryItemModifier(id: 0, modID: 0, sizeName: "Default", sizePriceAddition: 0)
     @State var top = UIApplication.shared.windows.last?.safeAreaInsets.top
     @ObservedObject var selectedPoint = SelectedPoint()
     @State var selectedSize = "S"
     @State var prices  =  [Int: Double]()
     @State var count = 1
+    @State var tempCheck = false
+
 
     
     var body: some View {
@@ -304,15 +307,29 @@ struct PlaceDetailView : View {
                     
                     
                     Button(action: {
-                        var options = ""
-                        for tings in self.prices.keys{
-                            options += self.placeItem!.itemAdditions[tings].modifiers[self.placeItem!.itemAdditions[tings].selected!].sizeName + ", "
+                        
+                        for modifiers in self.placeItem!.itemAdditions{
+                            if modifiers.compulsary == true && modifiers.selected == nil{
+                                tempCheck = true
+                            }
+                            else{
+                                tempCheck = false
+                            }
+                        }
+                        if !tempCheck{
+                            var options = [CategoryItemModifier]()
+                            for tings in self.prices.keys{
+                                let temp = self.placeItem!.itemAdditions[tings].modifiers[self.placeItem!.itemAdditions[tings].selected!]
+                                options.append(temp)
+                            }
+                            cartData.items.append(Item(itemID: Int(self.placeItem!.id) + 1 ,itemName: (self.placeItem?.itemName)!, itemPrice: total(price: self.prices, base: self.placeItem!.itemBasePrice, quantity: 1), itemOptions: options, itemQuantity: self.count, itemImage: (self.placeItem?.itemImage)!))
+                            self.selected = 1
+                            self.selected = 0
+                            TabbarView()
+                            self.isShowing = false
+                            
                         }
                         
-                        options = String(options.dropLast(2))
-                        cartData.items.append(Item(itemName: (self.placeItem?.itemName)!, itemPrice: total(price: self.prices, base: self.placeItem!.itemBasePrice, quantity: self.count), itemOptions: options, itemQuantity: 1, itemImage: (self.placeItem?.itemImage)!))
-                        
-                        self.isShowing = false
                         
                         
                     })
@@ -328,6 +345,9 @@ struct PlaceDetailView : View {
                         .background(Color.blue)
                         .cornerRadius(5)
                     }.padding(.bottom, 30)
+                    .alert(isPresented: $tempCheck) {
+                        Alert(title: Text("Ooops"), message: Text("It looks like one of the compulsary options havent been selected. Please check before adding to basket."), dismissButton: .default(Text("Got it!")))
+                    }
                     Spacer()
                 }
                 //.padding(.bottom, 40)
@@ -343,12 +363,13 @@ struct PlaceDetailView : View {
 func total(price: [Int:Double], base: Double, quantity: Int) -> Double {
     var tot = base
     for item in price.keys {
-        print(price.count)
         tot += price[item]!
     }
     return tot * Double(quantity)
 }
-
+func carttotal(price: Double, quantity: Int) -> Double {
+    return price * Double(quantity)
+}
 struct RoundedCorner : Shape {
     
     func path(in rect: CGRect) -> Path {

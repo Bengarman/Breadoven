@@ -24,6 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.rootViewController = UIHostingController(rootView: TabbarView())
             self.window = window
             window.makeKeyAndVisible()*/
+            
+            UserDefaults.standard.set(1, forKey: "userID")
             let hasLaunchedBefore = UserDefaults.standard.bool(forKey: "hasLaunchedBefore")
             if let windowScene = scene as? UIWindowScene {
                   let window = UIWindow(windowScene: windowScene)

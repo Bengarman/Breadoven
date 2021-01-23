@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		17244EBE2353DC4F00D31F7E /* UIScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17244EBD2353DC4F00D31F7E /* UIScrollViewController.swift */; };
 		9A48498F25AF974300CF239C /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A48498E25AF974300CF239C /* Montserrat-Bold.ttf */; };
+		9AE5FF6825B8EDFB001A4C21 /* Checkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE5FF6725B8EDFB001A4C21 /* Checkout.swift */; };
+		9AE5FF7325BB2CDA001A4C21 /* ApplePay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE5FF7225BB2CDA001A4C21 /* ApplePay.swift */; };
 		9AFF1CA525A68BFF00493ED2 /* Meticula.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AFF1CA425A68BFE00493ED2 /* Meticula.ttf */; };
 		F50A2ED222F60C2C00235DAE /* ActivitiesCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A2ED122F60C2C00235DAE /* ActivitiesCartView.swift */; };
 		F5143EB22301F435008D8C89 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5143EB12301F435008D8C89 /* BlurView.swift */; };
@@ -23,7 +25,6 @@
 		F542B66022F2DBF300E490A1 /* SwiftUIStarterKitAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F542B65F22F2DBF300E490A1 /* SwiftUIStarterKitAppTests.swift */; };
 		F542B66B22F2DBF300E490A1 /* SwiftUIStarterKitAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F542B66A22F2DBF300E490A1 /* SwiftUIStarterKitAppUITests.swift */; };
 		F552983522F8BBAE00C07997 /* ActivitiesMockStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F552983422F8BBAE00C07997 /* ActivitiesMockStore.swift */; };
-		F553995722F4998F00872F1B /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F553995622F4998F00872F1B /* LogInView.swift */; };
 		F553B7E822FCA19400314585 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F553B7E722FCA19400314585 /* AccountView.swift */; };
 		F57143C523008A28005F4724 /* PlaceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57143C423008A27005F4724 /* PlaceDetailView.swift */; };
 		F5DDF13922F9EC5B0045277B /* ActivitiesContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DDF13822F9EC5A0045277B /* ActivitiesContentView.swift */; };
@@ -49,6 +50,9 @@
 /* Begin PBXFileReference section */
 		17244EBD2353DC4F00D31F7E /* UIScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewController.swift; sourceTree = "<group>"; };
 		9A48498E25AF974300CF239C /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		9AE5FF6725B8EDFB001A4C21 /* Checkout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checkout.swift; sourceTree = "<group>"; };
+		9AE5FF7225BB2CDA001A4C21 /* ApplePay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePay.swift; sourceTree = "<group>"; };
+		9AE5FF7A25BB2D99001A4C21 /* SwiftUIStarterKitApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftUIStarterKitApp.entitlements; sourceTree = "<group>"; };
 		9AFF1CA425A68BFE00493ED2 /* Meticula.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Meticula.ttf; sourceTree = "<group>"; };
 		F50A2ED122F60C2C00235DAE /* ActivitiesCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesCartView.swift; sourceTree = "<group>"; };
 		F5143EB12301F435008D8C89 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
@@ -69,7 +73,6 @@
 		F542B66A22F2DBF300E490A1 /* SwiftUIStarterKitAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIStarterKitAppUITests.swift; sourceTree = "<group>"; };
 		F542B66C22F2DBF300E490A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F552983422F8BBAE00C07997 /* ActivitiesMockStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesMockStore.swift; sourceTree = "<group>"; };
-		F553995622F4998F00872F1B /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		F553B7E722FCA19400314585 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		F57143C423008A27005F4724 /* PlaceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailView.swift; sourceTree = "<group>"; };
 		F5DDF13822F9EC5A0045277B /* ActivitiesContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesContentView.swift; sourceTree = "<group>"; };
@@ -123,17 +126,18 @@
 		F542B64722F2DBF200E490A1 /* SwiftUIStarterKitApp */ = {
 			isa = PBXGroup;
 			children = (
+				9AE5FF7A25BB2D99001A4C21 /* SwiftUIStarterKitApp.entitlements */,
 				17244EBD2353DC4F00D31F7E /* UIScrollViewController.swift */,
 				F542B64822F2DBF200E490A1 /* AppDelegate.swift */,
 				F542B64A22F2DBF200E490A1 /* SceneDelegate.swift */,
 				F542B64C22F2DBF200E490A1 /* ContentView.swift */,
 				F51B590622F4CBD300660704 /* SignUpView.swift */,
-				F553995622F4998F00872F1B /* LogInView.swift */,
 				F52AA7A622F4883A0051F943 /* TabBarView.swift */,
 				F5DDF13822F9EC5A0045277B /* ActivitiesContentView.swift */,
 				9A48498E25AF974300CF239C /* Montserrat-Bold.ttf */,
 				F57143C423008A27005F4724 /* PlaceDetailView.swift */,
 				F5143EB12301F435008D8C89 /* BlurView.swift */,
+				9AE5FF6725B8EDFB001A4C21 /* Checkout.swift */,
 				9AFF1CA425A68BFE00493ED2 /* Meticula.ttf */,
 				F553B7E722FCA19400314585 /* AccountView.swift */,
 				F552983422F8BBAE00C07997 /* ActivitiesMockStore.swift */,
@@ -142,6 +146,7 @@
 				F542B65322F2DBF300E490A1 /* LaunchScreen.storyboard */,
 				F542B65622F2DBF300E490A1 /* Info.plist */,
 				F542B65022F2DBF300E490A1 /* Preview Content */,
+				9AE5FF7225BB2CDA001A4C21 /* ApplePay.swift */,
 			);
 			path = SwiftUIStarterKitApp;
 			sourceTree = "<group>";
@@ -188,6 +193,8 @@
 			dependencies = (
 			);
 			name = SwiftUIStarterKitApp;
+			packageProductDependencies = (
+			);
 			productName = SwiftUIStarterKitApp;
 			productReference = F542B64522F2DBF200E490A1 /* SwiftUIStarterKitApp.app */;
 			productType = "com.apple.product-type.application";
@@ -260,6 +267,8 @@
 				Base,
 			);
 			mainGroup = F542B63C22F2DBF200E490A1;
+			packageReferences = (
+			);
 			productRefGroup = F542B64622F2DBF200E490A1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -305,17 +314,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F553995722F4998F00872F1B /* LogInView.swift in Sources */,
 				F552983522F8BBAE00C07997 /* ActivitiesMockStore.swift in Sources */,
 				F5DDF13922F9EC5B0045277B /* ActivitiesContentView.swift in Sources */,
 				F542B64922F2DBF200E490A1 /* AppDelegate.swift in Sources */,
 				F542B64B22F2DBF200E490A1 /* SceneDelegate.swift in Sources */,
 				17244EBE2353DC4F00D31F7E /* UIScrollViewController.swift in Sources */,
 				F5143EB22301F435008D8C89 /* BlurView.swift in Sources */,
+				9AE5FF6825B8EDFB001A4C21 /* Checkout.swift in Sources */,
 				F52AA7A722F4883A0051F943 /* TabBarView.swift in Sources */,
 				F50A2ED222F60C2C00235DAE /* ActivitiesCartView.swift in Sources */,
 				F57143C523008A28005F4724 /* PlaceDetailView.swift in Sources */,
 				F51B590722F4CBD300660704 /* SignUpView.swift in Sources */,
+				9AE5FF7325BB2CDA001A4C21 /* ApplePay.swift in Sources */,
 				F553B7E822FCA19400314585 /* AccountView.swift in Sources */,
 				F542B64D22F2DBF200E490A1 /* ContentView.swift in Sources */,
 			);
@@ -482,6 +492,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SwiftUIStarterKitApp/SwiftUIStarterKitApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "SwiftUIStarterKitApp/Preview\\ Content";
 				DEVELOPMENT_TEAM = 7GUT2ANK2R;
@@ -491,7 +502,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = NexThings.SwiftUIStarterKitApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.garmanapps.quickkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -502,6 +513,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SwiftUIStarterKitApp/SwiftUIStarterKitApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "SwiftUIStarterKitApp/Preview\\ Content";
 				DEVELOPMENT_TEAM = 7GUT2ANK2R;
@@ -511,7 +523,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = NexThings.SwiftUIStarterKitApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.garmanapps.quickkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

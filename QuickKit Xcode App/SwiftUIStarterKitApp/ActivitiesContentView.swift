@@ -31,6 +31,7 @@ struct CategoryItemMods {
 
 struct CategoryItemModifier {
     var id: Int
+    var modID: Int
     var sizeName: String
     var sizePriceAddition: Double
 }
@@ -72,6 +73,7 @@ struct ActivitiesContentView: View {
     @EnvironmentObject var settings: UserSettings
     @ObservedObject var activtiesData : Activities
     @ObservedObject var selectedActivity = ActivitySelected()
+    @Binding var selected : Int
     @State var isShowing: Bool = false
     @State var placeItemSelected: CategoryItem? = nil
     
@@ -167,7 +169,7 @@ struct ActivitiesContentView: View {
                     
                 }
                 .edgesIgnoringSafeArea(.top)
-                .sheet(isPresented: self.$isShowing) { PlaceDetailView(isShowing: self.$isShowing, placeItem: self.$placeItemSelected)}
+                .sheet(isPresented: self.$isShowing) { PlaceDetailView(isShowing: self.$isShowing, selected: self.$selected, placeItem: self.$placeItemSelected)}
             } else {
                 // Fallback on earlier versions
             }

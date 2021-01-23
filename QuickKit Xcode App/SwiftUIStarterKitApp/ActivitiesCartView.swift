@@ -28,11 +28,24 @@ struct ActivitiesCartViewNav: View {
 struct ActivitiesCartView: View {
     @StateObject var cartData : CartViewModel
     @State var top = UIApplication.shared.windows.last?.safeAreaInsets.top
-
+    @State var isShowing: Bool = false
+    
     var body: some View {
         GeometryReader { geometry in
-            VStack {
-                
+            ZStack{
+                Rectangle()
+                    .fill(Color(UIColor.systemBackground))
+                    .frame(width:geometry.size.width, height: geometry.size.height)
+                    .onTapGesture(count: 1) {
+                        withAnimation(.easeIn){
+                            if (isShowing){
+                                self.isShowing = false
+                            }
+                            
+                        }
+                    }
+                VStack {
+                    
                     HStack {
                         Text("\(cartData.items.count) items")
                             .font(.system(size: 24, weight: .bold, design: .default))
@@ -44,85 +57,97 @@ struct ActivitiesCartView: View {
                     }
                     .navigationBarTitle("Shopping Cart")
                     
-                
-                ScrollView (.vertical, showsIndicators: false) {
-                    VStack (alignment: .leading) {
-                        ForEach(cartData.items){item in
-                            ItemView(shoppingCartItem: $cartData.items[getIndex(item: item)],shoppingCartItems: $cartData.items)
-                                .frame(width: geometry.size.width - 24, height: 80)
+                    
+                    ScrollView (.vertical, showsIndicators: false) {
+                        VStack (alignment: .leading) {
+                            ForEach(cartData.items){item in
+                                ItemView(shoppingCartItem: $cartData.items[getIndex(item: item)],shoppingCartItems: $cartData.items)
+                                    .frame(width: geometry.size.width - 24, height: 80)
+                            }
                         }
                     }
-                }
-                .frame(height: geometry.size.height - 270)
-                
-                HStack (alignment: .bottom){
-                    VStack (alignment: .leading){
-                        Spacer()
-                        HStack {
-                            Spacer()
-                        }
-                        Text("Shipping to the United Kingdom")
-                            .font(.system(size: 12))
-                        Text("from £2.25")
-                            .font(.system(size: 12))
-                    }.frame(width: geometry.size.width / 2 - 12)
-
-                    VStack(alignment: .trailing) {
-                        Spacer()
-                        HStack {
-                            Spacer()
-                        }
-                        Text("\(cartData.items.count) items on")
-                            .font(.system(size: 14))
-                            .foregroundColor(Color.gray)
-                        Text("\(calculateTotalPrice())")
-                            .font(.system(.title))
-                    }.frame(width: geometry.size.width / 2 - 12)
+                    .frame(height: geometry.size.height - 270)
                     
-                    
-                }
-                .padding()
-                Button(action: {
-                    UserDefaults.standard.set(false, forKey: "hasLaunchedBefore")
-                }) {
-
-                        HStack {
-                        Text("Checkout")
+                    HStack (alignment: .bottom){
+                        VStack (alignment: .leading){
+                            Spacer()
+                            HStack {
+                                Spacer()
+                            }
+                            Text("Shipping to the United Kingdom")
+                                .font(.system(size: 12))
+                            Text("from £2.25")
+                                .font(.system(size: 12))
+                        }.frame(width: geometry.size.width / 2 - 12)
+                        
+                        VStack(alignment: .trailing) {
+                            Spacer()
+                            HStack {
+                                Spacer()
+                            }
+                            Text("\(cartData.items.count) items on")
+                                .font(.system(size: 14))
+                                .foregroundColor(Color.gray)
+                            Text("\(getPrice(value: calculateTotalPrice()))")
+                                .font(.system(.title))
+                        }.frame(width: geometry.size.width / 2 - 12)
+                        
+                        
                     }
                     .padding()
-                    .frame(width: geometry.size.width - 24, height: 40)
-                    .foregroundColor(Color.white)
-                    .background(Color.blue)
-                    .cornerRadius(5)
+                    Button(action: {
+                        //UserDefaults.standard.set(false, forKey: "hasLaunchedBefore")
+                        //Order - (
+                        withAnimation(.easeIn){self.isShowing = true}
+                        
+                    }) {
+                        
+                        HStack {
+                            Text("Checkout")
+                        }
+                        .padding()
+                        .frame(width: geometry.size.width - 24, height: 40)
+                        .foregroundColor(Color.white)
+                        .background(Color.blue)
+                        .cornerRadius(5)
                     }
                     .padding(.top, 10)
                     .padding(.bottom, 20)
-          
+                    
+                }
+                
+                if (isShowing){
+                    CheckoutView(isShowing: $isShowing, price: calculateTotalPrice(), cartData: cartData)
+                        .frame(width: geometry.size.width - 60, height: geometry.size.width)
+                    
+                    
+                }
             }
         }
-    }
         
+    }
+    
     func getIndex(item: Item)->Int{
-            
+        
         return cartData.items.firstIndex { (item1) -> Bool in
             return item.id == item1.id
         } ?? 0
     }
     
     func additem(item: Item){
-            
+        
         cartData.items.append(item)
     }
     
-    func calculateTotalPrice()->String{
+    func calculateTotalPrice()->Double{
         
         var tot = 0.0
         for item in cartData.items {
-            tot += item.itemPrice
+            tot += (item.itemPrice * Double(item.itemQuantity))
         }
         
         
-        return getPrice(value: tot)
+        return tot
     }
 }
 
@@ -147,7 +172,7 @@ struct ItemView: View {
                             .foregroundColor(Color.red)
                     }
                 }
-
+                
                 
                 HStack (spacing: 10) {
                     if #available(iOS 14.0, *) {
@@ -164,28 +189,29 @@ struct ItemView: View {
                         Text("\(shoppingCartItem.itemName)")
                             .lineLimit(nil)
                             .foregroundColor(.primary)
-                        Text("\(shoppingCartItem.itemOptions)")
-                            .foregroundColor(.primary)
-                            .font(.system(size: 12))
-                            .foregroundColor(Color.gray)
+                        ForEach(0..<shoppingCartItem.itemOptions.count) { mod in
+                            Text(shoppingCartItem.itemOptions[mod].sizeName)
+                                .font(.system(size: 12))
+                                .foregroundColor(Color.gray)
+                        }
                         Text("\(shoppingCartItem.itemQuantity)")
                             .foregroundColor(.primary)
                             .font(.system(size: 12))
                             .foregroundColor(Color.gray)
                             .padding(.bottom, 10)
                     }.frame(width: geometry.size.width - 150)
-                     .padding(.top, 8)
+                    .padding(.top, 8)
                     VStack(alignment: .trailing){
                         //Spacer()
                         HStack {
                             Spacer()
                         }
-                        Text("£" + String(format: "%.2f",shoppingCartItem.itemPrice))
+                        Text("£" + String(format: "%.2f", carttotal(price: shoppingCartItem.itemPrice, quantity: shoppingCartItem.itemQuantity)))
                             .font(.system(size: 16))
                             .foregroundColor(Color.black)
                             .padding(.trailing, 15)
-                           
-                          
+                        
+                        
                     }.padding(.bottom, 10)
                 }
                 .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
