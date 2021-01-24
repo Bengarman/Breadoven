@@ -25,67 +25,6 @@ extension Double {
     }
 }
 
-@available(iOS 14.0, *)
-struct RemoteImage: View {
-    private enum LoadState {
-        case loading, success, failure
-    }
-
-    private class Loader: ObservableObject {
-        var data = Data()
-        var state = LoadState.loading
-
-        init(url: String) {
-            guard let parsedURL = URL(string: url) else {
-                fatalError("Invalid URL: \(url)")
-            }
-
-            URLSession.shared.dataTask(with: parsedURL) { data, response, error in
-                if let data = data, data.count > 0 {
-                    self.data = data
-                    self.state = .success
-                } else {
-                    self.state = .failure
-                }
-
-                DispatchQueue.main.async {
-                    self.objectWillChange.send()
-                }
-            }.resume()
-        }
-    }
-
-    @StateObject private var loader: Loader
-    var loading: Image
-    var failure: Image
-
-    var body: some View {
-        selectImage()
-            .resizable()
-    }
-
-    init(url: String, loading: Image = Image(systemName: "photo"), failure: Image = Image(systemName: "multiply.circle")) {
-        _loader = StateObject(wrappedValue: Loader(url: url))
-        self.loading = loading
-        self.failure = failure
-    }
-
-    private func selectImage() -> Image {
-        switch loader.state {
-        case .loading:
-            return loading
-        case .failure:
-            return failure
-        default:
-            if let image = UIImage(data: loader.data) {
-                return Image(uiImage: image)
-            } else {
-                return failure
-            }
-        }
-    }
-}
-
 struct PlaceDetailView : View {
     @Binding var isShowing: Bool
     @Binding var selected: Int
@@ -106,17 +45,16 @@ struct PlaceDetailView : View {
             VStack {
                 ScrollView(.vertical, showsIndicators: false) {
                     
-                    VStack(alignment: .center) {
-                        if #available(iOS 14.0, *) {
-                            RemoteImage(url: (self.placeItem?.itemImage)!)
-                                //.resizable()
-                                .frame(width: g.size.width, height: g.size.height / 3)
-                                .onDisappear {
-                                    self.isShowing = false
-                                }
-                        } else {
-                            // Fallback on earlier versions
+                    Image(uiImage: UIImage(data: self.placeItem?.itemImage ?? Data()) ?? UIImage())
+                    
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: g.size.width, height: g.size.height / 3)
+                        .onDisappear {
+                            self.isShowing = false
                         }
+                    VStack(alignment: .center) {
+                        
                         VStack(alignment: .leading) {
                             HStack{
                                 Text(self.placeItem?.itemName ?? "")
@@ -245,6 +183,9 @@ struct PlaceDetailView : View {
                             .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
                             .cornerRadius(10)
                         }
+                        .background(Color(UIColor.systemBackground))
+
+                        
                         Spacer()
                         
                         HStack{
@@ -253,7 +194,8 @@ struct PlaceDetailView : View {
                                 .font(.custom("Montserrat-Bold", size: 17))
                             
                             Spacer()
-                        }
+                        }.background(Color(UIColor.systemBackground))
+
                         VStack{
                                 HStack( alignment: .center){
                                     
@@ -295,7 +237,10 @@ struct PlaceDetailView : View {
                         .cornerRadius(10)
                         
                     }
+                    .background(Color(UIColor.systemBackground))
+
                 }
+                .background(Color(UIColor.systemBackground))
                 .frame(height: g.size.height )
                 .offset(y: -80)
             }
@@ -325,7 +270,6 @@ struct PlaceDetailView : View {
                             cartData.items.append(Item(itemID: Int(self.placeItem!.id) + 1 ,itemName: (self.placeItem?.itemName)!, itemPrice: total(price: self.prices, base: self.placeItem!.itemBasePrice, quantity: 1), itemOptions: options, itemQuantity: self.count, itemImage: (self.placeItem?.itemImage)!))
                             self.selected = 1
                             self.selected = 0
-                            TabbarView()
                             self.isShowing = false
                             
                         }

@@ -8,34 +8,28 @@
 
 import UIKit
 import SwiftUI
+import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-
+        let context = persistentContainer.viewContext
+        let contentView = MovingViewsSwiftUI().environment(\.managedObjectContext, context)
+        
         // Use a UIHostingController as window root view controller
-        if let windowScene = scene as? UIWindowScene {
-            /*let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: TabbarView())
-            self.window = window
-            window.makeKeyAndVisible()*/
-            
+        if scene is UIWindowScene {
+            UserDefaults.standard.set(false, forKey: "hasLaunchedBefore")
             UserDefaults.standard.set(1, forKey: "userID")
-            let hasLaunchedBefore = UserDefaults.standard.bool(forKey: "hasLaunchedBefore")
             if let windowScene = scene as? UIWindowScene {
-                  let window = UIWindow(windowScene: windowScene)
-                   if hasLaunchedBefore {
-                       window.rootViewController = UIHostingController(rootView: TabbarView())
-                   } else {
-                       window.rootViewController = UIHostingController(rootView: MovingViewsSwiftUI())
-                   }
-                    self.window = window
-                    window.makeKeyAndVisible()
+                let window = UIWindow(windowScene: windowScene)
+                window.rootViewController = UIHostingController(rootView: contentView)
+                self.window = window
+                window.makeKeyAndVisible()
             }
         }
     }
@@ -66,8 +60,40 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+        saveContext()
+
     }
-
-
+    // 1
+    lazy var persistentContainer: NSPersistentContainer = {
+      // 2
+      let container = NSPersistentContainer(name: "SwiftUIStarterKitApp")
+      // 3
+      container.loadPersistentStores { _, error in
+        // 4
+        if let error = error as NSError? {
+          // You should add your own error handling code here.
+          fatalError("Unresolved error \(error), \(error.userInfo)")
+        }
+      }
+      return container
+    }()
+    
+    func saveContext() {
+      // 1
+      let context = persistentContainer.viewContext
+      // 2
+      if context.hasChanges {
+        do {
+          // 3
+          try context.save()
+        } catch {
+          // 4
+          // The context couldn't be saved.
+          // You should add your own error handling here.
+          let nserror = error as NSError
+          fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+      }
+    }
 }
 

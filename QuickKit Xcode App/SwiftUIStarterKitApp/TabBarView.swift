@@ -20,7 +20,7 @@ struct TabbarView: View {
                 if self.selected == 0{
                     
                     NavigationView {
-                        ActivitiesContentView(activtiesData: Activities(data: ActivitiesMockStore.activityData), selected: $selected)
+                        ActivitiesContentView(selected: $selected)
                             .offset(y: -65)
                     }
                     

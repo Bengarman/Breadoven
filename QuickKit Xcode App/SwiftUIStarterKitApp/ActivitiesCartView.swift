@@ -175,12 +175,13 @@ struct ItemView: View {
                 
                 
                 HStack (spacing: 10) {
-                    if #available(iOS 14.0, *) {
-                        RemoteImage(url: (shoppingCartItem.itemImage))
-                            .frame(width: 40)
-                            .padding(.trailing, 5)
-                            .padding(.leading, 5)
-                    }
+                    Image(uiImage: UIImage(data: shoppingCartItem.itemImage) ?? UIImage())
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 40)
+                        .padding(.trailing, 5)
+                        .padding(.leading, 5)
+                    
                     
                     VStack(alignment: .leading, spacing: 3) {
                         HStack {

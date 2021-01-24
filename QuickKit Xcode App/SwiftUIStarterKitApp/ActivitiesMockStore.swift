@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+
 func getURLAddress(pathName: String, querys: [URLQueryItem] = []) -> String{
     var urlComponents = URLComponents()
     urlComponents.scheme = "http"
@@ -16,65 +17,91 @@ func getURLAddress(pathName: String, querys: [URLQueryItem] = []) -> String{
     return urlComponents.url!.absoluteString
 }
 
-
-func getCategories() -> ActivitiesData{
-    //Get categories
-    var queryDetails = [URLQueryItem]()
-    var tempCategorys = [CategoryGroup]()
-    var tempFeatured = [CategoryItem]()
-    if let url = URL(string: getURLAddress(pathName: "getCategories.php")){
-        do {
-            let contentcategories = try String(contentsOf: url).split(separator: "^")
-            for category in contentcategories {
-                let categories = category.split(separator: ",")
-                queryDetails = [ URLQueryItem(name: "itemCategoriesID", value: String(categories[0]))]
-                var tempItems = [CategoryItem]()
-                if let url = URL(string: getURLAddress(pathName: "getItems.php", querys: queryDetails)){
-                    do {
-                        let items = try String(contentsOf: url).split(separator: "^")
-                        for item in items {
-                            let itemDets = item.split(separator: ",")
-                            queryDetails = [ URLQueryItem(name: "itemsID", value: String(itemDets[0]))]
-                            var tempMods = [CategoryItemMods]()
-                            if let url = URL(string: getURLAddress(pathName: "getMods.php", querys: queryDetails)){
-                                do {
-                                    let mods = try String(contentsOf: url).split(separator: "^")
-                                    for item in mods {
-                                        let mods1 = item.split(separator: ",")
-                                        let modifiers = mods1[3].split(separator: "|")
-                                        var tempModifiers = [CategoryItemModifier]()
-                                        var count = 0
-                                        for modifier in modifiers{
-                                            let modifierDet = modifier.split(separator: ":")
-                                            tempModifiers.append(CategoryItemModifier(id: count, modID: Int(modifierDet[0])!, sizeName: String(modifierDet[1]), sizePriceAddition: Double(modifierDet[2])!))
-                                            count += 1
-                                        }
-                                        print(tempModifiers)
-                                        tempMods.append(CategoryItemMods(id: Int(mods1[0])! - 1, modName: String(mods1[1]), compulsary: Int(mods1[2])! == 1 ? true : false, selected: nil, modifiers: tempModifiers))
-                                        
-                                    }
-                                } catch {}
-                            }
-                            tempItems.append(CategoryItem(id: Int(itemDets[0])! - 1, itemDisplaySize: true, itemName: String(itemDets[1]), itemImage: String(itemDets[4]), itemBasePrice: Double(itemDets[3])!, itemDescription: String(itemDets[2]), itemAdditions: tempMods))
-                        }
-                    } catch {}
-                }
-                if categories[1] == "SPECIALS"{
-                    tempFeatured = tempItems
-
-                }else{
-                    tempCategorys.append(CategoryGroup(id: Int(categories[0])! - 1, resourceName: String(categories[1]), resourceDescription: String(categories[2]), resources: tempItems))
-                }
-            }
-        } catch {}
-    }
-    return ActivitiesData(featuredItems: tempFeatured, categoryItems: tempCategorys)
-    
+struct ActivitiesData {
+    var featuredItems: [CategoryItem]?
+    var categoryItems: [CategoryGroup]?
 }
 
-class ActivitiesMockStore {
+var activityData = ActivitiesData()
+
+class ActivitiesDataModel: ObservableObject{
+    @Published var items = ActivitiesMockStore1.test
+}
+
+
+class ActivitiesMockStore1 {
+    @Environment(\.managedObjectContext) var managedObjectContext
+
+    @FetchRequest(
+        entity: ItemCategories.entity(),
+        sortDescriptors: [NSSortDescriptor(key: "id", ascending: true)]
+      ) var categories: FetchedResults<ItemCategories>
     
-    static let activityData =  getCategories()
+    @FetchRequest(
+        entity: Items.entity(),
+        sortDescriptors: [NSSortDescriptor(key: "id", ascending: true)]
+      ) var items: FetchedResults<Items>
+    
+    @FetchRequest(
+        entity: ItemMods.entity(),
+        sortDescriptors: [NSSortDescriptor(key: "modID", ascending: true)]
+      ) var itemsMods: FetchedResults<ItemMods>
+    
+    
+    var tempCategorys = [CategoryGroup]()
+    var tempFeatured = [CategoryItem]()
+    
+    func test() {
+        
+        for category in categories{
+            //first cat
+            var tempItems = [CategoryItem]()
+            for item in items{
+                //first item
+                //check if item belongs to cat
+                if item.itemCategoriesID == category.id{
+                    //item belongs to cat
+                    //now check mods
+                    var tempMods = [CategoryItemMods]()
+                    for mod in itemsMods{
+                        //first mod
+                        //check of mod belongs to item
+                        if mod.itemID == item.id{
+                            //mod belongs to item
+                            //split description down
+                            let modifiers = mod.modifierString!.split(separator: "|")
+                            //create an array of modifiers
+                            var tempModifiers = [CategoryItemModifier]()
+                            //start a counter
+                            var count = 0
+                            //loop through each modifier
+                            for modifier in modifiers{
+                                let modifierDet = modifier.split(separator: ":")
+                                tempModifiers.append(CategoryItemModifier(id: count, modID: Int(modifierDet[0])!, sizeName: String(modifierDet[1]), sizePriceAddition: Double(modifierDet[2])!))
+                                count += 1
+                            }
+                            var comp = false
+                            if mod.compulsary == 1{
+                                comp = true
+                            }
+                            tempMods.append(CategoryItemMods(id: Int(mod.modID - 1), modName: String(mod.modName!),compulsary: comp, modifiers: tempModifiers))
+                        }
+                    }
+                    tempItems.append(CategoryItem(id: Int(item.id - 1), itemDisplaySize: true, itemName: String(item.itemName!), itemImage: Data(item.itemImage!), itemBasePrice: item.itemBasePrice, itemDescription: String(item.itemDescription!), itemAdditions: tempMods))
+                }
+            }
+            if category.categoryName == "SPECIALS"{
+                tempFeatured = tempItems
+
+            }else{
+                tempCategorys.append(CategoryGroup(id: Int(category.id - 1), resourceName: String(category.categoryName!), resourceDescription: String(category.categoryDescription!), resources: tempItems))
+            }
+        }
+    }
+    
+    
+    
+    
 }
 
 class CartViewModel: ObservableObject{
@@ -88,7 +115,7 @@ struct Item : Identifiable{
     var itemPrice : Double
     var itemOptions: [CategoryItemModifier]
     var itemQuantity: Int
-    var itemImage: String
+    var itemImage: Data
     var offset: CGFloat = 0
     var isSwiped: Bool = false
 }

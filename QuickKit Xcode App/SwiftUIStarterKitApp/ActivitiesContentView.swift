@@ -7,13 +7,14 @@
 //
 
 import SwiftUI
+import UIKit
 import Combine
 
 struct CategoryItem {
     var id: Int
     var itemDisplaySize: Bool
     var itemName: String
-    var itemImage: String
+    var itemImage: Data
     var itemQuantity: Int = 0
     var itemBasePrice : Double
     var itemDescription: String
@@ -44,10 +45,7 @@ struct CategoryGroup {
 }
 
 
-struct ActivitiesData {
-    var featuredItems: [CategoryItem]
-    var categoryItems: [CategoryGroup]
-}
+
 
 
 
@@ -69,17 +67,88 @@ class ActivitySelected: ObservableObject {
     @Published var index: Int = 0
 }
 
+
 struct ActivitiesContentView: View {
     @EnvironmentObject var settings: UserSettings
-    @ObservedObject var activtiesData : Activities
     @ObservedObject var selectedActivity = ActivitySelected()
     @Binding var selected : Int
     @State var isShowing: Bool = false
     @State var placeItemSelected: CategoryItem? = nil
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @State var activityDets = ActivitiesData()
+    
+    @FetchRequest(
+        entity: ItemCategories.entity(),
+        sortDescriptors: [NSSortDescriptor(key: "id", ascending: true)]
+      ) var categories: FetchedResults<ItemCategories>
+    
+    @FetchRequest(
+        entity: Items.entity(),
+        sortDescriptors: [NSSortDescriptor(key: "id", ascending: true)]
+      ) var items: FetchedResults<Items>
+    
+    @FetchRequest(
+        entity: ItemMods.entity(),
+        sortDescriptors: [NSSortDescriptor(key: "modID", ascending: true)]
+      ) var itemsMods: FetchedResults<ItemMods>
+    
+    
+    
+    func test() -> ActivitiesData{
+        var tempCategorys = [CategoryGroup]()
+        var tempFeatured = [CategoryItem]()
+        
+        for category in categories{
+            //first cat
+            var tempItems = [CategoryItem]()
+            for item in items{
+                //first item
+                //check if item belongs to cat
+                if item.itemCategoriesID == category.id{
+                    //item belongs to cat
+                    //now check mods
+                    var tempMods = [CategoryItemMods]()
+                    for mod in itemsMods{
+                        //first mod
+                        //check of mod belongs to item
+                        if mod.itemID == item.id{
+                            //mod belongs to item
+                            //split description down
+                            let modifiers = mod.modifierString!.split(separator: "|")
+                            //create an array of modifiers
+                            var tempModifiers = [CategoryItemModifier]()
+                            //start a counter
+                            var count = 0
+                            //loop through each modifier
+                            for modifier in modifiers{
+                                let modifierDet = modifier.split(separator: ":")
+                                tempModifiers.append(CategoryItemModifier(id: count, modID: Int(modifierDet[0])!, sizeName: String(modifierDet[1]), sizePriceAddition: Double(modifierDet[2])!))
+                                count += 1
+                            }
+                            var comp = false
+                            if mod.compulsary == 1{
+                                comp = true
+                            }
+                            tempMods.append(CategoryItemMods(id: Int(mod.modID - 1), modName: String(mod.modName!),compulsary: comp, modifiers: tempModifiers))
+                        }
+                    }
+                    tempItems.append(CategoryItem(id: Int(item.id - 1), itemDisplaySize: true, itemName: String(item.itemName!), itemImage: Data(item.itemImage!), itemBasePrice: item.itemBasePrice, itemDescription: String(item.itemDescription!), itemAdditions: tempMods))
+                }
+            }
+            if category.categoryName == "SPECIALS"{
+                tempFeatured = tempItems
+
+            }else{
+                tempCategorys.append(CategoryGroup(id: Int(category.id - 1), resourceName: String(category.categoryName!), resourceDescription: String(category.categoryDescription!), resources: tempItems))
+            }
+        }
+        return ActivitiesData(featuredItems: tempFeatured, categoryItems: tempCategorys)
+        
+    }
     
     var body: some View {
         GeometryReader { g in
-            if #available(iOS 14.0, *) {
+                let temp1 = test()
                 ScrollView(showsIndicators: false){
                     VStack(alignment: .leading) {
                         Rectangle()
@@ -98,9 +167,10 @@ struct ActivitiesContentView: View {
                                 //.foregroundColor(Color(red: 238/255, green: 129/255, blue: 13/255))
                             Spacer()
                         }
+                        
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack (spacing: 10) {
-                                ForEach(self.activtiesData.activitiesCollection.featuredItems, id: \.id) { item in
+                                ForEach(temp1.featuredItems!, id: \.id) { item in
                                     Button(action: {
                                         self.placeItemSelected = item
                                         self.isShowing = true
@@ -115,9 +185,8 @@ struct ActivitiesContentView: View {
                             .padding(.bottom, 10)
                             
                         }
-                        
                         VStack (spacing: 20) {
-                            ForEach(self.activtiesData.activitiesCollection.categoryItems, id: \.id) { item in
+                            ForEach(temp1.categoryItems!, id: \.id) { item in
                                 ZStack {
                                     VStack (alignment: .leading){
                                         Text(item.resourceName)
@@ -170,9 +239,7 @@ struct ActivitiesContentView: View {
                 }
                 .edgesIgnoringSafeArea(.top)
                 .sheet(isPresented: self.$isShowing) { PlaceDetailView(isShowing: self.$isShowing, selected: self.$selected, placeItem: self.$placeItemSelected)}
-            } else {
-                // Fallback on earlier versions
-            }
+            
         }
         .edgesIgnoringSafeArea(.top)
 
@@ -188,13 +255,13 @@ struct FeaturedItemsView: View {
     
     var body: some View {
             ZStack{
-                if #available(iOS 14.0, *) {
-                    RemoteImage(url: (featuredItem.itemImage))
-                        .frame(width: 155, height: 225)
-                        .background(Color.black)
-                        .cornerRadius(10)
-                        .opacity(0.8)
-                }
+                Image(uiImage: UIImage(data: featuredItem.itemImage) ?? UIImage())
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 155, height: 225)
+                    .background(Color.black)
+                    .cornerRadius(10)
+                    .opacity(0.8)
                
                 VStack (alignment: .leading) {
                     
@@ -218,12 +285,12 @@ struct CategoryIcon: View {
     
     var body: some View {
         ZStack{
-            if #available(iOS 14.0, *) {
-                RemoteImage(url: (categoryItem.itemImage))
-                    .opacity(0.8)
-                    .aspectRatio(contentMode: .fill)
-                    .background(Color.black)
-            }
+            Image(uiImage: UIImage(data: categoryItem.itemImage) ?? UIImage())
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .opacity(0.8)
+                .background(Color.black)
+            
             VStack(alignment: .center) {
 
                 Text(categoryItem.itemName)
