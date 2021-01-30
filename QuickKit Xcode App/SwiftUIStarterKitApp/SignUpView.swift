@@ -97,9 +97,16 @@ struct SignUpView: View {
                     VStack(spacing: 10){
                         Button(action: {
                             withAnimation(.easeIn){self.signup = true}
-                            getData()
-                            UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
-                            withAnimation(.easeIn){self.needToLogin = false}
+                            var result = createUser(email: self.emailAddress, name: self.name, phone: self.phone, password: self.password)
+                            if (result == "Email Taken"){
+                                Print("fucked")
+                            }else{
+                                result = String(result.split(separator: "\n")[0])
+                                UserDefaults.standard.set(Int(result)!, forKey: "userID")
+                                UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
+                                getData()
+                                withAnimation(.easeIn){self.needToLogin = false}
+                            }
                         }) {
                             
                             HStack {
@@ -172,8 +179,15 @@ struct SignUpView: View {
                     VStack(spacing: 10){
                         Button(action: {
                             withAnimation(.easeIn){self.signup = false}
-                            UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
-                            withAnimation(.easeIn){self.needToLogin = false}
+                            let result = checkLogin(username: self.emailAddress, password: self.password)
+                            if (result == "Not Recognised"){
+                                Print("fucked")
+                            }else{
+                                UserDefaults.standard.set(Int(result)!, forKey: "userID")
+                                UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
+                                getData()
+                                withAnimation(.easeIn){self.needToLogin = false}
+                            }
                         }) {
                             
                             HStack {
@@ -250,6 +264,45 @@ struct SignUpView: View {
                 }
             }
         }
+    }
+    func checkLogin(username: String, password: String) -> String{
+        var queryDetails = [
+            URLQueryItem(name: "emailAddress", value: username),
+            URLQueryItem(name: "password", value: password)
+        ]
+        var details = String()
+        if let url = URL(string: getURLAddress(pathName: "checkLoginDetails.php", querys: queryDetails)){
+            do {
+                details = try String(contentsOf: url).replacingOccurrences(of: " ", with: "")
+                
+            } catch {}
+        } else {
+            print("Unable to create Order in database")
+        }
+        
+        return details
+        
+    }
+    
+    func createUser(email: String, name: String, phone: String, password: String) -> String{
+        var queryDetails = [
+            URLQueryItem(name: "emailAddress", value: email),
+            URLQueryItem(name: "name", value: name),
+            URLQueryItem(name: "phoneNumber", value: phone),
+            URLQueryItem(name: "password", value: password)
+        ]
+        var details = String()
+        if let url = URL(string: getURLAddress(pathName: "createNewUser.php", querys: queryDetails)){
+            do {
+                details = try String(contentsOf: url).replacingOccurrences(of: " ", with: "")
+                
+            } catch {}
+        } else {
+            print("Unable to create Order in database")
+        }
+        
+        return details
+        
     }
     
     

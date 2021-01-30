@@ -14,39 +14,42 @@ def printInitalOrderTicket(newValue):
 
     EAN = barcode.get_barcode_class('code128')
 
-    mydb = mysql.connector.connect(host="62.75.152.102", user="login", passwd="GA2019!?", database="wordpress_b")
+    mydb = mysql.connector.connect(host="62.75.152.102", user="login", passwd="GA2019!?", database="fishie")
     mydb.autocommit = True
     mycursor = mydb.cursor()
-    mycursor.execute("SELECT lineID FROM orderLine WHERE orderID = " + str(newValue))
+    mycursor.execute("SELECT id FROM orderLine WHERE orderPlacedID = " + str(newValue))
     myresult = mycursor.fetchall()
     orderlineIDS = []
     for x in myresult:
         orderlineIDS.append(str(x).split("(")[1].split(",")[0])
 
     complete = []	
-
+    print(orderlineIDS)
     for x in orderlineIDS:
         mycursor = mydb.cursor()
-        sql = "SELECT orderPlaced.orderID, DATE_FORMAT(orderPlaced.time, '%D %M %Y %T'), orderPlaced.collection, (SELECT itemDB.itemName FROM itemDB, orderLine WHERE itemDB.itemID = orderLine.foodID AND orderLine.lineID = " + str(x) + ") AS baguette, ( SELECT itemDB.itemName FROM itemDB, orderLine WHERE itemDB.itemID = orderLine.snackID AND orderLine.lineID = " + str(x) + ") AS snack, ( SELECT itemDB.itemName FROM itemDB, orderLine WHERE itemDB.itemID = orderLine.drinkID AND orderLine.lineID = " + str(x) + ") AS drink, orderLine.extras, orderLine.sauces, orderPlaced.paid, orderPlaced.amount FROM orderPlaced, orderLine WHERE orderPlaced.orderID = orderLine.orderID AND orderLine.lineID = " + str(x)
-        print(sql)
+        sql = "SELECT orderPlaced.id, DATE_FORMAT(orderPlaced.orderedTime, '%D %M %Y %T'), orderPlaced.collectionTime, items.itemName, orderLine.quantity, orderPlaced.paid, orderPlaced.comments, modifiers.modifierName FROM orderPlaced, orderLine LEFT JOIN items ON orderLine.itemID = items.id LEFT JOIN orderItemMods ON orderLine.id = orderItemMods.orderLineID LEFT JOIN modifiers ON orderItemMods.modifierID = modifiers.id WHERE orderPlaced.id = orderLine.orderPlacedID AND orderLine.id = " + str(x)
         mycursor.execute(sql)
         myresult = mycursor.fetchall()
         complete.append(myresult)
-        
+    
+    print(complete)
     receiptPrinter.image("/home/pi/Documents/logo.png")
     receiptPrinter.text("\n\nNew Order Received\n")
     receiptPrinter.text("Order Number: " + str(complete[0][0][0]) + "\n\n")
-    receiptPrinter.text("Date: " + str(complete[0][0][1]) + "\n\n")
+    receiptPrinter.text("Date: " + str(complete[0][0][1]) + "\n")
+    receiptPrinter.text("Collection Time: " + str(complete[0][0][2]) + "\n\n")
     receiptPrinter.text("***************************************\n\n")
-    for x in complete:
-        receiptPrinter.text(str(x[0][3]).title() + " Baguette\n")
-        receiptPrinter.text("(" + str(x[0][6]) + ")\n")
-        receiptPrinter.text("(" + str(x[0][7]) + ")\n\n")
-        if str(x[0][4]) != "None":
-            receiptPrinter.text(str(x[0][4])+ "\n")
-            receiptPrinter.text(str(x[0][5]) + "\n\n")  
-        receiptPrinter.text("*\n\n")
+    for y in complete:
+        receiptPrinter.text(str(y[0][3]).title() + "   X  " + str(y[0][4]) + "\n")
+        if str(y[0][7]) != "None":
+            for x in y:
+                receiptPrinter.text("(" + str(x[7]) + ")\n")
 
+            receiptPrinter.text("Comments: \n")
+            receiptPrinter.text(str(x[6])+ "\n\n")
+                
+
+    receiptPrinter.text("***************************************\n\n")
     ean = EAN(str(complete[0][0][0]), writer=ImageWriter())
     fullname = ean.save('/home/pi/ean13_barcode')
     receiptPrinter.image("/home/pi/ean13_barcode.png")
@@ -63,41 +66,49 @@ def printInitalOrderTicket(newValue):
 """
     receiptPrinter.close()
 
-
-def reprintOrderTicket(orderNumber):
+def reprintOrderTicket(newValue):
     receiptPrinter = Usb(0x04b8, 0x0202, 0)
     receiptPrinter.set("center")
 
     EAN = barcode.get_barcode_class('code128')
 
-    mydb = mysql.connector.connect(host="62.75.152.102", user="login", passwd="GA2019!?", database="wordpress_b")
+    mydb = mysql.connector.connect(host="62.75.152.102", user="login", passwd="GA2019!?", database="fishie")
     mydb.autocommit = True
     mycursor = mydb.cursor()
-    mycursor.execute("SELECT `lineID` FROM `orderLine` WHERE `orderID`= " + str(orderNumber))
+    mycursor.execute("SELECT id FROM orderLine WHERE orderPlacedID = " + str(newValue))
     myresult = mycursor.fetchall()
-
-    complete = []
-
+    orderlineIDS = []
     for x in myresult:
-        x = x[0]
+        orderlineIDS.append(str(x).split("(")[1].split(",")[0])
+
+    complete = []	
+    print(orderlineIDS)
+    for x in orderlineIDS:
         mycursor = mydb.cursor()
-        mycursor.execute("SELECT orderPlaced.orderID, DATE_FORMAT(orderPlaced.time, '%D %M %Y %T'), orderPlaced.collection, (SELECT itemDB.itemName FROM itemDB, orderLine WHERE itemDB.itemID = orderLine.foodID AND orderLine.lineID = " + str(x) + ") AS baguette, ( SELECT itemDB.itemName FROM itemDB, orderLine WHERE itemDB.itemID = orderLine.snackID AND orderLine.lineID = " + str(x) + ") AS snack, ( SELECT itemDB.itemName FROM itemDB, orderLine WHERE itemDB.itemID = orderLine.drinkID AND orderLine.lineID = " + str(x) + ") AS drink, orderLine.extras, orderLine.sauces, orderPlaced.paid, orderPlaced.amount FROM orderPlaced, orderLine WHERE orderPlaced.orderID = orderLine.orderID AND orderLine.lineID = " + str(x))
+        sql = "SELECT orderPlaced.id, DATE_FORMAT(orderPlaced.orderedTime, '%D %M %Y %T'), orderPlaced.collectionTime, items.itemName, orderLine.quantity, orderPlaced.paid, orderPlaced.comments, modifiers.modifierName FROM orderPlaced, orderLine LEFT JOIN items ON orderLine.itemID = items.id LEFT JOIN orderItemMods ON orderLine.id = orderItemMods.orderLineID LEFT JOIN modifiers ON orderItemMods.modifierID = modifiers.id WHERE orderPlaced.id = orderLine.orderPlacedID AND orderLine.id = " + str(x)
+        mycursor.execute(sql)
         myresult = mycursor.fetchall()
         complete.append(myresult)
-        
-    receiptPrinter.text("REPRINT ORDER TICKET\n")
+    
+    print(complete)
+    receiptPrinter.image("/home/pi/Documents/logo.png")
+    receiptPrinter.text("\n\nREPRINT ORDER TICKET\n")
     receiptPrinter.text("Order Number: " + str(complete[0][0][0]) + "\n\n")
     receiptPrinter.text("Date: " + str(complete[0][0][1]) + "\n")
+    receiptPrinter.text("Collection Time: " + str(complete[0][0][2]) + "\n\n")
     receiptPrinter.text("***************************************\n\n")
-    for x in complete:
-        receiptPrinter.text(str(x[0][3]).title() + " Baguette\n")
-        receiptPrinter.text("(" + str(x[0][6]) + ")\n")
-        receiptPrinter.text("(" + str(x[0][7]) + ")\n\n")
-        if str(x[0][4]) != "None":
-            receiptPrinter.text(str(x[0][4])+ "\n")
-            receiptPrinter.text(str(x[0][5]) + "\n\n\n")  
+    for y in complete:
+        receiptPrinter.text(str(y[0][3]).title() + "   X  " + str(y[0][4]) + "\n")
+        if str(y[0][7]) != "None":
+            for x in y:
+                receiptPrinter.text("(" + str(x[7]) + ")\n")
 
-    receiptPrinter.text("\n")
+            receiptPrinter.text("Comments: \n")
+            receiptPrinter.text(str(x[6])+ "\n\n")
+                
+
+    receiptPrinter.text("***************************************\n\n")
+
     ean = EAN(str(complete[0][0][0]), writer=ImageWriter())
     fullname = ean.save('/home/pi/ean13_barcode')
     receiptPrinter.image("/home/pi/ean13_barcode.png")

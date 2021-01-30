@@ -23,8 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // Use a UIHostingController as window root view controller
         if scene is UIWindowScene {
-            UserDefaults.standard.set(false, forKey: "hasLaunchedBefore")
-            UserDefaults.standard.set(1, forKey: "userID")
+            //UserDefaults.standard.set(false, forKey: "hasLaunchedBefore")
+            //UserDefaults.standard.set(1, forKey: "userID")
             if let windowScene = scene as? UIWindowScene {
                 let window = UIWindow(windowScene: windowScene)
                 window.rootViewController = UIHostingController(rootView: contentView)

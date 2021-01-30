@@ -10,6 +10,23 @@ import SwiftUI
 import UIKit
 import Combine
 
+extension View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape( RoundedCorner2(radius: radius, corners: corners) )
+    }
+}
+
+struct RoundedCorner2: Shape {
+
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
+    }
+}
+
 struct CategoryItem {
     var id: Int
     var itemDisplaySize: Bool
@@ -75,7 +92,6 @@ struct ActivitiesContentView: View {
     @State var isShowing: Bool = false
     @State var placeItemSelected: CategoryItem? = nil
     @Environment(\.managedObjectContext) var managedObjectContext
-    @State var activityDets = ActivitiesData()
     
     @FetchRequest(
         entity: ItemCategories.entity(),

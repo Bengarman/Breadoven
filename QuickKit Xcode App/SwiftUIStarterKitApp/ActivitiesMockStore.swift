@@ -10,7 +10,7 @@ import SwiftUI
 
 func getURLAddress(pathName: String, querys: [URLQueryItem] = []) -> String{
     var urlComponents = URLComponents()
-    urlComponents.scheme = "http"
+    urlComponents.scheme = "https"
     urlComponents.host = "garmanapps.co.uk"
     urlComponents.path = "/appAPI/fish/" + pathName
     urlComponents.queryItems = querys
@@ -21,13 +21,6 @@ struct ActivitiesData {
     var featuredItems: [CategoryItem]?
     var categoryItems: [CategoryGroup]?
 }
-
-var activityData = ActivitiesData()
-
-class ActivitiesDataModel: ObservableObject{
-    @Published var items = ActivitiesMockStore1.test
-}
-
 
 class ActivitiesMockStore1 {
     @Environment(\.managedObjectContext) var managedObjectContext
