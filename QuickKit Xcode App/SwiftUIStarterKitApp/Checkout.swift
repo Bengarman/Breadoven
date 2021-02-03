@@ -155,7 +155,7 @@ func sendServer(selectedDate: Date, paid: Bool, price: Double, cartData: CartVie
         
         var tempMods = ""
         for mods in item.itemOptions{
-            tempMods += String(mods.modID) + ", "
+            tempMods += String(mods.lineModID) + ", "
         }
         tempMods.removeLast(2)
         queryDetails = [

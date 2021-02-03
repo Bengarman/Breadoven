@@ -29,7 +29,7 @@ struct PlaceDetailView : View {
     @Binding var isShowing: Bool
     @Binding var selected: Int
     @Binding var placeItem: CategoryItem?
-    let defaultPoint = CategoryItemModifier(id: 0, modID: 0, sizeName: "Default", sizePriceAddition: 0)
+    let defaultPoint = CategoryItemModifier(id: 0, modID: 0, lineModID: 0, sizeName: "Default", sizePriceAddition: 0)
     @State var top = UIApplication.shared.windows.last?.safeAreaInsets.top
     @ObservedObject var selectedPoint = SelectedPoint()
     @State var selectedSize = "S"
@@ -105,20 +105,20 @@ struct PlaceDetailView : View {
                                             let price = String(format: "%.2f", i.sizePriceAddition)
                                             if price != "0.00" {
                                                 Button(action: {
-                                                    if (self.placeItem!.itemAdditions[item.id].compulsary == false) && (self.placeItem!.itemAdditions[item.id].selected == i.id){
+                                                    if (self.placeItem!.itemAdditions[item.count].compulsary == false) && (self.placeItem!.itemAdditions[item.count].selected == i.id){
                                                         self.prices.removeValue(forKey: item.id)
-                                                        self.placeItem!.itemAdditions[item.id].selected = nil
+                                                        self.placeItem!.itemAdditions[item.count].selected = nil
 
                                                     }else{
-                                                        self.prices[item.id] = i.sizePriceAddition
-                                                        self.placeItem!.itemAdditions[item.id].selected = i.id
+                                                        self.prices[item.count] = i.sizePriceAddition
+                                                        self.placeItem!.itemAdditions[item.count].selected = i.id
                                                     }
                                                     
                                                 }) {
                                                     
                                                     Text(textVal + " + £" + price)
                                                         .font(.custom("Montserrat-Bold", size: 13))
-                                                        .foregroundColor(self.placeItem!.itemAdditions[item.id].selected == i.id ? .white : .black)
+                                                        .foregroundColor(self.placeItem!.itemAdditions[item.count].selected == i.id ? .white : .black)
                                                         .padding(.vertical,8)
                                                         .padding(.horizontal,10)
                                                         .background(
@@ -126,7 +126,7 @@ struct PlaceDetailView : View {
                                                             ZStack{
                                                                 
                                                                 RoundedRectangle(cornerRadius: 5)
-                                                                    .fill(Color.blue.opacity(self.placeItem!.itemAdditions[item.id].selected == i.id ? 1 : 0))
+                                                                    .fill(Color.blue.opacity(self.placeItem!.itemAdditions[item.count].selected == i.id ? 1 : 0))
                                                                 
                                                                 RoundedRectangle(cornerRadius: 5)
                                                                     .stroke(Color.black,lineWidth: 1.5)
@@ -135,19 +135,19 @@ struct PlaceDetailView : View {
                                                 }
                                             }else{
                                                 Button(action: {
-                                                    if (self.placeItem!.itemAdditions[item.id].compulsary == false) && (self.placeItem!.itemAdditions[item.id].selected == i.id){
+                                                    if (self.placeItem!.itemAdditions[item.count].compulsary == false) && (self.placeItem!.itemAdditions[item.count].selected == i.id){
                                                         self.prices.removeValue(forKey: item.id)
-                                                        self.placeItem!.itemAdditions[item.id].selected = nil
+                                                        self.placeItem!.itemAdditions[item.count].selected = nil
 
                                                     }else{
-                                                        self.prices[item.id] = i.sizePriceAddition
-                                                        self.placeItem!.itemAdditions[item.id].selected = i.id
+                                                        self.prices[item.count] = i.sizePriceAddition
+                                                        self.placeItem!.itemAdditions[item.count].selected = i.id
                                                     }
                                                 }) {
                                                     
                                                     Text(textVal)
                                                         .font(.custom("Montserrat-Bold", size: 13))
-                                                        .foregroundColor(self.placeItem!.itemAdditions[item.id].selected == i.id ? .white : .black)
+                                                        .foregroundColor(self.placeItem!.itemAdditions[item.count].selected == i.id ? .white : .black)
                                                         .padding(.vertical,8)
                                                         .padding(.horizontal,10)
                                                         .background(
@@ -155,7 +155,7 @@ struct PlaceDetailView : View {
                                                             ZStack{
                                                                 
                                                                 RoundedRectangle(cornerRadius: 5)
-                                                                    .fill(Color.blue.opacity(self.placeItem!.itemAdditions[item.id].selected == i.id ? 1 : 0))
+                                                                    .fill(Color.blue.opacity(self.placeItem!.itemAdditions[item.count].selected == i.id ? 1 : 0))
                                                                 
                                                                 RoundedRectangle(cornerRadius: 5)
                                                                     .stroke(Color.black,lineWidth: 1.5)

@@ -96,7 +96,7 @@ struct ActivitiesCartView: View {
                     }
                     .padding()
                     Button(action: {
-                        //UserDefaults.standard.set(false, forKey: "hasLaunchedBefore")
+                        UserDefaults.standard.set(false, forKey: "hasLaunchedBefore")
                         //Order - (
                         withAnimation(.easeIn){self.isShowing = true}
                         

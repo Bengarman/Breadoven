@@ -21,7 +21,7 @@ struct ActivitiesData {
     var featuredItems: [CategoryItem]?
     var categoryItems: [CategoryGroup]?
 }
-
+/*
 class ActivitiesMockStore1 {
     @Environment(\.managedObjectContext) var managedObjectContext
 
@@ -70,7 +70,7 @@ class ActivitiesMockStore1 {
                             //loop through each modifier
                             for modifier in modifiers{
                                 let modifierDet = modifier.split(separator: ":")
-                                tempModifiers.append(CategoryItemModifier(id: count, modID: Int(modifierDet[0])!, sizeName: String(modifierDet[1]), sizePriceAddition: Double(modifierDet[2])!))
+                                tempModifiers.append(CategoryItemModifier(id: count, modID: Int(modifierDet[0])!, lineModID: <#Int#>, sizeName: String(modifierDet[1]), sizePriceAddition: Double(modifierDet[2])!))
                                 count += 1
                             }
                             var comp = false
@@ -95,7 +95,7 @@ class ActivitiesMockStore1 {
     
     
     
-}
+}*/
 
 class CartViewModel: ObservableObject{
     @Published var items = [Item]()

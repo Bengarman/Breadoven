@@ -41,6 +41,7 @@ struct CategoryItem {
 
 struct CategoryItemMods {
     var id: Int
+    var count: Int
     var modName : String
     var compulsary : Bool
     var selected: Int?
@@ -50,6 +51,7 @@ struct CategoryItemMods {
 struct CategoryItemModifier {
     var id: Int
     var modID: Int
+    var lineModID: Int
     var sizeName: String
     var sizePriceAddition: Double
 }
@@ -124,6 +126,7 @@ struct ActivitiesContentView: View {
                     //item belongs to cat
                     //now check mods
                     var tempMods = [CategoryItemMods]()
+                    var count2 = 0
                     for mod in itemsMods{
                         //first mod
                         //check of mod belongs to item
@@ -138,14 +141,15 @@ struct ActivitiesContentView: View {
                             //loop through each modifier
                             for modifier in modifiers{
                                 let modifierDet = modifier.split(separator: ":")
-                                tempModifiers.append(CategoryItemModifier(id: count, modID: Int(modifierDet[0])!, sizeName: String(modifierDet[1]), sizePriceAddition: Double(modifierDet[2])!))
+                                tempModifiers.append(CategoryItemModifier(id: count, modID: Int(modifierDet[0])!, lineModID: Int(modifierDet[1])!, sizeName: String(modifierDet[2]), sizePriceAddition: Double(modifierDet[3])!))
                                 count += 1
                             }
                             var comp = false
                             if mod.compulsary == 1{
                                 comp = true
                             }
-                            tempMods.append(CategoryItemMods(id: Int(mod.modID - 1), modName: String(mod.modName!),compulsary: comp, modifiers: tempModifiers))
+                            tempMods.append(CategoryItemMods(id: Int(mod.modID - 1), count: count2, modName: String(mod.modName!),compulsary: comp, modifiers: tempModifiers))
+                            count2 += 1
                         }
                     }
                     tempItems.append(CategoryItem(id: Int(item.id - 1), itemDisplaySize: true, itemName: String(item.itemName!), itemImage: Data(item.itemImage!), itemBasePrice: item.itemBasePrice, itemDescription: String(item.itemDescription!), itemAdditions: tempMods))
@@ -239,7 +243,7 @@ struct ActivitiesContentView: View {
                                         
                                         Spacer()
                                     }
-                                }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                                }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
                                 .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
                                 .cornerRadius(10)
                                 
